@@ -1,0 +1,9 @@
+{
+  "semi": true,               // 結尾加上 `;`
+  "singleQuote": true,        // 使用單引號 `'` 代替雙引號 `"`
+  "printWidth": 100,          // 每行最大長度 100
+  "tabWidth": 2,              // 縮排寬度 2 空格
+  "trailingComma": "all",     // 物件、陣列最後一個元素後面加逗號
+  "bracketSpacing": true,     // 物件大括號內加空格 `{ key: value }`
+  "arrowParens": "always"     // 箭頭函式的參數強制加括號 `(x) => x`
+}
