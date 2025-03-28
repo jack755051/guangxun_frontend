@@ -10,15 +10,16 @@ import { TranslateLoad } from './config/translate.config';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes), provideClientHydration(),
+    provideRouter(routes),
+    provideClientHydration(),
     provideHttpClient(withInterceptorsFromDi()),
     TranslateModule.forRoot({
       defaultLanguage: 'zh-Hant',
       loader: {
         provide: TranslateLoader,
         useFactory: TranslateLoad,
-        deps: [HttpClient]
-      }
-    }).providers!
-  ]
+        deps: [HttpClient],
+      },
+    }).providers!,
+  ],
 };

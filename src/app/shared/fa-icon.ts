@@ -14,4 +14,4 @@ export const FooterIcons = {
   faLine,
 };
 
-export const HeaderIcons = {}
+export const HeaderIcons = {};

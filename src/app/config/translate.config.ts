@@ -1,7 +1,7 @@
-import { HttpClient } from "@angular/common/http";
-import { TranslateLoader } from "@ngx-translate/core";
+import { HttpClient } from '@angular/common/http';
+import { TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function TranslateLoad(http: HttpClient): TranslateLoader {
- return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
