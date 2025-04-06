@@ -2,9 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FooterIcons } from '../fa-icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { FaIconWithLink, PolicyWithLink } from '../../models/interface/page/footer.interface';
 import { SharedStandaloneImports } from '../shared-imports';
 import { I18nService } from '../../core/services/i18n.service';
+import { FaIconWithLink, LabeledLink } from '../../models/interface/shared/shared.interface';
+import { ReplaceLabelKey } from '../../models/types/replaceLabelkey.type';
+
+type PolicyWithLink = ReplaceLabelKey<LabeledLink, 'policy'>;
 
 @Component({
   selector: 'guangxun-footer',
