@@ -1,0 +1,13 @@
+<div class="logo"></div>
+<div class="navbar-and-feature">
+  <div class="navbar">
+    <ng-container *ngFor="let i of navbar">
+      <span (click)="onClickNavbar(i.link)">{{ i.navbar | translate }}</span>
+    </ng-container>
+  </div>
+  <div class="feature">
+    <ng-container *ngFor="let i of headerIcons()">
+      <fa-icon [icon]="i.icon"></fa-icon>
+    </ng-container>
+  </div>
+</div>

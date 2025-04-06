@@ -1,0 +1,34 @@
+@use 'assets/styles/mixins' as *;
+@use 'assets/styles/colors' as *;
+@use 'assets/styles/icons' as *;
+
+:host{
+  @include default-flex($direction: row, $justify: space-between);
+  padding: 0 1.2rem;
+  @include freeze($top: 0, $left: 0, $right: 0);
+
+  >.logo{
+    @include space();
+    @include default-container($width:20rem, $height:8rem);
+    background-image:  $icon-logo;
+  }
+
+  >.navbar-and-feature{
+    @include default-flex($direction: row, $justify:space-around);
+    @include default-container($width:68rem, $height:auto);
+
+    > .navbar{
+      @include default-flex($direction: row, $gap:2.4rem);
+      span {
+        @include hover-text-style();
+      }
+    }
+
+    >.feature{
+      @include default-flex($direction: row, $gap:2rem);
+      fa-icon {
+        @include hover-text-style($font-size: 1.8rem);
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+$z-index: (
+  base: 1,
+  header: 1000,
+  dropdown: 1100,
+  modal: 1200,
+  tooltip: 1300,
+  overlay: 1400,
+  table-sticky-header: 900,
+);
+
+@function z($key) {
+  @return map-get($z-index, $key);
+}

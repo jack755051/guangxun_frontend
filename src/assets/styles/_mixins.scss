@@ -1,12 +1,16 @@
-
+@use 'variables' as *;
 
 //空間
 @mixin space($background-image: ''){
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+  background-image: $background-image;
 }
-//排版
+
+// ----- 排版 start -----
+
+//基礎排版
 @mixin default-flex($justify: center, $align: center, $direction: row, $gap: 0) {
   display: flex;
   justify-content: $justify;
@@ -15,7 +19,52 @@
   gap: $gap;
 }
 
+//固定位置
+@mixin freeze(
+  $position: fixed,
+  $top: auto,
+  $right: auto,
+  $bottom: auto,
+  $left: auto,
+  $z-index-key: header
+) {
+  position: $position;
+
+  // 只有有設定才輸出（避免無意間蓋掉樣式）
+  @if $top != auto {
+    top: $top;
+  }
+
+  @if $right != auto {
+    right: $right;
+  }
+
+  @if $bottom != auto {
+    bottom: $bottom;
+  }
+
+  @if $left != auto {
+    left: $left;
+  }
+
+  z-index: z($z-index-key);
+}
+
+// ----- 排版 over-----
+
 @mixin default-container($width: 0, $height: 0) {
   width: $width;
   height: $height;
+}
+
+//滑鼠移動時的文字樣式
+@mixin hover-text-style($font-size: 1.6rem, $font-weight: 500, $hover-color: hsla(0, 0%, 96%, 1), $hover-weight: 900) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+
+  &:hover {
+    color: $hover-color;
+    cursor: pointer;
+    font-weight: $hover-weight;
+  }
 }
