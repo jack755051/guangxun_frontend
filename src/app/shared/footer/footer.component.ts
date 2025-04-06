@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FooterIcons } from '../fa-icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { FaIconWithLink, PolicyWithLink } from '../../models/interface/page/footer.interface';
 import { SharedStandaloneImports } from '../shared-imports';
+import { I18nService } from '../../core/services/i18n.service';
 
 @Component({
   selector: 'guangxun-footer',
@@ -13,7 +14,7 @@ import { SharedStandaloneImports } from '../shared-imports';
   styleUrl: './footer.component.scss',
 })
 export class FooterComponent implements OnInit {
-  constructor(private _translate: TranslateService) {}
+  private i18n = inject(I18nService);
 
   ngOnInit(): void {}
 
