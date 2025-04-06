@@ -1,0 +1,35 @@
+
+@use 'colors' as color;
+/* _base.scss 或 _reset.scss */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-size:10px;
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  background-color: color.$primary-500; // 主背景色
+  color: color.$neon-500; // 文字主色
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}

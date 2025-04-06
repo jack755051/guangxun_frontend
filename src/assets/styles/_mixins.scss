@@ -1,0 +1,21 @@
+
+
+//空間
+@mixin space($background-image: ''){
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+//排版
+@mixin default-flex($justify: center, $align: center, $direction: row, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin default-container($width: 0, $height: 0) {
+  width: $width;
+  height: $height;
+}
