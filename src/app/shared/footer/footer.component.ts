@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { FooterIcons } from '../fa-icon';
-import { FaIconWithRoute } from '../../models/interface/fa-icon-with-route.interface';
 import { MatDividerModule } from '@angular/material/divider';
+import { FaIconWithLink, PolicyWithLink } from '../../models/interface/page/footer.interface';
+import { SharedStandaloneImports } from '../shared-imports';
 
 @Component({
   selector: 'guangxun-footer',
-  imports: [MatDividerModule],
   standalone: true,
+  imports: [SharedStandaloneImports, MatDividerModule, TranslateModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })
@@ -16,13 +17,22 @@ export class FooterComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  buildFooterIcons(): FaIconWithRoute[] {
+  footerIcons(): FaIconWithLink[] {
     return [
-      { icon: FooterIcons.faThreads, route: '' },
-      { icon: FooterIcons.faFacebook, route: '' },
-      { icon: FooterIcons.faYoutube, route: '' },
-      { icon: FooterIcons.faLinkedin, route: '' },
-      { icon: FooterIcons.faLine, route: '' },
+      { icon: FooterIcons.faFacebook, link: '' },
+      { icon: FooterIcons.faThreads, link: '' },
+      { icon: FooterIcons.faYoutube, link: '' },
+      { icon: FooterIcons.faLinkedin, link: '' },
+      { icon: FooterIcons.faLine, link: '' },
+    ];
+  }
+
+  privacyPolicy(): PolicyWithLink[] {
+    return [
+      { policy: 'POLICY.LEGAL_AND_TRADEMARK', link: '' },
+      { policy: 'POLICY.PRIVACY_POLICY', link: '' },
+      { policy: 'POLICY.COOKIE_POLICY', link: '' },
+      { policy: 'POLICY.SITE_MAP', link: '' },
     ];
   }
 }

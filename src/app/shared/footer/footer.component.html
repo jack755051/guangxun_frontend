@@ -1,10 +1,29 @@
 <div class="block block-top">
-  <div class="logo-with-address"></div>
-  <div class="social-media-links"></div>
+  <div class="logo-with-address">
+    <div class="logo"></div>
+    <div class="contact-info">
+      <p class="address">{{ 'CONTACT_INFO.ADDRESS' | translate }}</p>
+      <p class="telephone">{{ 'CONTACT_INFO.TELEPHONE' | translate }}</p>
+      <p class="email">{{ 'CONTACT_INFO.EMAIL' | translate }}</p>
+    </div>
+  </div>
+  <div class="social-media-links">
+    <ng-container *ngFor="let icon of footerIcons()">
+      <a [href]="icon.link">
+        <fa-icon [icon]="icon.icon"></fa-icon>
+      </a>
+    </ng-container>
+  </div>
 </div>
 <div class="block block-middle"></div>
-<mat-divider></mat-divider>
+<mat-divider class="divider"></mat-divider>
 <div class="block block-bottom">
-  <div class="copyright"></div>
-  <div class="privacy-policy"></div>
+  <div class="copyright">Copyright © 2025 聖環資訊有限公司著作權所有</div>
+  <div class="privacy-policy">
+    <ng-container *ngFor="let policy of privacyPolicy(); let last = last">
+      <a [href]="policy.link">
+        <span class="text">{{ policy.policy | translate }}</span>
+      </a>
+    </ng-container>
+  </div>
 </div>
