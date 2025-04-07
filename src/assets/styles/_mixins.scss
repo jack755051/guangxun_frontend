@@ -58,7 +58,7 @@
 }
 
 //滑鼠移動時的文字樣式
-@mixin hover-text-style($font-size: 1.6rem, $font-weight: 500, $hover-color: hsla(0, 0%, 96%, 1), $hover-weight: 900) {
+@mixin hover-text-style($font-size: 1.6rem, $font-weight: 500, $hover-color: hsla(0, 0%, 96%, 1), $hover-weight: 900,$active-weight: 900) {
   font-size: $font-size;
   font-weight: $font-weight;
 
@@ -66,5 +66,10 @@
     color: $hover-color;
     cursor: pointer;
     font-weight: $hover-weight;
+  }
+
+  &.active {
+      color: $hover-color;
+      font-weight: $active-weight;
   }
 }

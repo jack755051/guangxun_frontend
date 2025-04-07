@@ -5,6 +5,7 @@ import { I18nService } from '../../core/services/i18n.service';
 import { ReplaceLabelKey } from '../../models/types/replaceLabelkey.type';
 import { FaIconWithLink, LabeledLink } from '../../models/interface/shared/shared.interface';
 import { HeaderIcons } from '../fa-icon';
+import { Router } from '@angular/router';
 
 
 type NavbarLink = ReplaceLabelKey<LabeledLink, 'navbar'>;
@@ -18,35 +19,36 @@ type NavbarLink = ReplaceLabelKey<LabeledLink, 'navbar'>;
 })
 export class HeaderComponent {
   private i18n = inject(I18nService);
+  private router = inject(Router);
 
   navbar: NavbarLink[] = [
     {
       navbar: 'NAVBAR.HOME',
-      link: '',
+      link: '/home',
     },
     {
       navbar: 'NAVBAR.ABOUT',
-      link: '',
+      link: '/about',
     },
     {
       navbar: 'NAVBAR.SERVICE_AND_PRODUCTS',
-      link: '',
+      link: '/service-and-products',
     },
     {
       navbar: 'NAVBAR.NEWS',
-      link: '',
+      link: '/news',
     },
     {
       navbar: 'NAVBAR.TECHNICAL_SUPPORT',
-      link: '',
+      link: '/technical-support',
     },
     {
       navbar: 'NAVBAR.CONTACT',
-      link: '',
+      link: '/contact',
     },
   ];
 
-  constructor() {}
+  constructor(private _router: Router) {}
 
   headerIcons(): FaIconWithLink[] {
     return [
@@ -56,7 +58,18 @@ export class HeaderComponent {
     ];
   }
 
+  onClickLogo() {
+    this._router.navigate(['/home']);
+  }
+  /**
+   * 點擊navbar
+   * @param link 連結
+   */
   onClickNavbar(link: string) {
+    this._router.navigate([link]);
+  }
 
+    isActive(link: string): boolean {
+    return this.router.url === link;
   }
 }
