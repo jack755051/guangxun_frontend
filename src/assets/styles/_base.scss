@@ -1,4 +1,3 @@
-
 @use 'colors' as color;
 /* _base.scss 或 _reset.scss */
 *,
@@ -9,9 +8,10 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
-  font-size:10px;
+  font-size: 10px;
   font-family: 'Inter', sans-serif;
   line-height: 1.5;
   background-color: color.$primary-500; // 主背景色

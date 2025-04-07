@@ -1,7 +1,7 @@
 @use 'variables' as *;
 
 //空間
-@mixin space($background-image: ''){
+@mixin space($background-image: '') {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -58,7 +58,13 @@
 }
 
 //滑鼠移動時的文字樣式
-@mixin hover-text-style($font-size: 1.6rem, $font-weight: 500, $hover-color: hsla(0, 0%, 96%, 1), $hover-weight: 900,$active-weight: 900) {
+@mixin hover-text-style(
+  $font-size: 1.6rem,
+  $font-weight: 500,
+  $hover-color: hsla(0, 0%, 96%, 1),
+  $hover-weight: 900,
+  $active-weight: 900
+) {
   font-size: $font-size;
   font-weight: $font-weight;
 
@@ -69,7 +75,7 @@
   }
 
   &.active {
-      color: $hover-color;
-      font-weight: $active-weight;
+    color: $hover-color;
+    font-weight: $active-weight;
   }
 }

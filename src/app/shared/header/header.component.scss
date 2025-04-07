@@ -2,24 +2,24 @@
 @use 'assets/styles/colors' as *;
 @use 'assets/styles/icons' as *;
 
-:host{
+:host {
   @include default-flex($direction: row, $justify: space-between);
   padding: 0 1.2rem;
   @include freeze($top: 0, $left: 0, $right: 0);
 
-  >.logo{
+  > .logo {
     @include space();
-    @include default-container($width:25rem, $height:10rem);
-    background-image:  $icon-logo;
+    @include default-container($width: 25rem, $height: 10rem);
+    background-image: $icon-logo;
     cursor: pointer;
   }
 
-  >.navbar-and-feature{
-    @include default-flex($direction: row, $justify:space-around);
-    @include default-container($width:68rem, $height:auto);
+  > .navbar-and-feature {
+    @include default-flex($direction: row, $justify: space-around);
+    @include default-container($width: 68rem, $height: auto);
 
-    > .navbar{
-      @include default-flex($direction: row, $gap:2.4rem);
+    > .navbar {
+      @include default-flex($direction: row, $gap: 2.4rem);
       span {
         @include hover-text-style();
         display: inline-block;
@@ -32,7 +32,7 @@
           position: absolute;
           bottom: 0;
           left: 0;
-          height: .3rem;
+          height: 0.3rem;
           width: 100%;
           background-color: $gray-50;
           transform: scaleX(0);
@@ -47,8 +47,8 @@
       }
     }
 
-    >.feature{
-      @include default-flex($direction: row, $gap:2rem);
+    > .feature {
+      @include default-flex($direction: row, $gap: 2rem);
       fa-icon {
         @include hover-text-style($font-size: 1.8rem);
       }

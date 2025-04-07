@@ -1,10 +1,10 @@
 {
-  "NAVBAR":{
-    "HOME":"首頁",
-    "ABOUT":"關於光訊",
-    "SERVICE_AND_PRODUCTS":"服務與產品",
-    "NEWS":"最新消息",
-    "TECHNICAL_SUPPORT":"技術支援",
-    "CONTACT":"聯絡我們"
+  "NAVBAR": {
+    "HOME": "首頁",
+    "ABOUT": "關於光訊",
+    "SERVICE_AND_PRODUCTS": "服務與產品",
+    "NEWS": "最新消息",
+    "TECHNICAL_SUPPORT": "技術支援",
+    "CONTACT": "聯絡我們"
   }
 }

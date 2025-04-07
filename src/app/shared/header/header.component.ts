@@ -7,7 +7,6 @@ import { FaIconWithLink, LabeledLink } from '../../models/interface/shared/share
 import { HeaderIcons } from '../fa-icon';
 import { Router } from '@angular/router';
 
-
 type NavbarLink = ReplaceLabelKey<LabeledLink, 'navbar'>;
 
 @Component({
@@ -15,7 +14,7 @@ type NavbarLink = ReplaceLabelKey<LabeledLink, 'navbar'>;
   standalone: true,
   imports: [SharedStandaloneImports, TranslateModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
   private i18n = inject(I18nService);
@@ -69,7 +68,7 @@ export class HeaderComponent {
     this._router.navigate([link]);
   }
 
-    isActive(link: string): boolean {
+  isActive(link: string): boolean {
     return this.router.url === link;
   }
 }

@@ -4,8 +4,6 @@ import { Component } from '@angular/core';
   selector: 'guangxun-technical-support',
   imports: [],
   templateUrl: './technical-support.component.html',
-  styleUrl: './technical-support.component.scss'
+  styleUrl: './technical-support.component.scss',
 })
-export class TechnicalSupportComponent {
-
-}
+export class TechnicalSupportComponent {}

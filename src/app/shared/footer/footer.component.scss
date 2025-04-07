@@ -2,50 +2,48 @@
 @use 'assets/styles/colors' as *;
 @use 'assets/styles/icons' as *;
 
-:host{
+:host {
   @include default-flex($direction: column);
 
-  > .block{
-    @include default-container($width: 100%, $height:auto);
+  > .block {
+    @include default-container($width: 100%, $height: auto);
     font-size: 1.5rem;
 
-    &.block-top{
+    &.block-top {
       @include default-flex($direction: row, $justify: space-between);
     }
 
-    &.block-bottom{
+    &.block-bottom {
       @include default-flex($direction: row, $justify: space-between);
     }
 
-    > .logo-with-address{
-      @include default-flex($direction: row,$gap: 2rem);
-      > .logo{
+    > .logo-with-address {
+      @include default-flex($direction: row, $gap: 2rem);
+      > .logo {
         @include space();
-        @include default-container($width:20rem, $height:8rem);
-        background-image:  $icon-logo;
+        @include default-container($width: 20rem, $height: 8rem);
+        background-image: $icon-logo;
       }
     }
 
-    >.social-media-links{
-      @include default-flex($direction: row,$gap: 2rem);
+    > .social-media-links {
+      @include default-flex($direction: row, $gap: 2rem);
       font-size: 2.2rem;
-      a{
-        &:hover{
-            color: $gray-50;
+      a {
+        &:hover {
+          color: $gray-50;
         }
       }
     }
 
-
-
-    > .privacy-policy{
+    > .privacy-policy {
       @include default-flex($direction: row);
 
       a {
         &:not(:last-child) .text {
-          border-right: .2rem solid $gray-50;
+          border-right: 0.2rem solid $gray-50;
         }
-        &:hover{
+        &:hover {
           color: $gray-50;
         }
 
@@ -54,13 +52,10 @@
         }
       }
     }
-
   }
 
-  > mat-divider{
-    @include default-container($width: 100%, $height: .1rem);
+  > mat-divider {
+    @include default-container($width: 100%, $height: 0.1rem);
     margin: 2rem 0 !important;
   }
-
-
 }

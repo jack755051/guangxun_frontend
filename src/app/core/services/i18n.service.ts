@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class I18nService {
   private translate = inject(TranslateService);
@@ -10,7 +10,7 @@ export class I18nService {
   private defaultLang = 'zh-Hant';
 
   constructor() {
-        // 定義支援的語系（一定要和檔名一致）
+    // 定義支援的語系（一定要和檔名一致）
     const supportedLangs = ['en', 'zh-Hant'];
 
     this.translate.addLangs(supportedLangs);
@@ -25,7 +25,7 @@ export class I18nService {
     this.translate.use(matchedLang);
   }
 
-    //Switch system language
+  //Switch system language
   switchLanguage(lang: string) {
     this.translate.use(lang);
   }
