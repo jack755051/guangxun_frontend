@@ -1,18 +1,29 @@
 @use 'assets/styles/mixins' as *;
 
-:host{
+:host {
   @include default-flex($direction: column);
   width: 100vw;
   height: auto;
 
-  >guangxun-header{
-      padding-top: 1.2rem 0;
+  > guangxun-header {
+    padding-top: 1.2rem 0;
     @include default-container($width: 100%, $height: auto);
   }
 
   //TODO:內容寬度都暫時是75%
-  >guangxun-footer{
+  > guangxun-footer {
     @include default-container($width: 85%, $height: auto);
-      padding-bottom: 1.2rem 0;
+    padding-bottom: 1.2rem 0;
+  }
+
+  > .content {
+    @include default-container($width: 85%, $height: auto);
+
+    guangxun-breadcrumb {
+      @include default-flex($direction: column, $align: flex-start);
+      @include default-container($width: 100%, $height: auto);
+      padding:  1.2rem 0;
+      font-size: 1.4rem;
+    }
   }
 }
