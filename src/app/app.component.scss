@@ -1,4 +1,5 @@
 @use 'assets/styles/mixins' as *;
+@use 'assets/styles/colors' as *;
 
 :host {
   @include default-flex($direction: column);
@@ -22,8 +23,9 @@
     guangxun-breadcrumb {
       @include default-flex($direction: column, $align: flex-start);
       @include default-container($width: 100%, $height: auto);
-      padding:  1.2rem 0;
+      padding: 1.2rem 0;
       font-size: 1.4rem;
     }
   }
 }
+

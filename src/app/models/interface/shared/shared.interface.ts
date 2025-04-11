@@ -4,7 +4,8 @@ import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
  */
 export interface FaIconWithLink {
   icon: IconDefinition;
-  link: string;
+  link?: string;
+  action?: () => void;
 }
 /**
  * 標籤連結
