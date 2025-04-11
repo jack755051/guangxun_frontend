@@ -1,0 +1,15 @@
+<guangxun-dialog-shell>
+  <div dialog-header>
+    <fa-icon [icon]="getFaIcon(DialogType.ALERT).icon"></fa-icon>
+    <h1>{{ data.header.title }}</h1>
+  </div>
+  <div dialog-content>
+    <p>{{ data.content }}</p>
+  </div>
+  <div dialog-footer>
+    <guangxun-shell-footer
+      [type]="data.type"
+      (closeDialog)="onDialogClose()"
+    ></guangxun-shell-footer>
+  </div>
+</guangxun-dialog-shell>

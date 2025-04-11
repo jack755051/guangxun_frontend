@@ -1,0 +1,12 @@
+@mixin default-flex($justify: center, $align: center, $direction: row, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+  gap: $gap;
+}
+
+@mixin default-container($width: 0, $height: 0) {
+  width: $width;
+  height: $height;
+}

@@ -1,0 +1,39 @@
+@use './color' as *;
+@use './mixin' as *;
+// ----- override start-----
+::ng-deep .mat-mdc-dialog-container {
+  --mdc-dialog-container-shape: 1.4rem;
+}
+
+::ng-deep guangxun-shell-header {
+  fa-icon,
+  span {
+    font-size: 2rem;
+    font-weight: 800;
+  }
+}
+
+// ----- override end-----
+
+// ----- button color start-----
+::ng-deep .dialog-button {
+  width: auto;
+  height: auto;
+  border-radius: 1rem;
+  padding: 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+// ----- button color end-----
+
+.content-text {
+  @include default-flex($direction: row);
+  @include default-container($width: 100%, $height: auto);
+  min-height: 6rem;
+  padding: 0 4rem;
+  font-size: 1.6rem;
+  color: $gray-900;
+}

@@ -1,0 +1,15 @@
+<guangxun-dialog-shell>
+  <div dialog-header>
+    <guangxun-shell-header [title]="data.header.title" [type]="data.type"> </guangxun-shell-header>
+  </div>
+  <div dialog-content>
+    <p>{{ data.content }}</p>
+  </div>
+  <div dialog-footer>
+    <guangxun-shell-footer
+      [type]="data.type"
+      [buttons]="data.footer.buttons ?? []"
+      (closeDialog)="onDialogClose()"
+    ></guangxun-shell-footer>
+  </div>
+</guangxun-dialog-shell>

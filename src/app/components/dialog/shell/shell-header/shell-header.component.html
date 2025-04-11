@@ -1,0 +1,8 @@
+<div class="dialog-header" [ngClass]="getTypeClass(type)">
+  <div class="center-content">
+    <fa-icon [icon]="getFaIcon(type).icon"></fa-icon>
+    <span class="title">{{ title }}</span>
+  </div>
+
+  <fa-icon class="close" [icon]="FaIconsList.faXmark" (click)="close.emit()"></fa-icon>
+</div>

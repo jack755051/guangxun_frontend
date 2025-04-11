@@ -1,0 +1,27 @@
+@use '../../assets/color' as *;
+@use '../../assets/mixin' as *;
+
+:host {
+  @include default-flex($direction: row, $gap: 2rem);
+  padding-bottom: 1.4rem;
+}
+
+.dialog-button {
+  width: auto;
+  height: auto;
+  border-radius: 1rem;
+  padding: 1rem 1.6rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+
+.dialog-cancel-button {
+  background-color: $liver-red-500;
+}
+
+.dialog-confirm-button,
+.dialog-submit-button {
+  background-color: $btn-blue-900;
+}

@@ -1,0 +1,17 @@
+@use '../../assets/color' as *;
+@use '../../assets/mixin' as *;
+
+:host {
+  @include default-flex($direction: row);
+  @include default-container($width: 100%, $height: auto);
+}
+
+.dialog-content {
+  @include default-flex($direction: row);
+  @include default-container($width: 100%, $height: auto);
+  min-height: 10rem;
+  padding: 0 4rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: $gray-900;
+}

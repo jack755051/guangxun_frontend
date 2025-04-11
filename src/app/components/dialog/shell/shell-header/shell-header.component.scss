@@ -1,0 +1,33 @@
+@use '../../assets/color' as *;
+.dialog-header {
+  position: relative; // ✅ 為 .close 的 absolute 定位建立參考容器
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 0 10px 0;
+  font-size: 16px;
+  color: rgb(150, 150, 150);
+  background-color: $liver-red-200;
+  fa-icon {
+    color: $liver-red-500;
+  }
+  span {
+    color: $liver-red-500;
+  }
+}
+
+.center-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 20px;
+  color: #c0392b;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
