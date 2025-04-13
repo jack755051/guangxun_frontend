@@ -3,17 +3,18 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --port 4201",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:base_template": "node dist/base_template/server/server.mjs",
+    "serve:ssr:base_template": "node dist/guangxun_2025/server/server.mjs",
     "clean-git": "py script/clean-up.py",
     "format": "prettier --write ."
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.1.7",
+    "@angular/cdk": "^19.2.7",
     "@angular/common": "^19.1.7",
     "@angular/compiler": "^19.1.7",
     "@angular/core": "^19.1.7",

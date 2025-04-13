@@ -17,12 +17,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/base_template",
+            "outputPath": "dist/guangxun_2025",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "stylePreprocessorOptions": {
+              "includePaths": ["src"]
+            },
             "assets": [
               "src/assets",
               {
@@ -66,10 +69,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "base_template:build:production"
+              "buildTarget": "guangxun_2025:build:production"
             },
             "development": {
-              "buildTarget": "base_template:build:development"
+              "buildTarget": "guangxun_2025:build:development"
             }
           },
           "defaultConfiguration": "development"
