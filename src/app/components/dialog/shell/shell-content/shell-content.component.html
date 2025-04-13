@@ -1,3 +1,6 @@
 <div class="dialog-content">
+  <ng-container *ngIf="isTextContent">
+    <p class="dialog-text">{{ text }}</p>
+  </ng-container>
   <ng-template #contentContainer></ng-template>
 </div>

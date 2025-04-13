@@ -19,6 +19,11 @@ import { ShellContentComponent } from '../../shell/shell-content/shell-content.c
   ],
   standalone: true,
   templateUrl: './confirm.component.html',
-  styleUrl: './confirm.component.scss',
+  styleUrls: ['./confirm.component.scss', '../../assets/style.scss'],
 })
-export class ConfirmComponent extends AbstractDialogComponent<GxunDialogConfig> {}
+export class ConfirmComponent extends AbstractDialogComponent<GxunDialogConfig> {
+  onDialogConfirm(): void {
+    this.data.footer?.onConfirm?.(); // ✅ 執行外部傳入的 fallback
+    this.dialogRef.close(true);      // ✅ 關閉 dialog 並傳 result
+  }
+}

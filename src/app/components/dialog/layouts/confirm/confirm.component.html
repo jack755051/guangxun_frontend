@@ -16,6 +16,7 @@
     <guangxun-shell-footer
       [type]="data.type"
       [buttons]="data.footer?.buttons ?? []"
+      (confirm)="onDialogConfirm()"
       (close)="onDialogClose()"
     ></guangxun-shell-footer>
   </div>

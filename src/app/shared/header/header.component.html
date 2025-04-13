@@ -9,7 +9,7 @@
   </div>
   <div class="feature">
     <ng-container *ngFor="let i of headerIcons()">
-      <fa-icon [icon]="i.icon"></fa-icon>
+      <fa-icon [icon]="i.icon" (click)="i.action?.()"></fa-icon>
     </ng-container>
   </div>
 </div>

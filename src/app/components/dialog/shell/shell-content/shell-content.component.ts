@@ -15,6 +15,7 @@ export class ShellContentComponent {
   @Input() content!: DialogElementContent;
   @ViewChild('contentContainer', { read: ViewContainerRef, static: true })
   contentContainer!: ViewContainerRef;
+
   get isTextContent(): boolean {
     return this.content?.type === 'text';
   }
@@ -25,12 +26,9 @@ export class ShellContentComponent {
 
   ngAfterViewInit(): void {
     if (this.content?.type === 'form') {
-      this.loadDynamicComponent(this.content.form);
+      const component = (this.content as { type: 'form'; form: Type<any> }).form;
+      this.contentContainer.clear();
+      this.contentContainer.createComponent(component);
     }
-  }
-
-  private loadDynamicComponent(component: Type<unknown>): void {
-    this.contentContainer.clear();
-    this.contentContainer.createComponent(component);
   }
 }

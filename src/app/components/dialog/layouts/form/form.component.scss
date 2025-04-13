@@ -1,8 +1,0 @@
-@use '../../assets/mixin' as *;
-
-.dialog-form-style {
-  guangxun-shell-footer {
-    @include default-flex($direction: row, $gap: 2rem);
-    padding: 1.4rem 0;
-  }
-}

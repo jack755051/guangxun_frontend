@@ -15,6 +15,6 @@ import { ShellContentComponent } from '../../shell/shell-content/shell-content.c
     ShellContentComponent,
   ],
   templateUrl: './alert.component.html',
-  styleUrl: './alert.component.scss',
+  styleUrls: ['./alert.component.scss', '../../assets/style.scss'],
 })
 export class AlertComponent extends AbstractDialogComponent<GxunDialogConfig> {}

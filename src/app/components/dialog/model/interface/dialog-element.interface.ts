@@ -9,6 +9,9 @@ export interface DialogElementHeader {
 
 export interface DialogElementFooter {
   buttons?: DialogButton[];
+    onConfirm?: () => void;
+    onSubmit?: () => void;
+    onClose?: () => void;
 }
 
 export type DialogElementContent<T = unknown> =

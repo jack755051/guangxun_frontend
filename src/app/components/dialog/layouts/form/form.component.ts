@@ -19,7 +19,7 @@ import { ShellContentComponent } from '../../shell/shell-content/shell-content.c
   ],
   standalone: true,
   templateUrl: './form.component.html',
-  styleUrl: './form.component.scss',
+  styleUrls: ['./form.component.scss', '../../assets/style.scss'],
 })
 export class FormComponent extends AbstractDialogComponent<GxunDialogConfig> {
   override onDialogClose(): void {
