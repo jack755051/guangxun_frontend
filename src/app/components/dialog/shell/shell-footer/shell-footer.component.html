@@ -1,29 +1,9 @@
-<ng-container *ngFor="let btn of buttons">
+<div class="dialog-footer">
   <button
-    *ngIf="btn.type === DialogButtonType.SUBMIT"
-    class="dialog-button dialog-submit-button"
-    color="primary"
-    (click)="btn.action?.()"
+    *ngFor="let btn of displayButtons"
+    [ngClass]="'dialog-button dialog-' + btn.type.toLowerCase() + '-button'"
+    (click)="onButtonClick(btn)"
   >
     {{ btn.label }}
   </button>
-
-  <button
-    *ngIf="btn.type === DialogButtonType.CONFIRM"
-    class="dialog-button dialog-confirm-button"
-    mat-raised-button
-    color="primary"
-    (click)="close.emit()"
-  >
-    {{ btn.label }}
-  </button>
-
-  <button
-    *ngIf="btn.type === DialogButtonType.CANCEL"
-    class="dialog-button dialog-cancel-button"
-    mat-stroked-button
-    (click)="close.emit()"
-  >
-    {{ btn.label }}
-  </button>
-</ng-container>
+</div>

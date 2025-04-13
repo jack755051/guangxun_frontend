@@ -5,6 +5,7 @@ import { FormComponent } from '../layouts/form/form.component';
 import { RemindComponent } from '../layouts/remind/remind.component';
 import { GxunDialogConfig } from '../model/interface/dialog-config.interface';
 import { DialogType } from '../model';
+import { ConfirmComponent } from '../layouts/confirm/confirm.component';
 @Injectable({
   providedIn: 'root',
 })
@@ -21,6 +22,19 @@ export class DialogService {
         width: config.width ?? '400px',
         height: config.height ?? '200px',
         panelClass: config.panelClass ?? 'dialog-alert-style',
+      })
+      .afterClosed();
+  }
+  openConfirmDialog(config: GxunDialogConfig) {
+    return this._dialog
+      .open(ConfirmComponent, {
+        data: {
+          ...config,
+          type: DialogType.CONFIRM,
+        },
+        width: config.width ?? '400px',
+        height: config.height ?? '200px',
+        panelClass: config.panelClass ?? 'dialog-confirm-style',
       })
       .afterClosed();
   }
@@ -44,6 +58,7 @@ export class DialogService {
       .open(RemindComponent, {
         data: {
           ...config,
+          type: DialogType.REMIND,
         },
         width: config.width ?? '400px',
         height: config.height ?? '200px',

@@ -6,6 +6,7 @@ import { FaIcon, FaIconsList } from '../../model/interface/faicon.interface';
 
 @Component({
   selector: 'guangxun-shell-header',
+  standalone: true,
   imports: [FontAwesomeModule, CommonModule],
   templateUrl: './shell-header.component.html',
   styleUrl: './shell-header.component.scss',

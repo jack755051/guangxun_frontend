@@ -1,5 +1,5 @@
-@use '../../assets/color' as *;
 @use '../../assets/mixin' as *;
+@use '../../assets/color' as *;
 
 :host {
   @include default-flex($direction: row);

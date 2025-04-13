@@ -3,8 +3,12 @@
     <fa-icon [icon]="getFaIcon(DialogType.ALERT).icon"></fa-icon>
     <h1>{{ data.header.title }}</h1>
   </div>
+  å
   <div dialog-content>
-    <p>{{ data.content }}</p>
+    <guangxun-shell-content
+      [type]="data.type"
+      [content]="data.content ?? { type: 'text', text: '' }"
+    ></guangxun-shell-content>
   </div>
   <div dialog-footer>
     <guangxun-shell-footer

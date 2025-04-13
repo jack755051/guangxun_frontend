@@ -1,0 +1,50 @@
+@use './_color.scss' as *;
+
+
+::ng-deep .dialog-alert-style {
+  .dialog-alert-header {
+    background-color: $liver-red-200 !important;
+    fa-icon {
+      color: $liver-red-500 !important;
+    }
+    span {
+      color: $liver-red-500 !important;
+    }
+  }
+}
+
+::ng-deep .dialog-remind-style {
+  .dialog-remind-header {
+    background-color: $liver-red-200 !important;
+    fa-icon {
+      color: $liver-red-500 !important;
+    }
+    span {
+      color: $liver-red-500 !important;
+    }
+  }
+}
+
+::ng-deep .dialog-confirm-style {
+  .dialog-confirm-header {
+    background-color: $primary-200 !important;
+    fa-icon {
+      color: $primary-500 !important;
+    }
+    span {
+      color: $primary-500 !important;
+    }
+  }
+}
+
+::ng-deep .dialog-form-style {
+  .dialog-form-header {
+    background-color: $btn-blue-200 !important;
+    fa-icon {
+      color: $btn-blue-500 !important;
+    }
+    span {
+      color: $btn-blue-500 !important;
+    }
+  }
+}

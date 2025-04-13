@@ -44,21 +44,4 @@ export abstract class AbstractDialogComponent<T, R = unknown> {
         return { icon: FaIconsList.faCircleExclamation };
     }
   }
-
-  /**
-   * 取得預設按鈕
-   * @param type 對話框類型
-   * @returns 按鈕陣列
-   */
-  getDefalutButtons(type: DialogType): DialogButton[] {
-    switch (type) {
-      case 'alert':
-      case 'remind':
-        return [{ type: DialogButtonType.CONFIRM }];
-      case 'confirm':
-        return [{ type: DialogButtonType.CONFIRM }, { type: DialogButtonType.CANCEL }];
-      default:
-        return [];
-    }
-  }
 }

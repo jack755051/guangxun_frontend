@@ -1,5 +1,6 @@
-@use './color' as *;
-@use './mixin' as *;
+@use './_color' as *;
+@use './_mixin' as *;
+
 // ----- override start-----
 ::ng-deep .mat-mdc-dialog-container {
   --mdc-dialog-container-shape: 1.4rem;

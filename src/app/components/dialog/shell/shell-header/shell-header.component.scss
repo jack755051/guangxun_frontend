@@ -1,4 +1,6 @@
+@use '../../assets/mixin' as *;
 @use '../../assets/color' as *;
+
 .dialog-header {
   position: relative; // ✅ 為 .close 的 absolute 定位建立參考容器
   display: flex;
@@ -7,13 +9,6 @@
   padding: 24px 0 10px 0;
   font-size: 16px;
   color: rgb(150, 150, 150);
-  background-color: $liver-red-200;
-  fa-icon {
-    color: $liver-red-500;
-  }
-  span {
-    color: $liver-red-500;
-  }
 }
 
 .center-content {

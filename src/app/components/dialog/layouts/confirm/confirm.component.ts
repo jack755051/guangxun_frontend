@@ -6,7 +6,7 @@ import { GxunDialogConfig } from '../../model/interface/dialog-config.interface'
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ShellHeaderComponent } from '../../shell/shell-header/shell-header.component';
 import { ShellFooterComponent } from '../../shell/shell-footer/shell-footer.component';
-
+import { ShellContentComponent } from '../../shell/shell-content/shell-content.component';
 @Component({
   selector: 'guangxun-confirm',
   imports: [
@@ -15,6 +15,7 @@ import { ShellFooterComponent } from '../../shell/shell-footer/shell-footer.comp
     DialogShellComponent,
     ShellHeaderComponent,
     ShellFooterComponent,
+    ShellContentComponent,
   ],
   standalone: true,
   templateUrl: './confirm.component.html',

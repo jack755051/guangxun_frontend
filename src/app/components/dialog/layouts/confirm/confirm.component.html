@@ -6,13 +6,17 @@
       (close)="onDialogClose()"
     ></guangxun-shell-header>
   </div>
-  <div dialog-content class="content-text dialog-content dialog-confirm-content">
-    {{ data.content }}
+  <div dialog-content>
+    <guangxun-shell-content
+      [type]="data.type"
+      [content]="data.content ?? { type: 'text', text: '' }"
+    ></guangxun-shell-content>
   </div>
   <div dialog-footer>
     <guangxun-shell-footer
       [type]="data.type"
-      (closeDialog)="onDialogClose()"
+      [buttons]="data.footer?.buttons ?? []"
+      (close)="onDialogClose()"
     ></guangxun-shell-footer>
   </div>
 </guangxun-dialog-shell>
