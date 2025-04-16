@@ -24,6 +24,6 @@ import { ShellContentComponent } from '../../shell/shell-content/shell-content.c
 export class ConfirmComponent extends AbstractDialogComponent<GxunDialogConfig> {
   onDialogConfirm(): void {
     this.data.footer?.onConfirm?.(); // ✅ 執行外部傳入的 fallback
-    this.dialogRef.close(true);      // ✅ 關閉 dialog 並傳 result
+    this.dialogRef.close(true); // ✅ 關閉 dialog 並傳 result
   }
 }

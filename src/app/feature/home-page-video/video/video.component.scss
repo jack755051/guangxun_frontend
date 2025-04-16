@@ -1,0 +1,5 @@
+@use 'assets/styles/_mixins.scss' as *;
+
+:host {
+  @include default-container($width: 100%, $height: 100%);
+}

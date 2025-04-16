@@ -33,6 +33,7 @@ export class AutoPaddingDirective implements OnInit, OnDestroy {
 
     const sourceEl = document.querySelector(this.sourceSelector) as HTMLElement;
 
+
     if (!sourceEl) {
       console.warn(`[appAutoPaddingFrom] 無法找到 ${this.sourceSelector}`);
       return;
@@ -43,6 +44,7 @@ export class AutoPaddingDirective implements OnInit, OnDestroy {
       (this.el.nativeElement as HTMLElement).style.setProperty(
         this.targetStyle,
         `${height * this.ratio}rem`,
+        // `${height}px`
       );
     };
 

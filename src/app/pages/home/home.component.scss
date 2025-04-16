@@ -1,0 +1,6 @@
+@use 'assets/styles/_mixins.scss' as *;
+
+:host {
+  @include default-flex($direction: column);
+  @include default-container($width: 100%, $height: auto);
+}
