@@ -1,0 +1,14 @@
+<div class="title-container">
+  <span>最新消息</span>
+</div>
+<div class="news-container">
+  <mat-accordion [multi]="true">
+    <mat-expansion-panel *ngFor="let item of news">
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ item.header.title }} </mat-panel-title>
+        <mat-panel-description> {{ item.header.description }} </mat-panel-description>
+      </mat-expansion-panel-header>
+      <p>{{ item.content }}</p>
+    </mat-expansion-panel>
+  </mat-accordion>
+</div>

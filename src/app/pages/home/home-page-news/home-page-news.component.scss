@@ -1,0 +1,8 @@
+@use 'assets/styles/_mixins.scss' as *;
+@use 'assets/styles/_colors.scss' as *;
+
+:host {
+  @include default-flex($direction: column);
+  @include default-container($width: 100%, $height: auto);
+  @include container-padding($padding-x: 0, $padding-y: 2rem);
+}
