@@ -1,11 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { SharedStandaloneImports } from '../../shared/shared-imports';
+import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { Video } from '../../models/interface/feature/video.interface';
+import { Video } from '../../../models/interface/feature/video.interface';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { VideoComponent } from './video/video.component';
-import { MockHomePageService } from '../../mocks/services/mock-home-page.service';
-import { AppConfigService } from '../../app-config.service';
+import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
+import { AppConfigService } from '../../../app-config.service';
+import { VideoComponent } from '../../../feature/video/video.component';
 
 @Component({
   selector: 'guangxun-home-page-video',
@@ -38,7 +38,7 @@ export class HomePageVideoComponent implements OnInit {
       });
     } else {
       // TODO: When isMockMode is false, use the <video> element instead of <iframe>,
-//       and build a Video component with a custom control panel (e.g., play, pause, fullscreen)
+      //       and build a Video component with a custom control panel (e.g., play, pause, fullscreen)
     }
   }
   toggleVideo(index: number) {}

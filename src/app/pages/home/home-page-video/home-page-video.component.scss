@@ -4,19 +4,20 @@
 :host {
   @include default-flex($direction: column);
   @include default-container($width: 100%, $height: auto);
+  @include container-padding($padding-x: 0, $padding-y: 1rem);
 }
 
 .video-container {
   @include default-container($width: 100%, $height: auto);
   background-color: $neon-100;
-  padding: .5rem;
+  padding: 0.5rem;
   > mat-grid-list {
     @include default-container($width: 100%, $height: auto);
     > mat-grid-tile {
       @include default-container($width: auto, $height: auto);
-      @include default-flex($gap: 1rem,$align:stretch);
+      @include default-flex($gap: 1rem, $align: stretch);
 
-      >*{
+      > * {
         flex-grow: 1;
         flex-basis: 100%;
       }

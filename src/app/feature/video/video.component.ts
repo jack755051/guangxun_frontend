@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { Video } from '../../../models/interface/feature/video.interface';
+import { Video } from '../../models/interface/feature/video.interface';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { SharedStandaloneImports } from '../../../shared/shared-imports';
+import { SharedStandaloneImports } from '../../shared/shared-imports';
 
 @Component({
   selector: 'guangxun-video',

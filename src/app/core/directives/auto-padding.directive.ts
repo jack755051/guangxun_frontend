@@ -33,7 +33,6 @@ export class AutoPaddingDirective implements OnInit, OnDestroy {
 
     const sourceEl = document.querySelector(this.sourceSelector) as HTMLElement;
 
-
     if (!sourceEl) {
       console.warn(`[appAutoPaddingFrom] 無法找到 ${this.sourceSelector}`);
       return;

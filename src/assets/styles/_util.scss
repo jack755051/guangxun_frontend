@@ -1,0 +1,14 @@
+@use '_mixins' as *;
+@use '_colors' as *;
+
+.title-container {
+  @include default-container($width: 100%, $height: auto);
+  @include default-flex($direction: row, $justify: flex-start);
+  @include container-padding($padding-x: 0, $padding-y: 1.3rem);
+
+  > span {
+    font-size: 3.6rem;
+    font-weight: 600;
+    color: $gray-100;
+  }
+}

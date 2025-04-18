@@ -1,12 +1,18 @@
 @use 'variables' as *;
 
-//空間
+// ----- 空間 start -----
 @mixin space($background-image: '') {
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
   background-image: $background-image;
 }
+
+@mixin container-padding($padding-x: 0, $padding-y: 0) {
+  padding: $padding-y $padding-x;
+}
+
+// ----- 空間 end -----
 
 // ----- 排版 start -----
 
