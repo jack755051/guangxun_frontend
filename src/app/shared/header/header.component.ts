@@ -21,7 +21,7 @@ type NavbarLink = ReplaceLabelKey<LabeledLink, 'navbar'>;
 })
 export class HeaderComponent {
   private i18n = inject(I18nService);
-  private router = inject(Router);
+  private _router = inject(Router);
   private _dialog = inject(DialogService);
 
   navbar: NavbarLink[] = [
@@ -53,7 +53,7 @@ export class HeaderComponent {
 
   readonly DialogType = DialogType;
 
-  constructor(private _router: Router) {}
+  constructor() {}
 
   headerIcons(): FaIconWithLink[] {
     return [
@@ -130,6 +130,6 @@ export class HeaderComponent {
   }
 
   isActive(link: string): boolean {
-    return this.router.url === link;
+    return this._router.url === link;
   }
 }

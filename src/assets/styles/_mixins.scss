@@ -63,6 +63,19 @@
   height: $height;
 }
 
+@mixin default-container-limit($min-width: 0, $max-width: 0, $min-height: 0, $max-height: 0) {
+  min-width: $min-width;
+  max-width: $max-width;
+  min-height: $min-height;
+  max-height: $max-height;
+}
+
+@mixin default-text-style($font-size: 1.6rem, $font-weight: 500, $color: black) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  color: $color;
+}
+
 //滑鼠移動時的文字樣式
 @mixin hover-text-style(
   $font-size: 1.6rem,

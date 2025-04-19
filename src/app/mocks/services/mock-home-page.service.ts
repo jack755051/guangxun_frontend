@@ -1,7 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Video } from '../../models/interface/feature/video.interface';
-import { ExpansionPanelItem } from '../../models/interface/feature/expansion-panel.interface';
+import {
+  ExpansionPanelItem,
+  ExpansionPanelType,
+} from '../../models/interface/feature/expansion-panel.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -47,22 +50,37 @@ export class MockHomePageService {
   getMockNews() {
     this.mockNews.next([
       {
-        id: '1',
         header: { title: 'News 1', description: 'News 1 description' },
-        content: 'News 1 content',
+        content: {
+          id: '1',
+          date: '20250501',
+          author: 'News 1 author',
+          content: 'News 1 content',
+        },
         routerLink: '/news/1',
+        type: ExpansionPanelType.FIRE,
       },
       {
-        id: '2',
         header: { title: 'News 2', description: 'News 2 description' },
-        content: 'News 2 content',
+        content: {
+          id: '2',
+          date: '20250501',
+          author: 'News 2 author',
+          content: 'News 2 content',
+        },
         routerLink: '/news/2',
+        type: ExpansionPanelType.LIVE,
       },
       {
-        id: '3',
         header: { title: 'News 3', description: 'News 3 description' },
-        content: 'News 3 content',
+        content: {
+          id: '3',
+          date: '20250501',
+          author: 'News 3 author',
+          content: 'News 3 content',
+        },
         routerLink: '/news/3',
+        type: ExpansionPanelType.TECHNICAL_SUPPORT,
       },
     ]);
   }
