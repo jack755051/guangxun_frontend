@@ -12,6 +12,10 @@
   padding: $padding-y $padding-x;
 }
 
+@mixin container-margin($margin-x: 0, $margin-y: 0) {
+  margin: $margin-y $margin-x;
+}
+
 // ----- 空間 end -----
 
 // ----- 排版 start -----

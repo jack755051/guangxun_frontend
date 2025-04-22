@@ -1,0 +1,13 @@
+<img [src]="image" [alt]="subTitle" />
+<div class="content">
+  <div class="text">
+    <div class="title">{{ title }}</div>
+    <div class="subTitle">{{ subTitle }}</div>
+    <div class="description">{{ description }}</div>
+  </div>
+  <div class="tags">
+    <ng-container *ngFor="let tag of tags">
+      <guangxun-tag [tag]="tag"></guangxun-tag>
+    </ng-container>
+  </div>
+</div>

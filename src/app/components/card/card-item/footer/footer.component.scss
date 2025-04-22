@@ -1,0 +1,9 @@
+@use '../../assets/mixin' as *;
+@use '../../assets/variables' as *;
+@use '../../assets/color' as *;
+
+:host {
+  @include default-flex($direction: column, $justify: flex-start, $gap: 24px);
+  @include default-container($width: auto, $height: 100%);
+  @include container-padding($padding-x: 20px);
+}

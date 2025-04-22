@@ -1,0 +1,17 @@
+<guangxun-header
+  *ngIf="shouldShowHeader"
+  [avatar]="cardItem.header.avatar"
+  [title]="cardItem.header.title"
+  [arrangeType]="arrangeType"
+></guangxun-header>
+
+<guangxun-content
+  [image]="cardItem.content.image"
+  [title]="cardItem.content.title"
+  [subTitle]="cardItem.content.subTitle"
+  [description]="cardItem.content.description"
+  [tags]="cardItem.content.tag"
+  [arrangeType]="arrangeType"
+></guangxun-content>
+
+<guangxun-footer [actions]="cardItem.footer.button" [arrangeType]="arrangeType"></guangxun-footer>

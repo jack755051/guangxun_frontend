@@ -1,0 +1,13 @@
+@use './assets/mixin' as *;
+
+:host {
+  font-size: 10px;
+
+  .card-container {
+    @include default-container($width: 100%, $height: auto);
+
+    &.card-list {
+      @include default-flex($direction: column, $gap: 10px);
+    }
+  }
+}

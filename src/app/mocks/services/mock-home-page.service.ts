@@ -5,21 +5,31 @@ import {
   ExpansionPanelItem,
   ExpansionPanelType,
 } from '../../models/interface/feature/expansion-panel.interface';
+import { ArrangeType, Cards } from '../../components/card';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MockHomePageService {
-  mockVideos = new BehaviorSubject<Video[]>([]);
-  mockVideos$ = this.mockVideos.asObservable();
+  private _mockVideos = new BehaviorSubject<Video[]>([]);
+  mockVideos$ = this._mockVideos.asObservable();
 
-  mockNews = new BehaviorSubject<ExpansionPanelItem[]>([]);
-  mockNews$ = this.mockNews.asObservable();
+  private _mockNews = new BehaviorSubject<ExpansionPanelItem[]>([]);
+  mockNews$ = this._mockNews.asObservable();
+
+  private _mockProducts = new BehaviorSubject<Cards>({
+    card: [],
+    arrangeType: ArrangeType.LIST,
+  });
+  mockProducts$ = this._mockProducts.asObservable();
 
   constructor() {}
 
+  /**
+   * 取得 mock 影片
+   */
   getMockVideos() {
-    this.mockVideos.next([
+    this._mockVideos.next([
       {
         id: 1,
         title: 'Video 1',
@@ -47,8 +57,11 @@ export class MockHomePageService {
     ]);
   }
 
+  /**
+   * 取得 mock 新聞
+   */
   getMockNews() {
-    this.mockNews.next([
+    this._mockNews.next([
       {
         header: { title: 'News 1', description: 'News 1 description' },
         content: {
@@ -83,5 +96,110 @@ export class MockHomePageService {
         type: ExpansionPanelType.TECHNICAL_SUPPORT,
       },
     ]);
+  }
+
+  getMockProducts() {
+    this._mockProducts.next({
+      card: [
+        {
+          header: {
+            avatar: {
+              icon: 'faFire',
+              color: 'red',
+            },
+            title: 'Product 1',
+          },
+          content: {
+            image: 'assets/images/mock/mock_product.jpeg',
+            title: 'Title 1',
+            subTitle: 'Subtitle 1',
+            description: 'Description 1',
+            tag: [
+              {
+                label: 'tag1-1',
+                action: () => {},
+              },
+              {
+                label: 'tag1-2',
+                action: () => {},
+              },
+              {
+                label: 'tag1-3',
+                action: () => {},
+              },
+            ],
+          },
+          footer: {
+            button: [
+              {
+                label: 'Button 1-1',
+                action: () => {},
+              },
+              {
+                label: 'Button 1-2',
+                action: () => {},
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            avatar: {
+              icon: 'faFire',
+              color: 'red',
+            },
+            title: 'Product 2',
+          },
+          content: {
+            image: 'assets/images/mock/mock_product.jpeg',
+            title: 'Title 2',
+            subTitle: 'Subtitle 2',
+            description: 'Description 2',
+            tag: [
+              { label: 'tag2-1', action: () => {} },
+              { label: 'tag2-2', action: () => {} },
+              { label: 'tag2-3', action: () => {} },
+            ],
+          },
+          footer: {
+            button: [
+              {
+                label: 'Button 2',
+                action: () => {},
+              },
+            ],
+          },
+        },
+        {
+          header: {
+            avatar: {
+              icon: 'faFire',
+              color: 'red',
+            },
+            title: 'Product 3',
+          },
+          content: {
+            image: 'assets/images/mock/mock_product.jpeg',
+            title: 'Title 3',
+            subTitle: 'Subtitle 3',
+            description: 'Description 3',
+            tag: [
+              { label: 'tag3-1', action: () => {} },
+              { label: 'tag3-2', action: () => {} },
+              { label: 'tag3-3', action: () => {} },
+            ],
+          },
+          footer: {
+            button: [
+              {
+                label: 'Button 3',
+                action: () => {},
+              },
+            ],
+          },
+        },
+      ],
+      arrangeType: ArrangeType.LIST,
+    });
   }
 }

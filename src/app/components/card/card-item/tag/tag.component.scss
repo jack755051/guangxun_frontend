@@ -1,0 +1,16 @@
+@use '../../assets/mixin' as *;
+@use '../../assets/variables' as *;
+@use '../../assets/_color' as *;
+
+:host {
+  @include default-text-style($font-size: 1.2rem, $color: $neon-900);
+  @include container-padding($padding-x: 12px, $padding-y: 5px);
+  border: 1.5px solid $neon-900;
+  border-radius: 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $neon-900;
+    color: $white;
+  }
+}

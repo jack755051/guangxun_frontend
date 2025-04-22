@@ -1,0 +1,48 @@
+import { ArrangeType } from './card.enum';
+import { CardItemHeaderAvatar } from './card.type';
+
+//卡片
+export interface Cards {
+  card: CardItem[];
+  arrangeType: ArrangeType;
+}
+
+// 卡片項目
+export interface CardItem {
+  header: CardItemHeader;
+  content: CardItemContent;
+  footer: CardItemFooter;
+}
+
+// 卡片項目頭部
+export interface CardItemHeader {
+  avatar: CardItemHeaderAvatar;
+  title: string;
+}
+
+// 卡片項目內容
+export interface CardItemContent {
+  image?: string;
+  title: string;
+  subTitle: string;
+  description: string;
+  tag?: CardItemTag[];
+}
+
+// 卡片項目底部
+export interface CardItemFooter {
+  button?: CardItemButton[];
+}
+
+export interface CardItemTag {
+  label: string;
+  action: () => void;
+  disabled?: boolean;
+}
+
+// 卡片項目按鈕
+export interface CardItemButton {
+  label: string;
+  action: () => void;
+  disabled?: boolean;
+}

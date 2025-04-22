@@ -22,8 +22,6 @@ export class HomePageNewsComponent implements OnInit {
   @Input() news: ExpansionPanelItem[] = [];
   hoverIndex: number | null = null;
 
-
-
   private _mockHomePageService = inject(MockHomePageService);
   private _appConfig = inject(AppConfigService);
   constructor() {}
@@ -66,8 +64,8 @@ export class HomePageNewsComponent implements OnInit {
   }
 
   onHover(index: number, isHovering: boolean): void {
-  this.hoverIndex = isHovering ? index : null;
-}
+    this.hoverIndex = isHovering ? index : null;
+  }
 
   // ---- 以下為擴充功能 end ----
 }

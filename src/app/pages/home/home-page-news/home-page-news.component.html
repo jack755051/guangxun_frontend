@@ -4,11 +4,11 @@
 <div class="news-container">
   <mat-accordion>
     <mat-expansion-panel
-    class="news-item"
-    *ngFor="let item of news; let i = index"
-    (mouseenter)="onHover(i, true)"
-    (mouseleave)="onHover(i, false)"
-    [expanded]="hoverIndex === i"
+      class="news-item"
+      *ngFor="let item of news; let i = index"
+      (mouseenter)="onHover(i, true)"
+      (mouseleave)="onHover(i, false)"
+      [expanded]="hoverIndex === i"
     >
       <mat-expansion-panel-header>
         <mat-panel-title class="text-type-title"> {{ item.header.title }} </mat-panel-title>
