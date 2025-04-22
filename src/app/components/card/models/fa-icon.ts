@@ -1,9 +1,7 @@
-// import {
-
-// } from '@fortawesome/free-brands-svg-icons';
-import { faBorderAll, faList } from '@fortawesome/free-solid-svg-icons';
+import { faBorderAll, faLayerGroup, faList } from '@fortawesome/free-solid-svg-icons';
 
 export const CardArrangeTypeIcons = {
   faList,
   faBorderAll,
+  faLayerGroup,
 };

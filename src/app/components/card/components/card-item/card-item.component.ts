@@ -1,11 +1,11 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
-import { SharedStandaloneImports } from '../../../shared/shared-imports';
+import { SharedStandaloneImports } from '../../../../shared/shared-imports';
 import {
   CardItemHeaderAvatar,
   CardItemHeaderFaIcon,
   CardItemHeaderImage,
-} from '../models/card.type';
-import { ArrangeType, CARD_CLASS_MAP, CardItem } from '..';
+} from '../../models/card.type';
+import { ArrangeType, CARD_CLASS_MAP, CardItem } from '../..';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';

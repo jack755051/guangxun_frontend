@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CardItemButton } from '../..';
+import { CardItemButton } from '../../..';
 
 @Component({
   selector: 'guangxun-button',

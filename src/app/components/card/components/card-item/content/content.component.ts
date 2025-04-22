@@ -1,9 +1,9 @@
-import { ArrangeType } from './../../models/card.enum';
+import { ArrangeType } from '../../../models/card.enum';
 import { Component, HostBinding, Input } from '@angular/core';
-import { SharedStandaloneImports } from '../../../../shared/shared-imports';
-import { CONTENT_CLASS_MAP } from '../../models/arrange-type-class.map';
+import { SharedStandaloneImports } from '../../../../../shared/shared-imports';
+import { CONTENT_CLASS_MAP } from '../../../models/arrange-type-class.map';
 import { TagComponent } from '../tag/tag.component';
-import { CardItemTag } from '../..';
+import { CardItemTag } from '../../..';
 
 @Component({
   selector: 'guangxun-content',
@@ -19,7 +19,6 @@ export class ContentComponent {
   @Input() description: string = '';
   @Input() tags?: CardItemTag[] = [];
   @HostBinding('class')
-
   get hostClass(): string {
     return CONTENT_CLASS_MAP[this.arrangeType] ?? '';
   }

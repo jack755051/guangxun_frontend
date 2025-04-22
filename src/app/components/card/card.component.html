@@ -1,5 +1,10 @@
-<div class="arrange-type" *ngIf="isShowArrangeType">
-  <div class="arrange-type-item"></div>
+<div class="arrange-type">
+  <guangxun-toggle
+    *ngIf="isShowArrangeType"
+    [selected]="cards.arrangeType"
+    [options]="toggleOptions"
+    (change)="onArrangeTypeToggle($event)"
+  ></guangxun-toggle>
 </div>
 
 <ng-container [ngSwitch]="cards.arrangeType">

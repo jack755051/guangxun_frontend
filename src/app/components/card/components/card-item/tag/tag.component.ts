@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { CardItemTag } from '../..';
+import { CardItemTag } from '../../..';
 
 @Component({
   selector: 'guangxun-tag',
@@ -8,7 +8,7 @@ import { CardItemTag } from '../..';
   styleUrl: './tag.component.scss',
 })
 export class TagComponent {
-  @Input() tag: CardItemTag = { label: '', action: () => { } };
+  @Input() tag: CardItemTag = { label: '', action: () => {} };
 
   onClick() {
     if (this.tag.disabled) {

@@ -1,5 +1,5 @@
 @use './assets/mixin' as *;
-
+@use './assets/color' as *;
 :host {
   font-size: 10px;
 
@@ -8,6 +8,19 @@
 
     &.card-list {
       @include default-flex($direction: column, $gap: 10px);
+    }
+  }
+
+  .arrange-type {
+    @include default-container($width: 100%, $height: auto);
+    @include default-flex($direction: row, $justify: flex-end, $gap: 10px);
+
+    >guangxun-toggle{
+      @include default-container($width: auto, $height: auto);
+      @include container-padding($padding-x: 1.8rem, $padding-y: .5rem);
+      background-color: $gray-50;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
   }
 }

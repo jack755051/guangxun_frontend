@@ -8,25 +8,4 @@ import { CardArrangeTypeIcons } from '../models/fa-icon';
 })
 export class CardService {
   constructor() {}
-
-  isShowArrangeType(arrangeType: ArrangeType): boolean {
-    switch (arrangeType) {
-      case ArrangeType.GRID:
-      case ArrangeType.LIST:
-        return true;
-      case ArrangeType.CENTER_STACK:
-        return false;
-    }
-  }
-
-  getArrangeTypeIcon(arrangeType: ArrangeType): IconDefinition {
-    switch (arrangeType) {
-      case ArrangeType.GRID:
-        return CardArrangeTypeIcons.faBorderAll;
-      case ArrangeType.LIST:
-        return CardArrangeTypeIcons.faList;
-      default:
-        return CardArrangeTypeIcons.faList;
-    }
-  }
 }

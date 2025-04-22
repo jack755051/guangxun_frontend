@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { SharedStandaloneImports } from '../../../../shared/shared-imports';
-import { ArrangeType, CardItemButton } from '../..';
+import { SharedStandaloneImports } from '../../../../../shared/shared-imports';
+import { ArrangeType, CardItemButton } from '../../..';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({

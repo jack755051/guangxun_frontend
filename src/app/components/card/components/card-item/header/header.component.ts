@@ -1,12 +1,12 @@
 import { Component, HostBinding, Input } from '@angular/core';
-import { ArrangeType } from '../../models/card.enum';
-import { SharedStandaloneImports } from '../../../../shared/shared-imports';
+import { ArrangeType } from '../../../models/card.enum';
+import { SharedStandaloneImports } from '../../../../../shared/shared-imports';
 import {
   CardItemHeaderAvatar,
   CardItemHeaderFaIcon,
   CardItemHeaderImage,
   HEADER_CLASS_MAP,
-} from '../..';
+} from '../../..';
 @Component({
   selector: 'guangxun-header',
   imports: [SharedStandaloneImports],

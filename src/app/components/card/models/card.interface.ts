@@ -1,3 +1,4 @@
+import { IconDefinition } from '@fortawesome/angular-fontawesome';
 import { ArrangeType } from './card.enum';
 import { CardItemHeaderAvatar } from './card.type';
 
@@ -5,6 +6,10 @@ import { CardItemHeaderAvatar } from './card.type';
 export interface Cards {
   card: CardItem[];
   arrangeType: ArrangeType;
+}
+
+export interface ArrangeTypeToggleItem {
+  icon: IconDefinition;
 }
 
 // 卡片項目
@@ -45,4 +50,10 @@ export interface CardItemButton {
   label: string;
   action: () => void;
   disabled?: boolean;
+}
+
+// -----
+export interface ArrangeTypeMeta {
+  icon: IconDefinition;
+  showInToggle: boolean;
 }
