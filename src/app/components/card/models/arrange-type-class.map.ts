@@ -39,7 +39,7 @@ export const ARRANGE_TYPE_SHOW_TOGGLE_MAP: Record<ArrangeType, boolean> = {
   [ArrangeType.LIST]: true,
   [ArrangeType.CENTER_STACK]: false,
 };
-
+// 排列方式元資料，判斷是否顯示
 export const ARRANGE_TYPE_META_MAP: Record<ArrangeType, ArrangeTypeMeta> = {
   [ArrangeType.GRID]: {
     icon: CardArrangeTypeIcons.faBorderAll,

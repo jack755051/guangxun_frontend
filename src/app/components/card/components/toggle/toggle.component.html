@@ -1,3 +1,8 @@
-<div class="toggle-button" *ngFor="let type of options" [class.active]="type === selected" (click)="onSelect(type)">
+<div
+  class="toggle-button"
+  *ngFor="let type of options"
+  [class.active]="type === selected"
+  (click)="onSelect(type)"
+>
   <fa-icon *ngIf="getIcon(type)" [icon]="getIcon(type)!"></fa-icon>
 </div>

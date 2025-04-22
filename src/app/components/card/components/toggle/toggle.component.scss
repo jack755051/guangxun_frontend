@@ -3,10 +3,10 @@
 @use '../../assets/color' as *;
 
 :host {
-  @include default-flex($direction: row, $justify: flex-end,$gap: 2rem);
+  @include default-flex($direction: row, $justify: flex-end, $gap: 2rem);
   @include default-container($width: auto, $height: auto);
 
-  > .toggle-button{
+  > .toggle-button {
     @include default-container($width: auto, $height: auto);
     @include container-padding($padding-x: 1rem);
     // background-color: $gray-300;
@@ -18,7 +18,6 @@
       cursor: pointer;
       transition: color 0.2s ease;
     }
-
 
     &.active {
       fa-icon {
