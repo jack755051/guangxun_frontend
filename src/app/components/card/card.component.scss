@@ -9,7 +9,12 @@
     @include default-container($width: 100%, $height: auto);
 
     &.card-list {
-      @include default-flex($direction: column, $gap: 5px);
+      @include default-flex($direction: column,$justify: space-around, $gap: 5px);
+    }
+
+    &.card-grid{
+       @include default-flex($direction: row, $justify: space-around, $gap: 5px);
+       flex-wrap: wrap;
     }
   }
 

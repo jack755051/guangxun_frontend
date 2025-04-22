@@ -198,6 +198,38 @@ export class MockHomePageService {
             ],
           },
         },
+        {
+          header: {
+            avatar: {
+              icon: 'faFire',
+              color: 'red',
+            },
+            title: 'Product 4',
+          },
+          content: {
+            image: 'assets/images/mock/mock_product.jpeg',
+            title: 'Title 4',
+            subTitle: 'Subtitle 4',
+            description: 'Description 4',
+            tag: [
+              { label: 'tag4-1', action: () => {} },
+              { label: 'tag4-2', action: () => {} },
+              { label: 'tag4-3', action: () => {} },
+            ],
+          },
+          footer: {
+            button: [
+              {
+                label: 'Button 4',
+                action: () => {},
+              },
+              {
+                label: 'Button 4-2',
+                action: () => {},
+              },
+            ],
+          },
+        },
       ],
       arrangeType: ArrangeType.LIST,
     });

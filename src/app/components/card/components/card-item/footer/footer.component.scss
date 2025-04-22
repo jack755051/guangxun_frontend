@@ -3,7 +3,14 @@
 @use '../../../assets/color' as *;
 
 :host {
-  @include default-flex($direction: column, $justify: flex-start, $gap: 24px);
-  @include default-container($width: auto, $height: 100%);
-  @include container-padding($padding-x: 20px);
+  &.footer-list-style {
+    @include default-flex($direction: column, $justify: flex-start, $gap: 24px);
+    @include default-container($width: auto, $height: 100%);
+    @include container-padding($padding-x: 20px);
+  }
+
+  &.footer-grid-style {
+    @include default-flex($direction: row, $justify: flex-start, $gap: 24px);
+    @include default-container($width: auto, $height: 100%);
+  }
 }

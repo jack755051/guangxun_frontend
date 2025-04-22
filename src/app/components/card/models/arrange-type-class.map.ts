@@ -26,6 +26,18 @@ export const FOOTER_CLASS_MAP: Record<ArrangeType, string> = {
   [ArrangeType.LIST]: 'footer-list-style',
 };
 
+export const TAG_CLASS_MAP: Record<ArrangeType, string> = {
+  [ArrangeType.GRID]: 'tag-grid-style',
+  [ArrangeType.CENTER_STACK]: 'tag-center-stack-style',
+  [ArrangeType.LIST]: 'tag-list-style',
+};
+
+export const BUTTON_CLASS_MAP: Record<ArrangeType, string> = {
+  [ArrangeType.GRID]: 'button-grid-style',
+  [ArrangeType.CENTER_STACK]: 'button-center-stack-style',
+  [ArrangeType.LIST]: 'button-list-style',
+};
+
 // 排列方式圖示
 
 export const ARRANGE_TYPE_ICON_MAP: Record<ArrangeType, IconDefinition> = {

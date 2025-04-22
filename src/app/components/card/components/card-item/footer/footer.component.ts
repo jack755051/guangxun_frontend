@@ -1,6 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { SharedStandaloneImports } from '../../../../../shared/shared-imports';
-import { ArrangeType, CardItemButton } from '../../..';
+import { ArrangeType, CardItemButton, FOOTER_CLASS_MAP } from '../../..';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -13,4 +13,8 @@ import { ButtonComponent } from '../button/button.component';
 export class FooterComponent {
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
   @Input() actions?: CardItemButton[] = [];
+  @HostBinding('class')
+  get hostClass(): string {
+    return FOOTER_CLASS_MAP[this.arrangeType] ?? '';
+  }
 }
