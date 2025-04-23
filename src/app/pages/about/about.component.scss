@@ -1,0 +1,40 @@
+@use 'assets/styles/_mixins.scss' as *;
+@use 'assets/styles/_colors.scss' as *;
+@use 'assets/styles/_icons.scss' as *;
+:host {
+  @include default-container($width: 100%, $height: auto);
+  @include default-flex($direction: column, $gap: 1rem);
+  @include container-padding($padding-x: 1rem, $padding-y: 5rem);
+
+  padding-top: 2rem;
+
+  >.content-container{
+    @include default-container($width: 100%, $height: auto);
+    @include default-flex($direction: column, $gap: 1.2rem);
+    @include container-padding($padding-x: 1.2rem, $padding-y: 2rem);
+    background-color: $gray-50;
+
+    >.image{
+      @include default-container($width: 100%, $height: 400px);
+      @include space($background-image: $about-building_01, $background-size: cover);
+    }
+
+    >.content {
+      @include default-container($width: 100%, $height: auto);
+      background-color: $gray-50;
+      @include default-flex($direction: column, $gap: 1.5rem); // ⭐️ 垂直排列段落 + 間距
+      @include default-text-style($font-size: 1.8rem, $font-weight: 400, $color: $gray-900);
+      line-height: 1.8;
+      letter-spacing: 0.03em;
+      padding: 2rem;
+
+      p {
+        margin: 0;
+        text-align: justify; // ⭐️ 讓每段落文字左右對齊，看起來更專業
+      }
+    }
+
+  }
+
+
+}

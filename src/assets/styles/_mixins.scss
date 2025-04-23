@@ -1,10 +1,10 @@
 @use 'variables' as *;
 
 // ----- 空間 start -----
-@mixin space($background-image: '') {
+@mixin space($background-image: '', $background-size: contain) {
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: $background-size;
   background-image: $background-image;
 }
 
