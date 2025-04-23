@@ -31,10 +31,19 @@
       p {
         margin: 0;
         text-align: justify; // ⭐️ 讓每段落文字左右對齊，看起來更專業
+        // ✅ 改善首字放大排版
+        &:first-of-type::first-letter {
+          display: inline-block;
+          font-size: 3.6rem;
+          font-weight: 700;
+          vertical-align: top;
+          line-height: 1.2;
+          margin-right: 0.5rem;
+          color: $primary-700;
+        }
+
       }
     }
 
   }
-
-
 }
