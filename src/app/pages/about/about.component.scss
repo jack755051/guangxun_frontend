@@ -22,7 +22,7 @@
     >.content {
       @include default-container($width: 100%, $height: auto);
       background-color: $gray-50;
-      @include default-flex($direction: column, $gap: 1.5rem); // ⭐️ 垂直排列段落 + 間距
+      @include default-flex($direction: column, $align:flex-start, $gap: 1.5rem); // ⭐️ 垂直排列段落 + 間距
       @include default-text-style($font-size: 1.8rem, $font-weight: 400, $color: $gray-900);
       line-height: 1.8;
       letter-spacing: 0.03em;
