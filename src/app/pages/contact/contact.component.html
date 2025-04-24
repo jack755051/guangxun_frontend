@@ -72,25 +72,29 @@
       <!-- 有興趣的產品 -->
       <div class="form-field select-field">
         <label for="productCategory">產品類別</label>
-        <div class="input-wrapper">
-          <select id="productCategory" formControlName="productCategory">
-            <option value="null">請選擇</option>
-            <option *ngFor="let item of productTypes" [value]="item.type">
-              {{ item.label }}
-            </option>
-          </select>
+        <div class="input-container">
+          <div class="input-wrapper">
+            <select id="productCategory" formControlName="productCategory">
+              <option value="null">請選擇</option>
+              <option *ngFor="let item of productTypes" [value]="item.type">
+                {{ item.label }}
+              </option>
+            </select>
+          </div>
         </div>
       </div>
       <!-- Product 選單（依類別變動） -->
       <div class="form-field select-field">
         <label for="product">產品項目</label>
-        <div class="input-wrapper">
-          <select id="product" formControlName="product">
-            <option value="">請選擇</option>
-            <option *ngFor="let item of productOptions" [value]="item.value">
-              {{ item.label }}
-            </option>
-          </select>
+        <div class="input-container">
+          <div class="input-wrapper">
+            <select id="product" formControlName="product">
+              <option value="">請選擇</option>
+              <option *ngFor="let item of productOptions" [value]="item.value">
+                {{ item.label }}
+              </option>
+            </select>
+          </div>
         </div>
       </div>
 

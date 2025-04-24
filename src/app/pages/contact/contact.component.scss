@@ -11,10 +11,12 @@
     @include default-container($width: 100%, $height: auto);
     @include default-flex($direction: row, $align: stretch, $justify: space-around, $gap: 2rem);
     min-height: 40rem;
+
     > .image {
       @include default-container($width: 24%, $height: auto);
       @include space($background-image: $content_us_01, $background-size: cover);
     }
+
     > .content {
       @include default-container($width: 75%, $height: auto);
       @include default-flex($direction: row, $justify: flex-start, $align: flex-start, $gap: 1rem);
@@ -35,25 +37,28 @@
           @include default-container($width: 100%, $height: auto);
           @include default-flex($direction: column, $align: flex-start);
           margin-bottom: 1.5rem;
+
           &.select-field {
-            @include default-container($width: 30%, $height: auto);
+            @include default-container($width: 70%, $height: auto);
           }
+
           > label {
             @include default-text-style($font-size: 1.4rem, $font-weight: 500, $color: $gray-900);
+            margin-bottom: 0.5rem;
           }
 
           > .input-container {
-            @include default-flex($direction: row,$justify:flex-start, $gap: 2rem);
-            @include default-container($width: 100%, $height: auto);
-            .input-wrapper {
-              @include default-flex($direction: row, $gap: 2rem);
-              @include default-container($width: 50%, $height: auto);
+            @include default-flex($direction: row, $justify: flex-start, $gap: 1rem);
+            width: 100%;
 
-              input,
-              select {
+            .input-wrapper {
+              width: 50%;
+
+              input {
                 width: 100%;
                 padding: 0.75rem 1rem;
                 font-size: 1rem;
+                font-family: 'Inter', sans-serif;
                 color: $gray-900;
                 background-color: #fff;
                 border: 1px solid #ccc;
@@ -75,22 +80,52 @@
                 }
               }
             }
+
+            .error {
+              width: 40%;
+              display: flex;
+              align-items: center;
+
+              small {
+                color: red;
+                font-size: 0.875rem;
+              }
+            }
+          }
+
+          // select 專用樣式
+          .input-wrapper select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            color: $gray-900;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            outline: none;
+            appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 1rem center;
+            background-size: 1rem;
+            transition: all 0.25s ease;
+
+            &:hover {
+              border-color: $primary-500;
+            }
+
+            &:focus {
+              border-color: $primary-500;
+              box-shadow: 0 0 0 2px rgba($primary-500, 0.2);
+            }
           }
         }
-      }
 
-      .button-container {
-        @include default-flex($direction: row, $justify: flex-start, $gap: 1rem);
+        .button-container {
+          @include default-flex($direction: row, $justify: flex-start, $gap: 1rem);
+        }
       }
     }
   }
 }
-
-  .error {
-    display: flex;
-    @include default-container($width:30%, $height: 100%);
-    small {
-      color: red;
-      font-size: 1rem;
-    }
-  }
