@@ -6,10 +6,7 @@ import { ToggleComponent } from './components/toggle/toggle.component';
 import { ArrangeType } from './models/card.enum';
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
 import { CardArrangeTypeIcons } from './models/fa-icon';
-import {
-  ARRANGE_TYPE_META_MAP,
-  TOGGLABLE_ARRANGE_TYPES,
-} from '.';
+import { ARRANGE_TYPE_META_MAP, TOGGLABLE_ARRANGE_TYPES } from '.';
 
 @Component({
   selector: 'guangxun-card',
@@ -43,7 +40,6 @@ export class CardComponent implements OnInit {
     this.toggleOptions = Object.entries(ARRANGE_TYPE_META_MAP)
       .filter(([_, meta]) => meta.showInToggle)
       .map(([key]) => key as ArrangeType);
-
   }
 
   onArrangeTypeToggle(arrangeType: ArrangeType) {

@@ -17,8 +17,8 @@
     @include container-padding($padding-x: 10px, $padding-y: 5px);
   }
 
-      &:hover {
-      background-color: $neon-900;
-      color: $white;
-    }
+  &:hover {
+    background-color: $neon-900;
+    color: $white;
+  }
 }

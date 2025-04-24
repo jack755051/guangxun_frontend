@@ -19,7 +19,7 @@ $margin-size: 10px;
 
   &.card-grid-style {
     @include default-flex($direction: column, $justify: space-between);
-    @include default-container($width:22%, $height: auto);
+    @include default-container($width: 22%, $height: auto);
     @include container-padding($padding-y: 1.2rem);
   }
 }

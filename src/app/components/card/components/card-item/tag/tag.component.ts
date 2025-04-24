@@ -8,7 +8,7 @@ import { ArrangeType, CardItemTag, TAG_CLASS_MAP } from '../../..';
   styleUrl: './tag.component.scss',
 })
 export class TagComponent {
-  @Input() tag: CardItemTag = { label: '', action: () => { } };
+  @Input() tag: CardItemTag = { label: '', action: () => {} };
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
   @HostBinding('class')
   get hostClass(): string {
