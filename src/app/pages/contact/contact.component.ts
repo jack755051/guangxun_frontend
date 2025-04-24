@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../shared/shared-imports';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductType } from '../../models/interface/feature/product.interface';
@@ -8,6 +8,8 @@ import {
   MonitorMainCategory,
   ProductType as ProductTypeEnum,
 } from '../../models/enum/product.enum';
+import { DialogService, DialogType } from '../../components/dialog';
+import { DialogButtonType } from '../../components/dialog/model/enum/dialog-button-dialog.enum';
 @Component({
   selector: 'guangxun-contact',
   imports: [ReactiveFormsModule, SharedStandaloneImports],
@@ -31,6 +33,8 @@ export class ContactComponent implements OnInit {
     label: key,
     value,
   }));
+
+  dialog = inject(DialogService);
 
   constructor() {}
 
@@ -59,6 +63,7 @@ export class ContactComponent implements OnInit {
       Validators.required,
       Validators.minLength(2),
       Validators.maxLength(20),
+      Validators.pattern(/^(?![\W_]+$).+$/),
     ]),
     email: new FormControl<string>('', [Validators.required, Validators.email]),
     phone: new FormControl<string>('', [Validators.required]),
@@ -70,7 +75,28 @@ export class ContactComponent implements OnInit {
   });
 
   onSubmit() {
-    console.log('submit');
+    this.contactForm.markAllAsTouched();
+    if (this.contactForm.valid) {
+      console.log('submit');
+    } else {
+      console.log('error');
+      this.dialog.openRemindDialog({
+        type: DialogType.ALERT,
+        header: {
+          title: '錯誤',
+        },
+        content: {
+          type: 'text',
+          text: '請檢查表單是否填寫完整',
+        },
+        footer: {
+          buttons: [{ type: DialogButtonType.CANCEL, label: '關閉' }],
+        },
+        width: '500px',
+        height: 'auto',
+        panelClass: 'dialog-remind-style',
+      });
+    }
   }
 
   onClear() {
