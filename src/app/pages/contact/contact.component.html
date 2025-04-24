@@ -9,32 +9,64 @@
       <!-- 稱呼 -->
       <div class="form-field">
         <label for="email">您的稱呼</label>
-        <div class="input-wrapper">
-          <input
-            type="text"
-            id="name"
-            placeholder="請讓我們知道如何稱呼您"
-            formControlName="name"
-          />
+        <div class="input-container">
+          <div class="input-wrapper">
+            <input
+              type="text"
+              id="name"
+              placeholder="請讓我們知道如何稱呼您"
+              formControlName="name"
+            />
+          </div>
+          <div
+            class="error"
+            *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched"
+          >
+            <small *ngIf="contactForm.get('name')?.errors?.['required']">稱呼為必填</small>
+            <small *ngIf="contactForm.get('name')?.errors?.['minlength']">至少需 2 個字</small>
+            <small *ngIf="contactForm.get('name')?.errors?.['maxlength']">最多 20 個字</small>
+          </div>
         </div>
       </div>
       <!-- 電子郵件 -->
       <div class="form-field">
         <label for="email">電子郵件</label>
-        <div class="input-wrapper">
-          <input
-            type="email"
-            id="email"
-            placeholder="example@example.com"
-            formControlName="email"
-          />
+        <div class="input-container">
+          <div class="input-wrapper">
+            <input
+              type="email"
+              id="email"
+              placeholder="example@example.com"
+              formControlName="email"
+            />
+          </div>
+          <div
+            class="error"
+            *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched"
+          >
+            <small *ngIf="contactForm.get('email')?.errors?.['required']">電子郵件為必填</small>
+            <small *ngIf="contactForm.get('email')?.errors?.['email']"
+              >格式錯誤，請輸入有效信箱</small
+            >
+          </div>
         </div>
       </div>
       <!-- 電話 -->
       <div class="form-field">
         <label for="phone">電話</label>
-        <div class="input-wrapper">
-          <input type="tel" id="phone" placeholder="0912345678" formControlName="phone" />
+        <div class="input-container">
+          <div class="input-wrapper">
+            <input type="tel" id="phone" placeholder="0912345678" formControlName="phone" />
+          </div>
+          <div
+            class="error"
+            *ngIf="contactForm.get('phone')?.invalid && contactForm.get('phone')?.touched"
+          >
+            <small *ngIf="contactForm.get('phone')?.errors?.['required']">電話為必填</small>
+            <small *ngIf="contactForm.get('phone')?.errors?.['pattern']"
+              >請輸入正確手機號碼（例如：0912345678）</small
+            >
+          </div>
         </div>
       </div>
       <!-- 有興趣的產品 -->

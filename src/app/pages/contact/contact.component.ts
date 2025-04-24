@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../shared/shared-imports';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductType } from '../../models/interface/feature/product.interface';
 import {
   CameraMainCategory,
@@ -55,11 +55,18 @@ export class ContactComponent implements OnInit {
   }
 
   contactForm = new FormGroup({
-    name: new FormControl<string>(''),
-    email: new FormControl<string>(''),
-    phone: new FormControl<string>(''),
-    productCategory: new FormControl<ProductTypeEnum | null>(null),
-    product: new FormControl<string>(''),
+    name: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(2),
+      Validators.maxLength(20),
+    ]),
+    email: new FormControl<string>('', [Validators.required, Validators.email]),
+    phone: new FormControl<string>('', [Validators.required]),
+    productCategory: new FormControl<ProductTypeEnum | null>(null, [
+      Validators.required,
+      Validators.pattern(/^09\d{8}$/),
+    ]),
+    product: new FormControl<string>('', [Validators.required]),
   });
 
   onSubmit() {
