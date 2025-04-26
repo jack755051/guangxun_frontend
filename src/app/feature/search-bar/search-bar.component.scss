@@ -1,0 +1,52 @@
+@use 'assets/styles/_colors.scss' as *;
+@use 'assets/styles/_mixins.scss' as *;
+
+.search-bar-container {
+  @include default-flex($direction: row, $justify: flex-end, $align: center, $gap: 1rem);
+  @include default-container($width: 100%, $height: auto);
+  @include container-padding($padding-x: 2rem, $padding-y: 1rem);
+  background-color: $primary-800; // 背景色
+  border-radius: 0.8rem;
+
+  &.has-filter {
+    justify-content: space-between;
+  }
+}
+
+.search-input {
+  flex: 1;
+  @include container-padding($padding-x: 1.2rem, $padding-y: 0.8rem);
+  @include default-text-style($font-size: 1.4rem, $font-weight: 400, $color: $gray-50);
+  border: 1px solid $gray-300;
+  border-radius: 0.8rem;
+  background-color: $primary-700;
+  outline: none;
+
+  &::placeholder {
+    color: $gray-400;
+  }
+
+  &:focus {
+    border-color: $btn-blue-600;
+    background-color: $primary-600;
+  }
+}
+
+.search-button {
+  @include container-padding($padding-x: 1.6rem, $padding-y: 0.8rem);
+  @include default-text-style($font-size: 1.4rem, $font-weight: 900, $color: $gray-50);
+  background-color: $btn-blue-700;
+  border: none;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $btn-blue-500;
+  }
+
+  &:disabled {
+    background-color: $btn-blue-400;
+    cursor: not-allowed;
+  }
+}
