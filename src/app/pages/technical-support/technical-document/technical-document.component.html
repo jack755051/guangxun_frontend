@@ -1,0 +1,53 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+  <!-- 文件名稱欄位 -->
+  <ng-container matColumnDef="fileName">
+    <mat-header-cell *matHeaderCellDef class="column-name"> 文件名稱 </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="column-name"> {{ element.fileName }} </mat-cell>
+  </ng-container>
+
+  <!-- 文件序號欄位 -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef class="column-id"> 文件序號 </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="column-id"> {{ element.id }} </mat-cell>
+  </ng-container>
+
+  <!-- 文件大小欄位 -->
+  <ng-container matColumnDef="fileSize">
+    <mat-header-cell *matHeaderCellDef class="column-file-size"> 文件大小 </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="column-file-size">
+      {{ element.fileSize }} KB
+    </mat-cell>
+  </ng-container>
+
+  <!-- 文件時間欄位 -->
+  <ng-container matColumnDef="updatedAt">
+    <mat-header-cell *matHeaderCellDef class="column-updated-at"> 更新時間 </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="column-updated-at">
+      {{ element.updatedAt | date: 'yyyy/MM/dd' }}
+    </mat-cell>
+  </ng-container>
+
+  <!-- 操作欄位 -->
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef> 操作 </mat-header-cell>
+    <mat-cell *matCellDef="let element"  class="no-hover-style">
+      <div class="action-container">
+        <button
+          mat-icon-button
+          class="base-button"
+          [ngClass]="{'download-button': action.label === '下載', 'preview-button': action.label === '預覽'}"
+          *ngFor="let action of actions"
+          (click)="action.action()"
+        >
+          <span [ngClass]="action.icon">{{ action.label }}</span>
+        </button>
+      </div>
+    </mat-cell>
+  </ng-container>
+
+  <!-- 表頭 row -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+  <!-- 資料 row -->
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

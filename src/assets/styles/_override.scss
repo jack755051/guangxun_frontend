@@ -1,1 +1,28 @@
 @use 'assets/styles/colors' as *;
+@use 'assets/styles/_mixins' as *;
+
+::ng-deep {
+  mat-cell,
+  mat-header-cell,
+  mat-footer-cell {
+    justify-content: center;
+  }
+
+  mat-row {
+    border-radius: 0.8rem;
+  }
+
+  .mat-mdc-header-cell,
+  .mat-mdc-row,
+  .mat-mdc-cell {
+    color: $gray-50;
+  }
+
+  .mat-mdc-row:hover {
+    cursor: pointer;
+    > .mat-mdc-cell:not(.no-hover-style) {
+      // background-color: $gray-100;
+      @include default-text-style($font-weight: 900, $color: $primary-50);
+    }
+  }
+}

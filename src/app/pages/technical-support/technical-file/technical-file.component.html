@@ -1,0 +1,40 @@
+<mat-table [dataSource]="dataSource" class="mat-elevation-z1">
+  <!--檔案序號欄位 -->
+  <ng-container matColumnDef="id">
+    <mat-header-cell *matHeaderCellDef> 文件序號 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.id }} </mat-cell>
+  </ng-container>
+  <!-- 更新時間欄位 -->
+  <ng-container matColumnDef="updatedAt">
+    <mat-header-cell *matHeaderCellDef> 更新時間 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.updatedAt | date: 'yyyy/MM/dd' }} </mat-cell>
+  </ng-container>
+
+  <!-- 檔案名稱欄位 -->
+  <ng-container matColumnDef="fileName">
+    <mat-header-cell *matHeaderCellDef> 檔案名稱 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.fileName }} </mat-cell>
+  </ng-container>
+
+  <!-- 檔案大小欄位 -->
+  <ng-container matColumnDef="fileSize">
+    <mat-header-cell *matHeaderCellDef> 檔案大小 </mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.fileSize }} KB </mat-cell>
+  </ng-container>
+
+  <!-- 操作欄位 -->
+  <ng-container matColumnDef="action">
+    <mat-header-cell *matHeaderCellDef> 操作 </mat-header-cell>
+    <mat-cell *matCellDef="let element" class="no-hover-style">
+      <button mat-icon-button class="base-button download-button" *ngFor="let action of actions" (click)="action.action()">
+        <span [ngClass]="action.icon">{{ action.label }}</span>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <!-- 表頭 row -->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+
+  <!-- 資料 row -->
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>

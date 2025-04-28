@@ -29,6 +29,26 @@
     }
   }
 
+  &.download-button {
+    background-color: $btn-blue-900;
+    color: $btn-blue-50;
+    border: 2px solid $btn-blue-900;
+    &:hover {
+      background-color: $btn-blue-50;
+      color: $btn-blue-900;
+    }
+  }
+
+  &.preview-button {
+    background-color: $liver-red-500;
+    color: $liver-red-50;;
+    border: 2px solid $liver-red-500;
+    &:hover {
+      background-color:  $liver-red-50;
+      color: $liver-red-500;
+    }
+  }
+
   &.clear-button {
     color: $liver-red-500;
     border: 2px solid $liver-red-500;
