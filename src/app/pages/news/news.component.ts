@@ -1,7 +1,11 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MockHomePageService } from '../../mocks/services/mock-home-page.service';
 import { AppConfigService } from '../../app-config.service';
-import { ExpansionPanelItem, ExpansionPanelType, NewsTypeContent } from '../../models/interface/feature/expansion-panel.interface';
+import {
+  ExpansionPanelItem,
+  ExpansionPanelType,
+  NewsTypeContent,
+} from '../../models/interface/feature/expansion-panel.interface';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { HomePageNewsIcons } from '../../shared/fa-icon';
 import { FaIcon } from '../../components/dialog/model/interface/faicon.interface';
@@ -11,19 +15,19 @@ import { ExpansionPanelComponent } from '../../feature/expansion-panel/expansion
 
 @Component({
   selector: 'guangxun-news',
-  imports: [MatExpansionModule, SharedStandaloneImports,ExpansionPanelComponent],
+  imports: [MatExpansionModule, SharedStandaloneImports, ExpansionPanelComponent],
   standalone: true,
   templateUrl: './news.component.html',
   styleUrl: './news.component.scss',
 })
-export class NewsComponent implements OnInit{
+export class NewsComponent implements OnInit {
   news: ExpansionPanelItem[] = [];
   hoverIndex: number | null = null;
 
-    private _mockHomePageService = inject(MockHomePageService);
+  private _mockHomePageService = inject(MockHomePageService);
   private _appConfig = inject(AppConfigService);
 
-  constructor() { }
+  constructor() {}
   ngOnInit(): void {
     // 如果 isMockMode 為 true，則使用 mock 資料
     if (this._appConfig.isMockMode) {
@@ -40,7 +44,7 @@ export class NewsComponent implements OnInit{
     }
   }
 
-    // ---- 擴充功能 start ----
+  // ---- 擴充功能 start ----
 
   private readonly iconMap: Record<ExpansionPanelType, IconDefinition> = {
     [ExpansionPanelType.FIRE]: HomePageNewsIcons.faFire,

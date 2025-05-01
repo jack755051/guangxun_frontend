@@ -1,5 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ExpansionPanelItem, ExpansionPanelType, FaIcon, NewsTypeContent } from './model/expansion-panel.interface';
+import {
+  ExpansionPanelItem,
+  ExpansionPanelType,
+  FaIcon,
+  NewsTypeContent,
+} from './model/expansion-panel.interface';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -8,30 +13,30 @@ import { HomePageNewsIcons } from '../../shared/fa-icon';
 
 @Component({
   selector: 'guangxun-expansion-panel',
-  imports: [MatExpansionModule,  CommonModule,FontAwesomeModule],
+  imports: [MatExpansionModule, CommonModule, FontAwesomeModule],
   standalone: true,
   templateUrl: './expansion-panel.component.html',
-  styleUrl: './expansion-panel.component.scss'
+  styleUrl: './expansion-panel.component.scss',
 })
-export class ExpansionPanelComponent implements OnInit{
-  @Input() rawData: ExpansionPanelItem[] = []
-  @Input() expansionType: "Hover" | "Click" = "Click"
-  index: number | null = null
-  data: ExpansionPanelItem[] = []
+export class ExpansionPanelComponent implements OnInit {
+  @Input() rawData: ExpansionPanelItem[] = [];
+  @Input() expansionType: 'Hover' | 'Click' = 'Click';
+  index: number | null = null;
+  data: ExpansionPanelItem[] = [];
 
-  constructor(){}
+  constructor() {}
 
   ngOnInit(): void {
-    this.data = this.rawData.map(item => ({
+    this.data = this.rawData.map((item) => ({
       ...item,
       header: {
         ...item.header,
-        icon: this.getIcon(item)
-      }
+        icon: this.getIcon(item),
+      },
     }));
   }
 
-      // ---- 擴充功能 start ----
+  // ---- 擴充功能 start ----
 
   private readonly iconMap: Record<ExpansionPanelType, IconDefinition> = {
     [ExpansionPanelType.FIRE]: HomePageNewsIcons.faFire,
@@ -57,5 +62,4 @@ export class ExpansionPanelComponent implements OnInit{
   }
 
   // ---- 擴充功能 end ----
-
 }

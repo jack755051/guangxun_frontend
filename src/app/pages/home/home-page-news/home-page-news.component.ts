@@ -14,7 +14,7 @@ import { FaIcon } from '../../../components/dialog/model/interface/faicon.interf
 import { ExpansionPanelComponent } from '../../../feature/expansion-panel/expansion-panel.component';
 @Component({
   selector: 'guangxun-home-page-news',
-  imports: [MatExpansionModule, SharedStandaloneImports,ExpansionPanelComponent],
+  imports: [MatExpansionModule, SharedStandaloneImports, ExpansionPanelComponent],
   standalone: true,
   templateUrl: './home-page-news.component.html',
   styleUrl: './home-page-news.component.scss',

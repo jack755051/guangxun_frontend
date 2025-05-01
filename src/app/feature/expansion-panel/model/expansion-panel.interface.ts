@@ -1,4 +1,4 @@
-import { IconDefinition } from "@fortawesome/angular-fontawesome";
+import { IconDefinition } from '@fortawesome/angular-fontawesome';
 
 export interface FaIcon {
   icon: IconDefinition;
