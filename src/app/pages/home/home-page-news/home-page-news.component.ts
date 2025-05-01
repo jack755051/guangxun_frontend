@@ -1,17 +1,10 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
-import {
-  ExpansionPanelItem,
-  ExpansionPanelType,
-  NewsTypeContent,
-} from '../../../models/interface/feature/expansion-panel.interface';
 import { AppConfigService } from '../../../app-config.service';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
-import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { HomePageNewsIcons } from '../../../shared/fa-icon';
-import { FaIcon } from '../../../components/dialog/model/interface/faicon.interface';
 import { ExpansionPanelComponent } from '../../../feature/expansion-panel/expansion-panel.component';
+import { ExpansionPanelItem, getExpansionIcon } from '../../../feature/expansion-panel';
 @Component({
   selector: 'guangxun-home-page-news',
   imports: [MatExpansionModule, SharedStandaloneImports, ExpansionPanelComponent],
@@ -36,37 +29,10 @@ export class HomePageNewsComponent implements OnInit {
           ...item,
           header: {
             ...item.header,
-            icon: this.getIcon(item),
+            icon: getExpansionIcon(item.type, item.header.title),
           },
         }));
       });
     }
   }
-
-  // ---- 擴充功能 start ----
-
-  private readonly iconMap: Record<ExpansionPanelType, IconDefinition> = {
-    [ExpansionPanelType.FIRE]: HomePageNewsIcons.faFire,
-    [ExpansionPanelType.LIVE]: HomePageNewsIcons.faGaugeHigh,
-    [ExpansionPanelType.TECHNICAL_SUPPORT]: HomePageNewsIcons.faMicrochip,
-  };
-
-  getIcon(item: ExpansionPanelItem): FaIcon {
-    return {
-      icon: this.iconMap[item.type],
-      label: item.header.title, // 或任何你想要加上的 label
-    };
-  }
-
-  isNewsTypeContent(content: string | NewsTypeContent): content is NewsTypeContent {
-    return (
-      typeof content !== 'string' && content !== null && 'date' in content && 'content' in content
-    );
-  }
-
-  onHover(index: number, isHovering: boolean): void {
-    this.hoverIndex = isHovering ? index : null;
-  }
-
-  // ---- 擴充功能 end ----
 }

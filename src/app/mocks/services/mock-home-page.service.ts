@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Video } from '../../models/interface/feature/video.interface';
-import {
-  ExpansionPanelItem,
-  ExpansionPanelType,
-} from '../../models/interface/feature/expansion-panel.interface';
 import { ArrangeType, Cards } from '../../components/card';
 import { TechnicalSupportFile } from '../../models/interface/feature/technical-support.interface';
+import {
+  ExpansionContentType,
+  ExpansionPanelItem,
+  ExpansionPanelType,
+} from '../../feature/expansion-panel';
 
 @Injectable({
   providedIn: 'root',
@@ -69,9 +70,9 @@ export class MockHomePageService {
         header: { title: 'News 1', description: 'News 1 description' },
         content: {
           id: '1',
+          type: ExpansionContentType.TEXT,
           date: '20250501',
-          author: 'News 1 author',
-          content: 'News 1 content',
+          text: 'News 1 content',
         },
         routerLink: '/news/1',
         type: ExpansionPanelType.FIRE,
@@ -80,9 +81,9 @@ export class MockHomePageService {
         header: { title: 'News 2', description: 'News 2 description' },
         content: {
           id: '2',
+          type: ExpansionContentType.TEXT,
           date: '20250501',
-          author: 'News 2 author',
-          content: 'News 2 content',
+          text: 'News 2 content',
         },
         routerLink: '/news/2',
         type: ExpansionPanelType.LIVE,
@@ -91,9 +92,20 @@ export class MockHomePageService {
         header: { title: 'News 3', description: 'News 3 description' },
         content: {
           id: '3',
+          type: ExpansionContentType.TEXT,
           date: '20250501',
-          author: 'News 3 author',
-          content: 'News 3 content',
+          text: 'News 3 content',
+        },
+        routerLink: '/news/3',
+        type: ExpansionPanelType.TECHNICAL_SUPPORT,
+      },
+      {
+        header: { title: 'News 4', description: 'News 4 description' },
+        content: {
+          id: '4',
+          type: ExpansionContentType.TEXT,
+          date: '20250501',
+          text: 'News 4 content',
         },
         routerLink: '/news/3',
         type: ExpansionPanelType.TECHNICAL_SUPPORT,

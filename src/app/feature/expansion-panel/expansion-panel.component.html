@@ -2,12 +2,14 @@
   <mat-expansion-panel
     class="news-item"
     *ngFor="let item of data; let i = index"
+    [expanded]="index === i"
+    [disabled]="item.disabled"
     (mouseenter)="onHover(i, true)"
     (mouseleave)="onHover(i, false)"
-    [expanded]="index === i"
+    (click)="onClick(i)"
   >
     <mat-expansion-panel-header>
-      <mat-panel-title class="text-type-title"> {{ item.header.title }} </mat-panel-title>
+      <mat-panel-title class="text-type-title">{{ item.header.title }}</mat-panel-title>
       <mat-panel-description class="text-type-sub">
         {{ item.header.description }}
       </mat-panel-description>
@@ -15,20 +17,28 @@
         <fa-icon class="text-type-title icon" [icon]="item.header.icon.icon"></fa-icon>
       </ng-container>
     </mat-expansion-panel-header>
-    <!--  news type content fallback -->
-    <div class="news-content">
-      <ng-container *ngIf="isNewsTypeContent(item.content); else stringContent">
-        <p>
-          <span class="text-type-sub date">{{ item.content.date }}</span>
-          <span class="text-type-text author">{{ item.content.author }}</span>
-        </p>
-        <p class="news-text">{{ item.content.content }}</p>
-      </ng-container>
 
-      <!--  string content fallback -->
-      <ng-template #stringContent>
-        <p>{{ item.content }}</p>
-      </ng-template>
+    <div class="news-content">
+      <ng-container [ngSwitch]="item.content.type">
+        <ng-container *ngSwitchCase="ExpansionContentType.TEXT">
+          <ng-container *ngIf="isTextType(item.content)">
+            <p>{{ item.content.text }}</p>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="ExpansionContentType.ARTICLE">
+          <div class="article" *ngIf="isArticleType(item.content)">
+            <img [src]="item.content.imagePath" alt="文章圖片" />
+            <!-- 可擴充更多字段如 title, paragraph -->
+            <p>{{ item.content.title }}</p>
+            <p>{{ item.content.paragraphs }}</p>
+          </div>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="ExpansionContentType.TEMPLATE">
+          <p>尚未實作 TemplateType 顯示邏輯</p>
+        </ng-container>
+      </ng-container>
     </div>
   </mat-expansion-panel>
 </mat-accordion>

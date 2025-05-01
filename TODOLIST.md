@@ -2,6 +2,7 @@
 
 - [] `首頁-最新消息區塊` -- 移除`guangxun-home-page-news`，直接使用`guangxun-news`，兩者不同僅有資料量不同
 - [] `首頁-影像區塊` -- 處理style
+- [] `expansion` -- 內容問題，僅能添加文字，需要能夠添加圖片甚至template
 
 ### DEVELOP_LIST
 

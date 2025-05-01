@@ -1,15 +1,17 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ContentChild } from '@angular/core';
 import {
   ExpansionPanelItem,
-  ExpansionPanelType,
   FaIcon,
-  NewsTypeContent,
+  ArticleType,
+  TextType,
+  TemplateType,
 } from './model/expansion-panel.interface';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CommonModule } from '@angular/common';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { HomePageNewsIcons } from '../../shared/fa-icon';
+import { ExpansionContentType, ExpansionPanelType } from './model/expansion-panel.enum';
 
 @Component({
   selector: 'guangxun-expansion-panel',
@@ -19,11 +21,15 @@ import { HomePageNewsIcons } from '../../shared/fa-icon';
   styleUrl: './expansion-panel.component.scss',
 })
 export class ExpansionPanelComponent implements OnInit {
+  @ContentChild('customPanelContent', { static: false })
+  customTemplate?: TemplateRef<any>;
+
   @Input() rawData: ExpansionPanelItem[] = [];
   @Input() expansionType: 'Hover' | 'Click' = 'Click';
   index: number | null = null;
   data: ExpansionPanelItem[] = [];
 
+  readonly ExpansionContentType = ExpansionContentType;
   constructor() {}
 
   ngOnInit(): void {
@@ -51,15 +57,28 @@ export class ExpansionPanelComponent implements OnInit {
     };
   }
 
-  isNewsTypeContent(content: string | NewsTypeContent): content is NewsTypeContent {
-    return (
-      typeof content !== 'string' && content !== null && 'date' in content && 'content' in content
-    );
+  isTextType(content: unknown): content is TextType {
+    return typeof content === 'object' && content !== null && 'text' in content;
   }
 
-  onHover(index: number, isHovering: boolean): void {
-    this.index = isHovering ? index : null;
+  isArticleType(content: unknown): content is ArticleType {
+    return typeof content === 'object' && content !== null && 'imagePath' in content;
   }
 
+  isTemplateType(content: unknown): content is TemplateType {
+    return typeof content === 'object' && content !== null && 'template' in content;
+  }
+
+  onHover(index: number, entering: boolean): void {
+    if (this.expansionType === 'Hover') {
+      this.index = entering ? index : null;
+    }
+  }
+
+  onClick(index: number): void {
+    if (this.expansionType === 'Click') {
+      this.index = this.index === index ? null : index;
+    }
+  }
   // ---- 擴充功能 end ----
 }
