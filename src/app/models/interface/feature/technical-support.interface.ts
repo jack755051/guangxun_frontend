@@ -10,5 +10,5 @@ export interface TechnicalSupportFile {
 export interface TechnicalSupportAction {
   label: string;
   icon?: string;
-  action: () => void;
+  action: (fileNumber: string) => void;
 }

@@ -30,14 +30,17 @@
   <!-- 操作欄位 -->
   <ng-container matColumnDef="action">
     <mat-header-cell *matHeaderCellDef> 操作 </mat-header-cell>
-    <mat-cell *matCellDef="let element"  class="no-hover-style">
+    <mat-cell *matCellDef="let element" class="no-hover-style">
       <div class="action-container">
         <button
           mat-icon-button
           class="base-button"
-          [ngClass]="{'download-button': action.label === '下載', 'preview-button': action.label === '預覽'}"
+          [ngClass]="{
+            'download-button': action.label === '下載',
+            'preview-button': action.label === '預覽',
+          }"
           *ngFor="let action of actions"
-          (click)="action.action()"
+          (click)="action.action(element.fileNumber)"
         >
           <span [ngClass]="action.icon">{{ action.label }}</span>
         </button>

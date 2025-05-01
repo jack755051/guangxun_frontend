@@ -26,7 +26,12 @@
   <ng-container matColumnDef="action">
     <mat-header-cell *matHeaderCellDef> 操作 </mat-header-cell>
     <mat-cell *matCellDef="let element" class="no-hover-style">
-      <button mat-icon-button class="base-button download-button" *ngFor="let action of actions" (click)="action.action()">
+      <button
+        mat-icon-button
+        class="base-button download-button"
+        *ngFor="let action of actions"
+        (click)="action.action(element.fileNumber)"
+      >
         <span [ngClass]="action.icon">{{ action.label }}</span>
       </button>
     </mat-cell>
