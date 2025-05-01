@@ -1,0 +1,37 @@
+@use 'assets/styles/_mixins.scss' as *;
+@use 'assets/styles/_colors.scss' as *;
+
+:host {
+  @include default-container($width: 100%, $height: auto);
+  > .mat-accordion {
+    > .mat-expansion-panel.news-item {
+      background-color: $gray-800;
+      @include default-text-style($font-size: 1.2rem, $font-weight: 500, $color: $gray-50);
+    }
+  }
+}
+
+::ng-deep .mat-content {
+  padding-right: 2rem !important;
+}
+
+.text-type-title {
+  @include default-text-style($font-size: 1.6rem, $font-weight: 900, $color: $gray-50);
+  // &.icon{
+  //   color:$btn-blue-200
+  // }
+}
+
+.text-type-sub {
+  @include default-text-style($font-size: 1.2rem, $font-weight: 500, $color: $btn-blue-500);
+  &.date {
+    margin-right: 1rem;
+  }
+}
+
+.text-type-text {
+  @include default-text-style($font-size: 1.2rem, $font-weight: 500, $color: $gray-50);
+  &.author {
+    color: $liver-red-200;
+  }
+}

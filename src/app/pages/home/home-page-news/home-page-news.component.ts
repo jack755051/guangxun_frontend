@@ -11,9 +11,10 @@ import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { HomePageNewsIcons } from '../../../shared/fa-icon';
 import { FaIcon } from '../../../components/dialog/model/interface/faicon.interface';
+import { ExpansionPanelComponent } from '../../../feature/expansion-panel/expansion-panel.component';
 @Component({
   selector: 'guangxun-home-page-news',
-  imports: [MatExpansionModule, SharedStandaloneImports],
+  imports: [MatExpansionModule, SharedStandaloneImports,ExpansionPanelComponent],
   standalone: true,
   templateUrl: './home-page-news.component.html',
   styleUrl: './home-page-news.component.scss',
@@ -42,7 +43,7 @@ export class HomePageNewsComponent implements OnInit {
     }
   }
 
-  // ---- 以下為擴充功能 start ----
+  // ---- 擴充功能 start ----
 
   private readonly iconMap: Record<ExpansionPanelType, IconDefinition> = {
     [ExpansionPanelType.FIRE]: HomePageNewsIcons.faFire,
@@ -67,5 +68,5 @@ export class HomePageNewsComponent implements OnInit {
     this.hoverIndex = isHovering ? index : null;
   }
 
-  // ---- 以下為擴充功能 end ----
+  // ---- 擴充功能 end ----
 }

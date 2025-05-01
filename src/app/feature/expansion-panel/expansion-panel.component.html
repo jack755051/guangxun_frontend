@@ -1,0 +1,34 @@
+  <mat-accordion>
+    <mat-expansion-panel
+      class="news-item"
+      *ngFor="let item of data; let i = index"
+      (mouseenter)="onHover(i, true)"
+      (mouseleave)="onHover(i, false)"
+      [expanded]="index === i"
+    >
+      <mat-expansion-panel-header>
+        <mat-panel-title class="text-type-title"> {{ item.header.title }} </mat-panel-title>
+        <mat-panel-description class="text-type-sub">
+          {{ item.header.description }}
+        </mat-panel-description>
+        <ng-container *ngIf="item.header.icon">
+          <fa-icon class="text-type-title icon" [icon]="item.header.icon.icon"></fa-icon>
+        </ng-container>
+      </mat-expansion-panel-header>
+      <!--  news type content fallback -->
+      <div class="news-content">
+        <ng-container *ngIf="isNewsTypeContent(item.content); else stringContent">
+          <p>
+            <span class="text-type-sub date">{{ item.content.date }}</span>
+            <span class="text-type-text author">{{ item.content.author }}</span>
+          </p>
+          <p class="news-text">{{ item.content.content }}</p>
+        </ng-container>
+
+        <!--  string content fallback -->
+        <ng-template #stringContent>
+          <p>{{ item.content }}</p>
+        </ng-template>
+      </div>
+    </mat-expansion-panel>
+  </mat-accordion>

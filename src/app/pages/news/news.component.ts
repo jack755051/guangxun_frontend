@@ -7,10 +7,11 @@ import { HomePageNewsIcons } from '../../shared/fa-icon';
 import { FaIcon } from '../../components/dialog/model/interface/faicon.interface';
 import { SharedStandaloneImports } from '../../shared/shared-imports';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { ExpansionPanelComponent } from '../../feature/expansion-panel/expansion-panel.component';
 
 @Component({
   selector: 'guangxun-news',
-  imports: [MatExpansionModule, SharedStandaloneImports],
+  imports: [MatExpansionModule, SharedStandaloneImports,ExpansionPanelComponent],
   standalone: true,
   templateUrl: './news.component.html',
   styleUrl: './news.component.scss',
