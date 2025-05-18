@@ -3,9 +3,8 @@ import { SharedStandaloneImports } from '../../shared/shared-imports';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ProductType } from '../../models/interface/feature/product.interface';
 import {
-  CameraMainCategory,
+  CameraTypeCategory,
   HostMainCategory,
-  MonitorMainCategory,
   ProductType as ProductTypeEnum,
 } from '../../models/enum/product.enum';
 import { DialogService, DialogType } from '../../components/dialog';
@@ -20,11 +19,13 @@ import { DialogButtonType } from '../../components/dialog/model/enum/dialog-butt
 export class ContactComponent implements OnInit {
   productTypes: ProductType[] = [
     { label: '攝影機', type: ProductTypeEnum.Camera },
-    { label: '主機', type: ProductTypeEnum.Host },
+    { label: '主機', type: ProductTypeEnum.Recorder },
+    { label: '顯示器', type: ProductTypeEnum.Display },
+    { label: '配件', type: ProductTypeEnum.Accessory },
   ];
   productOptions: { label: string; value: string }[] = [];
 
-  cameraMainCategories = Object.entries(CameraMainCategory).map(([key, value]) => ({
+  cameraMainCategories = Object.entries(CameraTypeCategory).map(([key, value]) => ({
     label: key,
     value,
   }));
@@ -49,7 +50,7 @@ export class ContactComponent implements OnInit {
         case ProductTypeEnum.Camera:
           this.productOptions = this.cameraMainCategories;
           break;
-        case ProductTypeEnum.Host:
+        case ProductTypeEnum.Recorder:
           this.productOptions = this.hostMainCategories;
           break;
       }

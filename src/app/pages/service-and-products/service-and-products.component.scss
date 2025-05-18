@@ -1,0 +1,24 @@
+@use 'assets/styles/_mixins.scss' as *;
+@use 'assets/styles/_colors.scss' as *;
+@use 'assets/styles/_icons.scss' as *;
+
+:host {
+  @include default-container($width: 100%, $height: auto);
+  @include default-flex($direction: column, $gap: 1rem);
+  @include container-padding($padding-x: 1rem, $padding-y: 5rem);
+
+  > .content-container {
+    @include default-container($width: 100%, $height: auto);
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    gap: 2rem;
+
+    > .side-bar {
+      @include default-container($width: 100%, $height: auto);
+    }
+
+    > .content-container {
+      @include default-container($width: 100%, $height: auto);
+    }
+  }
+}

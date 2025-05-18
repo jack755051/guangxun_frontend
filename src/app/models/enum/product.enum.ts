@@ -1,13 +1,27 @@
 export enum ProductType {
-  Camera = 'camera',
-  Monitor = 'monitor',
-  Host = 'host',
+  Camera = 'camera', // 攝影機
+  Recorder = 'recorder', // 主機（NVR/DVR/XVR）
+  Display = 'display', // 顯示器（Monitor）
+  Accessory = 'accessory', // 配件
+}
+
+export enum ProductsMainType {
+  Protection = 'protection', // 防水功能
+  Lens = 'lens', // 鏡頭模組
+  Cable = 'cable', // 線材類型
+  Lighting = 'lighting', // 投射燈
+  Resolution = 'resolution', // 畫素
+  ImageType = 'image-type', // 畫面類型
+  Transmission = 'transmission', // 影像傳輸方法
+  Compression = 'compression', // 壓縮格式
+  Connection = 'connection', // 網路連線方式
+  Feature = 'feature', // 功能類別
 }
 
 // ---- 鏡頭 start ----
 
 // 攝影機外觀
-export enum CameraMainCategory {
+export enum CameraTypeCategory {
   Dome = 'dome', // 半球
   Bullet = 'bullet', // 槍型
   PTZ = 'ptz', // 雲台
