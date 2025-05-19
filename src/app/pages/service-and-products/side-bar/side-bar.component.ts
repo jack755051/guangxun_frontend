@@ -2,7 +2,6 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { ProductsCategoryService } from '../../../services/products-category.service';
 import { IProductCategoryTreeNodeViewModel } from '../../../models/interface/feature/product-category.interface';
-import { ProductMapper } from '../../../apis/products/product.mapper';
 
 @Component({
   selector: 'guangxun-side-bar',

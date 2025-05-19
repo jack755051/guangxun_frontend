@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { MockServiceAndProductsService } from '../mocks/services/mock-service-and-products.service';
-import { IProductTypeTreeResDto } from '../apis/products/products.res.dto';
+import { IProductTypeTreeResDto } from '../apis/products/res.dto';
 
 @Injectable({
   providedIn: 'root',
