@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IProductCategoryTreeNodeViewModel } from '../../models/interface/feature/product-category.interface';
+import { GetProductCategory } from '../../utils/factory/mock-or-real/abstract/get-product-category';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MockServiceAndProductsService {
+export class MockServiceAndProductsService implements GetProductCategory {
   constructor() {}
-  getProductsCategories(): Observable<IProductCategoryTreeNodeViewModel[]> {
+  getProductCategoryTree(): Observable<IProductCategoryTreeNodeViewModel[]> {
     return of([
       {
         id: 'camera_01',

@@ -3,7 +3,7 @@ import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { CardComponent } from '../../../components/card/card.component';
 import { ArrangeType, Cards } from '../../../components/card';
 import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
-import { AppConfigService } from '../../../app-config.service';
+import { mockOrRealConfig } from '../../../config/mock-or-real.config';
 
 @Component({
   selector: 'guangxun-home-page-product',
@@ -19,12 +19,11 @@ export class HomePageProductComponent implements OnInit {
   readonly ArrangeType = ArrangeType;
 
   private _mockHomePageService = inject(MockHomePageService);
-  private _appConfig = inject(AppConfigService);
   constructor() {}
 
   ngOnInit(): void {
     // 如果 isMockMode 為 true，則使用 mock 資料
-    if (this._appConfig.isMockMode) {
+    if (mockOrRealConfig.isMock) {
       this._mockHomePageService.getMockProducts();
       this._mockHomePageService.mockProducts$.subscribe((cards) => {
         this.cards = cards;

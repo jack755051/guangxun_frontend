@@ -1,10 +1,10 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
-import { AppConfigService } from '../../../app-config.service';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { ExpansionPanelComponent } from '../../../feature/expansion-panel/expansion-panel.component';
 import { ExpansionPanelItem, getExpansionIcon } from '../../../feature/expansion-panel';
+import { mockOrRealConfig } from '../../../config/mock-or-real.config';
 @Component({
   selector: 'guangxun-home-page-news',
   imports: [MatExpansionModule, SharedStandaloneImports, ExpansionPanelComponent],
@@ -15,14 +15,11 @@ import { ExpansionPanelItem, getExpansionIcon } from '../../../feature/expansion
 export class HomePageNewsComponent implements OnInit {
   @Input() news: ExpansionPanelItem[] = [];
   hoverIndex: number | null = null;
-
   private _mockHomePageService = inject(MockHomePageService);
-  private _appConfig = inject(AppConfigService);
   constructor() {}
 
   ngOnInit(): void {
-    // 如果 isMockMode 為 true，則使用 mock 資料
-    if (this._appConfig.isMockMode) {
+    if (mockOrRealConfig.isMock) {
       this._mockHomePageService.getMockNews();
       this._mockHomePageService.mockNews$.subscribe((news) => {
         this.news = news.map((item) => ({

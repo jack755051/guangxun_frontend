@@ -4,8 +4,8 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { Video } from '../../../models/interface/feature/video.interface';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
-import { AppConfigService } from '../../../app-config.service';
 import { VideoComponent } from '../../../feature/video/video.component';
+import { mockOrRealConfig } from '../../../config/mock-or-real.config';
 
 @Component({
   selector: 'guangxun-home-page-video',
@@ -17,8 +17,6 @@ import { VideoComponent } from '../../../feature/video/video.component';
 export class HomePageVideoComponent implements OnInit {
   videos: Video[] = [];
   sanitizedUrls: SafeResourceUrl[] = [];
-
-  private _appConfig = inject(AppConfigService);
   private _mockHomePageService = inject(MockHomePageService);
 
   constructor(private sanitizer: DomSanitizer) {}
@@ -28,7 +26,7 @@ export class HomePageVideoComponent implements OnInit {
     //   this.sanitizer.bypassSecurityTrustResourceUrl(v.streamUrl),
     // );
 
-    if (this._appConfig.isMockMode) {
+    if (mockOrRealConfig.isMock) {
       this._mockHomePageService.getMockVideos();
       this._mockHomePageService.mockVideos$.subscribe((videos) => {
         this.videos = videos;

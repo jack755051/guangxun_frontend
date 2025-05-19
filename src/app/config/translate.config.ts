@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { TranslateLoader } from '@ngx-translate/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { forkJoin, map, Observable } from 'rxjs';
 
 export class CustomTranslateLoader implements TranslateLoader {

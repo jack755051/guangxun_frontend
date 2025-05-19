@@ -6,6 +6,7 @@ import { SharedStandaloneImports } from '../../shared/shared-imports';
 @Component({
   selector: 'guangxun-video',
   imports: [SharedStandaloneImports],
+  standalone: true,
   templateUrl: './video.component.html',
   styleUrl: './video.component.scss',
 })
