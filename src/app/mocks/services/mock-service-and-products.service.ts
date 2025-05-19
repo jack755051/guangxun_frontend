@@ -8,6 +8,11 @@ import { GetProductCategory } from '../../utils/factory/mock-or-real/abstract/ge
 })
 export class MockServiceAndProductsService implements GetProductCategory {
   constructor() {}
+
+  /**
+   * Mock data for product category tree
+   * @returns Observable<IProductCategoryTreeNodeViewModel[]>
+   */
   getProductCategoryTree(): Observable<IProductCategoryTreeNodeViewModel[]> {
     return of([
       {

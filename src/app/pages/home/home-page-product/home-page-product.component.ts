@@ -4,6 +4,7 @@ import { CardComponent } from '../../../components/card/card.component';
 import { ArrangeType, Cards } from '../../../components/card';
 import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
 import { mockOrRealConfig } from '../../../config/mock-or-real.config';
+import { HomePage } from '../../../utils/factory/mock-or-real/abstract/home-page';
 
 @Component({
   selector: 'guangxun-home-page-product',
@@ -14,21 +15,20 @@ import { mockOrRealConfig } from '../../../config/mock-or-real.config';
 })
 export class HomePageProductComponent implements OnInit {
   cards!: Cards;
+  private readonly _homePage = inject(HomePage);
   centerIndex: number = 0;
 
   readonly ArrangeType = ArrangeType;
-
-  private _mockHomePageService = inject(MockHomePageService);
   constructor() {}
 
   ngOnInit(): void {
-    // 如果 isMockMode 為 true，則使用 mock 資料
-    if (mockOrRealConfig.isMock) {
-      this._mockHomePageService.getMockProducts();
-      this._mockHomePageService.mockProducts$.subscribe((cards) => {
-        this.cards = cards;
-        console.log(cards);
-      });
-    }
+    this._homePage.getProducts().subscribe((cards) => {
+      this.cards = {
+        arrangeType: cards.arrangeType,
+        card: cards.card.map((item) => ({
+          ...item,
+        })),
+      };
+    });
   }
 }

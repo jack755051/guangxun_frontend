@@ -7,7 +7,7 @@ import { HomePageProductComponent } from './home-page-product/home-page-product.
 @Component({
   selector: 'guangxun-home',
   standalone: true,
-  imports: [CommonModule, HomePageVideoComponent, HomePageNewsComponent, HomePageProductComponent],
+  imports: [CommonModule, HomePageNewsComponent, HomePageProductComponent, HomePageVideoComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

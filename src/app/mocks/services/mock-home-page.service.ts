@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { Video } from '../../models/interface/feature/video.interface';
+import { BehaviorSubject, Observable, of } from 'rxjs';
+import { IVideoViewModel } from '../../models/interface/feature/video.interface';
 import { ArrangeType, Cards } from '../../components/card';
 import { TechnicalSupportFile } from '../../models/interface/feature/technical-support.interface';
 import {
@@ -8,33 +8,18 @@ import {
   ExpansionPanelItem,
   ExpansionPanelType,
 } from '../../feature/expansion-panel';
+import { HomePage } from '../../utils/factory/mock-or-real/abstract/home-page';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MockHomePageService {
-  private _mockVideos = new BehaviorSubject<Video[]>([]);
-  mockVideos$ = this._mockVideos.asObservable();
-
-  private _mockNews = new BehaviorSubject<ExpansionPanelItem[]>([]);
-  mockNews$ = this._mockNews.asObservable();
-
-  private _mockProducts = new BehaviorSubject<Cards>({
-    card: [],
-    arrangeType: ArrangeType.LIST,
-  });
-  mockProducts$ = this._mockProducts.asObservable();
-
-  private _mockTechnicalSupport = new BehaviorSubject<TechnicalSupportFile[]>([]);
-  mockTechnicalSupport$ = this._mockTechnicalSupport.asObservable();
-
+export class MockHomePageService implements HomePage {
   constructor() {}
-
   /**
    * 取得 mock 影片
    */
-  getMockVideos() {
-    this._mockVideos.next([
+  getVideo(): Observable<IVideoViewModel[]> {
+    return of([
       {
         id: 1,
         title: 'Video 1',
@@ -61,11 +46,12 @@ export class MockHomePageService {
       },
     ]);
   }
+
   /**
    * 取得 mock 新聞
    */
-  getMockNews() {
-    this._mockNews.next([
+  getNews(): Observable<ExpansionPanelItem[]> {
+    return of([
       {
         header: { title: 'News 1', description: 'News 1 description' },
         content: {
@@ -112,9 +98,9 @@ export class MockHomePageService {
       },
     ]);
   }
-
-  getMockProducts() {
-    this._mockProducts.next({
+  /** 取得mock產品卡片**/
+  getProducts(): Observable<Cards> {
+    return of({
       card: [
         {
           header: {
@@ -249,9 +235,9 @@ export class MockHomePageService {
       arrangeType: ArrangeType.LIST,
     });
   }
-
-  getMockTechnicalSupport() {
-    this._mockTechnicalSupport.next([
+  /**取得mock產品技術支援**/
+  getTechnicalSupports(): Observable<TechnicalSupportFile[]> {
+    return of([
       {
         id: 'file-1',
         fileType: 'fileDownload',

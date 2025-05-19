@@ -1,4 +1,4 @@
-export interface Video {
+export interface IVideoViewModel {
   id: number;
   title: string;
   description: string;

@@ -1,31 +1,7 @@
-import { FaIcon } from '../../../components/dialog/model/interface/faicon.interface';
-
-export interface ExpansionPanelItem {
-  header: ExpansionPanelHeader;
-  type: ExpansionPanelType;
-  content: string | NewsTypeContent;
-  routerLink?: string;
-}
-
-export interface ExpansionPanelHeader {
-  title: string;
-  description: string;
-  icon?: FaIcon;
-}
-
-export enum ExpansionPanelType {
-  FIRE = 'fire',
-  LIVE = 'live',
-  TECHNICAL_SUPPORT = 'technical-support',
-}
+import { ExpansionPanelItem } from '../../../feature/expansion-panel/index';
 
 // ---- 以下為擴充功能 start ----
 
-export interface NewsTypeContent {
-  id: string;
-  date: string;
-  author: string;
-  content: string;
-}
+export interface INewsTypeContentViewModel extends ExpansionPanelItem {}
 
 // ---- 以下為擴充功能 end ----

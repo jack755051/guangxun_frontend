@@ -6,6 +6,7 @@ import { TechnicalFileComponent } from './technical-file/technical-file.componen
 import { TechnicalDocumentComponent } from './technical-document/technical-document.component';
 import { MockHomePageService } from '../../mocks/services/mock-home-page.service';
 import { TechnicalSupportFile } from '../../models/interface/feature/technical-support.interface';
+import { HomePage } from '../../utils/factory/mock-or-real/abstract/home-page';
 
 @Component({
   selector: 'guangxun-technical-support',
@@ -24,15 +25,14 @@ export class TechnicalSupportComponent implements OnInit {
   keyword = '';
   fileDownloadDataSource: TechnicalSupportFile[] = [];
   documentDataSource: TechnicalSupportFile[] = [];
-
-  private _mockHomePageService = inject(MockHomePageService);
-
+  private readonly _homePage = inject(HomePage);
   constructor() {}
   ngOnInit(): void {
-    this._mockHomePageService.getMockTechnicalSupport();
-    this._mockHomePageService.mockTechnicalSupport$.subscribe((data) => {
-      this.fileDownloadDataSource = data.filter((item) => item.fileType === 'fileDownload');
-      this.documentDataSource = data.filter((item) => item.fileType === 'document');
+    this._homePage.getTechnicalSupports().subscribe((technicalSupports) => {
+      this.documentDataSource = technicalSupports.filter((item) => item.fileType === 'document');
+      this.fileDownloadDataSource = technicalSupports.filter(
+        (item) => item.fileType === 'fileDownload',
+      );
     });
   }
 

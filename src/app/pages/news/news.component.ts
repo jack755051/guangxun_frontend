@@ -5,6 +5,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ExpansionPanelComponent } from '../../feature/expansion-panel/expansion-panel.component';
 import { ExpansionPanelItem, getExpansionIcon } from '../../feature/expansion-panel';
 import { mockOrRealConfig } from '../../config/mock-or-real.config';
+import { INewsTypeContentViewModel } from '../../models/interface/feature/expansion-panel.interface';
+import { HomePage } from '../../utils/factory/mock-or-real/abstract/home-page';
 
 @Component({
   selector: 'guangxun-news',
@@ -14,25 +16,20 @@ import { mockOrRealConfig } from '../../config/mock-or-real.config';
   styleUrl: './news.component.scss',
 })
 export class NewsComponent implements OnInit {
-  news: ExpansionPanelItem[] = [];
+  news: INewsTypeContentViewModel[] = [];
+  private readonly _homePage = inject(HomePage);
   hoverIndex: number | null = null;
-
-  private _mockHomePageService = inject(MockHomePageService);
 
   constructor() {}
   ngOnInit(): void {
-    // 如果 isMockMode 為 true，則使用 mock 資料
-    if (mockOrRealConfig.isMock) {
-      this._mockHomePageService.getMockNews();
-      this._mockHomePageService.mockNews$.subscribe((news) => {
-        this.news = news.map((item) => ({
-          ...item,
-          header: {
-            ...item.header,
-            icon: getExpansionIcon(item.type, item.header.title),
-          },
-        }));
-      });
-    }
+    this._homePage.getNews().subscribe((news) => {
+      this.news = news.map((item) => ({
+        ...item,
+        header: {
+          ...item.header,
+          icon: getExpansionIcon(item.type, item.header.title),
+        },
+      }));
+    });
   }
 }
