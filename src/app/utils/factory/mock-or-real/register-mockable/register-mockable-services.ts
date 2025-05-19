@@ -2,9 +2,9 @@ import { Provider, Type, inject } from '@angular/core';
 
 export function registerMockableServices(
   isMock: boolean,
-  serviceMap: Record<any, [Type<any>, Type<any>]>,
+  serviceMap: Map<any, [Type<any>, Type<any>]>,
 ): Provider[] {
-  return Object.entries(serviceMap).flatMap(([token, [real, mock]]) => [
+  return Array.from(serviceMap.entries()).flatMap(([token, [real, mock]]) => [
     real,
     mock,
     {

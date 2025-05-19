@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, Type } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -10,6 +10,9 @@ import { mockOrRealConfig } from './config/mock-or-real.config';
 import { registerMockableServices } from './utils/factory/mock-or-real/register-mockable/register-mockable-services';
 import { ApiService as realProductCategoryApiService } from './apis/products/api.service';
 import { MockServiceAndProductsService as mockServiceAndProductsService } from './mocks/services/mock-service-and-products.service';
+import { MockHomePageService } from './mocks/services/mock-home-page.service';
+import { HomePage } from './utils/factory/mock-or-real/abstract/home-page';
+import { GetProductCategory } from './utils/factory/mock-or-real/abstract/get-product-category';
 /** about real or mock setting END **/
 
 export const appConfig: ApplicationConfig = {
@@ -25,8 +28,12 @@ export const appConfig: ApplicationConfig = {
         deps: [HttpClient],
       },
     }).providers!,
-    registerMockableServices(mockOrRealConfig.isMock, {
-      productCategoryApiService: [realProductCategoryApiService, mockServiceAndProductsService],
-    }),
+    registerMockableServices(
+      mockOrRealConfig.isMock,
+      new Map<any, [Type<any>, Type<any>]>([
+        [GetProductCategory, [realProductCategoryApiService, mockServiceAndProductsService]],
+        [HomePage, [MockHomePageService, MockHomePageService]],
+      ]),
+    ),
   ],
 };
