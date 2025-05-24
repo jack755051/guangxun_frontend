@@ -1,20 +1,66 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, Input, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { IProductCategoryTreeNodeViewModel } from '../../../models/interface/feature/product-category.interface';
+import { GetProductCategory } from '../../../utils/factory/mock-or-real/abstract/get-product-category';
+import { MatTreeModule, MatTreeNestedDataSource } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatButtonModule } from '@angular/material/button';
+import { FaIconWithLink } from '../../../models/interface/shared/shared.interface';
+import { ServicesAndProductSidebarIcons } from '../../../shared/fa-icon';
+import { IconDefinition } from '@fortawesome/angular-fontawesome';
+import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'guangxun-side-bar',
-  imports: [SharedStandaloneImports],
+  imports: [SharedStandaloneImports, MatTreeModule, MatIconModule, MatButtonModule],
   standalone: true,
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.scss',
 })
 export class SideBarComponent implements OnInit {
-  category: IProductCategoryTreeNodeViewModel[] = [];
+  private readonly _getProductCategory = inject(GetProductCategory);
+  dataSource = new MatTreeNestedDataSource<IProductCategoryTreeNodeViewModel>();
+  treeControl = new NestedTreeControl<IProductCategoryTreeNodeViewModel>((node) => node.children);
+  expandedIcon: IconDefinition;
+  collapsedIcon: IconDefinition;
 
-  isMock = true;
+  private assignNodeLevels(nodes: IProductCategoryTreeNodeViewModel[], level = 0): void {
+    for (const node of nodes) {
+      (node as any).__level = level;
+      if (node.children && node.children.length > 0) {
+        this.assignNodeLevels(node.children, level + 1);
+      }
+    }
+  }
 
-  constructor() {}
+  constructor() {
+    this.expandedIcon = ServicesAndProductSidebarIcons.faAngleDown;
+    this.collapsedIcon = ServicesAndProductSidebarIcons.faAngleRight;
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._getProductCategory.getProductCategoryTree().subscribe((res) => {
+      this.assignNodeLevels(res);
+      this.dataSource.data = res;
+    });
+  }
+
+  hasChild = (_: number, node: IProductCategoryTreeNodeViewModel) =>
+    !!node.children && node.children.length > 0;
+
+  getLevelClass(node: IProductCategoryTreeNodeViewModel): string {
+    const level = this.getNodeLevel(node);
+    return `level-${level}`;
+  }
+
+  getNodeLevel(node: IProductCategoryTreeNodeViewModel): number {
+    return (node as any).__level ?? 0;
+  }
+
+  // ----- 事件 START ------
+
+  onClickNode(node: IProductCategoryTreeNodeViewModel) {
+    console.log('Node clicked:', node);
+  }
 }

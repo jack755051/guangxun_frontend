@@ -67,6 +67,25 @@
   height: $height;
 }
 
+@mixin base-container(
+  $justify: center,
+  $align: center,
+  $direction: row,
+  $gap: 0,
+  $background-color: transparent,
+  $border-radius: 0,
+  $width: 0,
+  $height: 0,
+  $padding-x: 0,
+  $padding-y: 0
+) {
+  border-radius: $border-radius;
+  background-color: $background-color;
+  @include default-flex($justify, $align, $direction, $gap);
+  @include default-container($width: 100%, $height: auto);
+  @include container-padding($padding-x, $padding-y);
+}
+
 @mixin default-container-limit($min-width: 0, $max-width: 0, $min-height: 0, $max-height: 0) {
   min-width: $min-width;
   max-width: $max-width;
@@ -79,6 +98,8 @@
   font-weight: $font-weight;
   color: $color;
 }
+
+// ----- 按鈕 start -----
 
 //滑鼠移動時的文字樣式
 @mixin hover-text-style(

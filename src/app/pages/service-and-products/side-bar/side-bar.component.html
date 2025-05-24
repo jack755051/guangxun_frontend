@@ -1,0 +1,23 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="tree">
+  <mat-nested-tree-node *matTreeNodeDef="let node">
+    <div class="mat-tree-node" [ngClass]="getLevelClass(node)" (click)="onClickNode(node)">
+      <!-- 只有有子節點才顯示展開按鈕 -->
+      <button
+        mat-icon-button
+        matTreeNodeToggle
+        *ngIf="hasChild(0, node)"
+        [attr.aria-label]="'Toggle ' + node.name"
+      >
+        <fa-icon [icon]="treeControl.isExpanded(node) ? expandedIcon : collapsedIcon"></fa-icon>
+      </button>
+
+      <!-- 不管有沒有子節點都顯示名稱 -->
+      {{ node.name }}
+    </div>
+
+    <!-- 子節點容器：展開時才顯示 -->
+    <div *ngIf="treeControl.isExpanded(node)" role="group">
+      <ng-container matTreeNodeOutlet></ng-container>
+    </div>
+  </mat-nested-tree-node>
+</mat-tree>

@@ -29,11 +29,13 @@ export class MockServiceAndProductsService implements GetProductCategory {
                 id: 'night-vision_03',
                 name: '夜視',
                 key: 'night-vision',
+                children: [],
               },
               {
                 id: 'ir-cut-filter_04',
                 name: '紅外線',
                 key: 'ir-cut-filter',
+                children: [],
               },
             ],
           },
@@ -41,11 +43,39 @@ export class MockServiceAndProductsService implements GetProductCategory {
             id: 'bullet_05',
             name: '槍型',
             key: 'bullet',
+            children: [
+              {
+                id: 'night-vision_03',
+                name: '夜視',
+                key: 'night-vision',
+                children: [],
+              },
+              {
+                id: 'ir-cut-filter_04',
+                name: '紅外線',
+                key: 'ir-cut-filter',
+                children: [],
+              },
+            ],
           },
           {
             id: 'ptz_06',
             name: '雲台',
             key: 'ptz',
+            children: [
+              {
+                id: 'night-vision_03',
+                name: '夜視',
+                key: 'night-vision',
+                children: [],
+              },
+              {
+                id: 'ir-cut-filter_04',
+                name: '紅外線',
+                key: 'ir-cut-filter',
+                children: [],
+              },
+            ],
           },
         ],
       },

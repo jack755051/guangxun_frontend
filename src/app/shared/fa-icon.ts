@@ -12,6 +12,9 @@ import {
   faFire,
   faGaugeHigh,
   faMicrochip,
+  faChevronRight,
+  faAngleDown,
+  faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 
 export const FooterIcons = {
@@ -32,4 +35,9 @@ export const HomePageNewsIcons = {
   faFire,
   faGaugeHigh,
   faMicrochip,
+};
+
+export const ServicesAndProductSidebarIcons = {
+  faAngleRight,
+  faAngleDown,
 };

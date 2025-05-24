@@ -13,7 +13,7 @@ import { HomePage } from '../../utils/factory/mock-or-real/abstract/home-page';
   standalone: true,
   imports: [
     MatTabsModule,
-    SearchBarComponent,
+    // SearchBarComponent,
     SharedStandaloneImports,
     TechnicalFileComponent,
     TechnicalDocumentComponent,
