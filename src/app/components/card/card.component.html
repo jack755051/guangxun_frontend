@@ -7,41 +7,43 @@
   ></guangxun-toggle>
 </div>
 
-<ng-container [ngSwitch]="cards.arrangeType">
-  <!-- CENTER_STACK 模式 -->
-  <ng-container *ngSwitchCase="ArrangeType.CENTER_STACK">
-    <div class="card-container card-center-stack">
-      <ng-container *ngFor="let card of cards.card; let i = index">
-        <guangxun-card-item
-          [cardItem]="card"
-          [arrangeType]="cards.arrangeType"
-          [class.center]="i === centerIndex"
-        ></guangxun-card-item>
-      </ng-container>
-    </div>
-  </ng-container>
+<ng-container *ngIf="cards">
+  <ng-container [ngSwitch]="cards.arrangeType">
+    <!-- CENTER_STACK 模式 -->
+    <ng-container *ngSwitchCase="ArrangeType.CENTER_STACK">
+      <div class="card-container card-center-stack">
+        <ng-container *ngFor="let card of cards.card; let i = index">
+          <guangxun-card-item
+            [cardItem]="card"
+            [arrangeType]="cards.arrangeType"
+            [class.center]="i === centerIndex"
+          ></guangxun-card-item>
+        </ng-container>
+      </div>
+    </ng-container>
 
-  <!-- GRID 模式 -->
-  <ng-container *ngSwitchCase="ArrangeType.GRID">
-    <div class="card-container card-grid">
-      <ng-container *ngFor="let card of cards.card; let i = index">
-        <guangxun-card-item
-          [cardItem]="card"
-          [arrangeType]="cards.arrangeType"
-        ></guangxun-card-item>
-      </ng-container>
-    </div>
-  </ng-container>
+    <!-- GRID 模式 -->
+    <ng-container *ngSwitchCase="ArrangeType.GRID">
+      <div class="card-container card-grid">
+        <ng-container *ngFor="let card of cards.card; let i = index">
+          <guangxun-card-item
+            [cardItem]="card"
+            [arrangeType]="cards.arrangeType"
+          ></guangxun-card-item>
+        </ng-container>
+      </div>
+    </ng-container>
 
-  <!-- LIST 模式 -->
-  <ng-container *ngSwitchCase="ArrangeType.LIST">
-    <div class="card-container card-list">
-      <ng-container *ngFor="let card of cards.card; let i = index">
-        <guangxun-card-item
-          [cardItem]="card"
-          [arrangeType]="cards.arrangeType"
-        ></guangxun-card-item>
-      </ng-container>
-    </div>
+    <!-- LIST 模式 -->
+    <ng-container *ngSwitchCase="ArrangeType.LIST">
+      <div class="card-container card-list">
+        <ng-container *ngFor="let card of cards.card; let i = index">
+          <guangxun-card-item
+            [cardItem]="card"
+            [arrangeType]="cards.arrangeType"
+          ></guangxun-card-item>
+        </ng-container>
+      </div>
+    </ng-container>
   </ng-container>
 </ng-container>

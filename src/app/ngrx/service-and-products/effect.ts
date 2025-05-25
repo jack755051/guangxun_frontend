@@ -13,25 +13,5 @@ export class ServiceAndProductsEffects {
 
   constructor() {}
 
-  loadProductCategoryTree$ = createEffect(() =>
-    this._actions$.pipe(
-      ofType(ServiceAndProductsActions.loadProductCategoryTree),
-      concatMap(() =>
-        concat(
-          of(ServiceAndProductsActions.loadProductCategoryTreeLoading()),
-          this._productCategoryApiService.getTechnicalCategoryTree().pipe(
-            map((res) =>
-              ServiceAndProductsActions.loadProductCategoryTreeSuccess({
-                productCategoryTree: res,
-              }),
-            ),
-            catchError((error) => {
-              console.error('Error loading product category tree:', error);
-              return of(ServiceAndProductsActions.loadProductCategoryTreeFailure({ error }));
-            }),
-          ),
-        ),
-      ),
-    ),
-  );
+  loadProductCategoryTree$ = createEffect(() => this._actions$.pipe());
 }

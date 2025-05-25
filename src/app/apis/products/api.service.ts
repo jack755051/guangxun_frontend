@@ -5,6 +5,9 @@ import { ITechnicalCategoryResponse } from '../technical-support/res.dto';
 import { GetProductCategory } from '../../utils/factory/mock-or-real/abstract/get-product-category';
 import { IProductCategoryTreeNodeViewModel } from '../../models/interface/feature/product-category.interface';
 import { ProductsMapper } from './mapper';
+import { Cards } from '../../components/card';
+import { IProductCategoryCardResDto, IProductCategoryTreeResDto } from './res.dto';
+import { IProductCardsViewModel } from '../../models/interface/feature/service-and-products.ngrx.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,14 +21,23 @@ export class ApiService implements GetProductCategory {
   }
 
   getProductCategoryTree(): Observable<IProductCategoryTreeNodeViewModel[]> {
-    const url = `${this._baseUrl}/api/technical-support/category`;
+    const url = `${this._baseUrl}/api/product-services/category-tree`;
     return this._httpClient
-      .get<ITechnicalCategoryResponse>(url)
+      .get<IProductCategoryTreeResDto>(url)
       .pipe(
         map(
           (res) =>
-            ProductsMapper.ProductsCategoryToViewModel(res) as IProductCategoryTreeNodeViewModel[],
+            ProductsMapper.ProductsCategoryTreeToViewModel(
+              res,
+            ) as IProductCategoryTreeNodeViewModel[],
         ),
       );
+  }
+
+  getProductCategoryCards(): Observable<IProductCardsViewModel> {
+    const url = `${this._baseUrl}/api/product-services/product-cards`;
+    return this._httpClient
+      .get<IProductCategoryCardResDto>(url)
+      .pipe(map((res) => ProductsMapper.ProductsCardsToViewModel(res)));
   }
 }

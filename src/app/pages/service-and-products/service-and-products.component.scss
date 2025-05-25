@@ -17,8 +17,8 @@
       @include default-container($width: 100%, $height: auto);
     }
 
-    > .content-container {
-      @include default-container($width: 100%, $height: auto);
+    & .inside {
+      @include default-flex($direction: column, $align: none, $gap: 2rem);
     }
   }
 }

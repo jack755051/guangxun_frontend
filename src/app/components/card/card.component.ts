@@ -25,14 +25,15 @@ export class CardComponent implements OnInit {
   // 排列方式圖示
   arrangeTypeIcon: IconDefinition = CardArrangeTypeIcons.faList;
   // 排列方式
-  readonly ArrangeType = ArrangeType;
-  readonly CardArrangeTypeIcons = CardArrangeTypeIcons;
+  ArrangeType = ArrangeType;
+  CardArrangeTypeIcons = CardArrangeTypeIcons;
 
   toggleOptions = TOGGLABLE_ARRANGE_TYPES;
 
   constructor() {}
 
   ngOnInit(): void {
+    if (!this.cards) return; // ⛔ 防呆
     const currentType = this.cards.arrangeType;
     this.isShowArrangeType = ARRANGE_TYPE_META_MAP[currentType].showInToggle;
     this.arrangeTypeIcon = ARRANGE_TYPE_META_MAP[currentType].icon;

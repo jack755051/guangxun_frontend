@@ -1,16 +1,11 @@
-export interface IFeatureOptionResDto {
-  key: string;
-  name: string;
-}
+//後端提供的RESPONSE DTOs for Products
 
-export interface IProductFeatureResDto {
-  key: string;
-  name: string;
-  children: IFeatureOptionResDto[];
-}
+/**
+ * 用於 --[頁面]產品與服務-- side-bar的產品類別樹
+ * **/
+export interface IProductCategoryTreeResDto {}
 
-export interface IProductTypeTreeResDto {
-  key: string;
-  name: string;
-  children: IProductFeatureResDto[];
-}
+/**
+ * 用於 --[頁面]產品與服務-- 產品類別卡片
+ * **/
+export interface IProductCategoryCardResDto {}

@@ -7,12 +7,23 @@
     <guangxun-side-bar></guangxun-side-bar>
   </div>
   <!-- content-container -->
-  <div class="content-container">
+  <div class="content-container inside">
     <div class="search-bar-container">
       <guangxun-search-bar></guangxun-search-bar>
     </div>
-    <div class="card-content-container">
-      <guangxun-products></guangxun-products>
+    @if (dataSource$ | async; as dataSource) {
+      <div class="card-container">
+        <guangxun-card [cards]="dataSource"></guangxun-card>
+      </div>
+    }
+    <div class="pagination-content-container">
+      <guangxun-pagination
+        [pageIndex]="pageIndex"
+        [limit]="limit"
+        [total]="total"
+        (pageChange)="onPageChange($event)"
+        (pageSizeChange)="onPageSizeChange($event)"
+      ></guangxun-pagination>
     </div>
   </div>
 </div>
