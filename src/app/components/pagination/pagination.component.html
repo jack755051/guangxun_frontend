@@ -1,0 +1,21 @@
+<div class="pagination-container" *ngIf="!disabled && total > 0">
+  <div class="pagination-inner">
+    <div class="pagination-center">
+      <pagination-controls
+        [id]="id"
+        (pageChange)="onPageChange($event)"
+        [maxSize]="5"
+        [autoHide]="true"
+        [responsive]="true"
+      ></pagination-controls>
+    </div>
+
+    <div class="page-size-selector">
+      每頁顯示：
+      <select [(ngModel)]="limit" (change)="onPageSizeChange()">
+        <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
+      </select>
+      筆
+    </div>
+  </div>
+</div>

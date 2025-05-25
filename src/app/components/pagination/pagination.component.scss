@@ -1,0 +1,39 @@
+.pagination-container {
+  width: 100%;
+  padding: 0.5rem 0;
+}
+
+.pagination-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.pagination-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.page-size-selector {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+
+  select {
+    margin: 0 0.5rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+.pagination-inner {
+  flex-wrap: wrap;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: flex-end; // 讓 dropdown 靠右
+    gap: 0.5rem;
+  }
+}
