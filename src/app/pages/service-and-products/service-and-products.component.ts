@@ -9,6 +9,7 @@ import { PaginationComponent } from '../../components/pagination/pagination.comp
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ArrangeType, Cards } from '../../components/card';
 import { GetProductCategory } from '../../utils/factory/mock-or-real/abstract/get-product-category';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'guangxun-service-and-products',
@@ -21,6 +22,7 @@ import { GetProductCategory } from '../../utils/factory/mock-or-real/abstract/ge
     ProductsComponent,
     CardComponent,
     PaginationComponent,
+    NgxPaginationModule,
   ],
   templateUrl: './service-and-products.component.html',
   styleUrl: './service-and-products.component.scss',
@@ -36,19 +38,7 @@ export class ServiceAndProductsComponent implements OnInit {
 
   ngOnInit() {
     this._getProductCategory.getProductCategoryCards().subscribe((res) => {
-      // // 假設這裡將 res 轉換為 Cards 格式
-      // const cards: Cards = {
-      //   card: res.map((item) => ({
-      //     id: item.id,
-      //     title: item.name,
-      //     description: '',
-      //     imageUrl: '', // 假設有圖片 URL
-      //     link: '', // 假設有連結
-      //   })),
-      //   arrangeType: ArrangeType.LIST, // 初始排列方式
-      // };
-      console.log('Product Category:', res);
-      // this._dataSource.next(cards);
+      this._dataSource.next(res); // ✅ 更新資料來源
     });
   }
 

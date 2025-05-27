@@ -14,3 +14,7 @@
   @include default-container($width: 100%, $height: auto);
   @include default-text-style($font-size: 1.6rem, $font-weight: 500, $color: $primary-500);
 }
+
+guangxun-card {
+  @include default-container($width: 100%, $height: auto);
+}

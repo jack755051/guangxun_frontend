@@ -13,7 +13,14 @@
     </div>
     @if (dataSource$ | async; as dataSource) {
       <div class="card-container">
-        <guangxun-card [cards]="dataSource"></guangxun-card>
+        <guangxun-products
+          [dataSource]="{
+            arrangeType: dataSource.arrangeType,
+            card:
+              dataSource.card
+              | paginate: { itemsPerPage: limit, currentPage: pageIndex, id: 'pagination' },
+          }"
+        ></guangxun-products>
       </div>
     }
     <div class="pagination-content-container">
