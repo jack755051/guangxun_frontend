@@ -1,6 +1,7 @@
 .pagination-container {
   width: 100%;
   padding: 0.5rem 0;
+  //font-size: 1.2rem;
 }
 
 .pagination-inner {
@@ -15,10 +16,15 @@
   flex: 1;
   display: flex;
   justify-content: center;
+  align-items: center;
+
+  pagination-controls {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .page-size-selector {
-  font-size: 0.9rem;
   display: flex;
   align-items: center;
 
@@ -36,4 +42,11 @@
     align-items: flex-end; // 讓 dropdown 靠右
     gap: 0.5rem;
   }
+}
+
+// 覆蓋因為 ngx-pagination 中設定的 margin-bottom:1rem，造成無法垂直致中的狀況
+::ng-deep .ngx-pagination {
+  margin-bottom: 0rem !important;
+  display: flex;
+  gap: 1rem;
 }

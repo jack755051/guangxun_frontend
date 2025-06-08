@@ -25,6 +25,11 @@
     }
     <div class="pagination-content-container">
       <guangxun-pagination
+        [paginationClassMap]="{
+          paginationContainer: 'paginationContainer',
+          paginationCenter: 'paginationCenter',
+          pageSizeSelector: 'pageSizeSelector',
+        }"
         [pageIndex]="pageIndex"
         [limit]="limit"
         [total]="total"

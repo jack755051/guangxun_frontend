@@ -16,7 +16,17 @@ export class PaginationComponent {
   @Input() limit = 10;
   @Input() total = 0;
   @Input() disabled = false;
-  @Input() pageSizeOptions = [5, 10, 20, 50]; // 可切換筆數
+  @Input() previousLabel = '上一頁';
+  @Input() nextLabel = '下一頁';
+  @Input()
+  pageSizeOptions = [5, 10, 20, 50]; // 可切換筆數
+  // 外觀
+  @Input() paginationClassMap: {
+    paginationContainer?: string | string[] | Set<string> | { [klass: string]: any };
+    pageSizeSelector?: string | string[] | Set<string> | { [klass: string]: any };
+    paginationCenter?: string | string[] | Set<string> | { [klass: string]: any };
+  } = {};
+
   // event emitters for page change and page size change
   @Output() pageChange = new EventEmitter<number>();
   @Output() pageSizeChange = new EventEmitter<number>();

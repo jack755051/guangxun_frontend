@@ -1,15 +1,21 @@
-<div class="pagination-container" *ngIf="!disabled && total > 0">
+<div
+  class="pagination-container"
+  [ngClass]="paginationClassMap?.paginationContainer"
+  *ngIf="!disabled && total > 0"
+>
   <div class="pagination-inner">
-    <div class="pagination-center">
+    <div class="pagination-center" [ngClass]="paginationClassMap?.paginationCenter">
       <pagination-controls
         [id]="id"
-        [maxSize]="5"
-        [responsive]="true"
+        [maxSize]="9"
+        [previousLabel]="previousLabel"
+        [nextLabel]="nextLabel"
+        [responsive]="false"
         (pageChange)="onPageChange($event)"
       ></pagination-controls>
     </div>
 
-    <div class="page-size-selector">
+    <div class="page-size-selector" [ngClass]="paginationClassMap?.pageSizeSelector">
       每頁顯示：
       <select [(ngModel)]="limit" (change)="onPageSizeChange()">
         <option *ngFor="let size of pageSizeOptions" [value]="size">{{ size }}</option>
