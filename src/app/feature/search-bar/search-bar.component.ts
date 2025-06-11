@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { SharedStandaloneImports } from '../../shared/shared-imports';
-import { SearchService } from './service/search.service';
+import { SearchService, SearchState } from './service/search.service';
 import { SearchComponent } from './search/search.component';
 import { FilterComponent } from './filter/filter.component';
 
@@ -11,15 +11,19 @@ import { FilterComponent } from './filter/filter.component';
   templateUrl: './search-bar.component.html',
   styleUrl: './search-bar.component.scss',
 })
-export class SearchBarComponent {
-  @Output() searchTriggered = new EventEmitter<{ keyword: string; filter?: any }>();
+export class SearchBarComponent<T> {
+  @Output() keywordChanged = new EventEmitter<string>();
+  @Output() searchTriggered = new EventEmitter<SearchState>();
   @Input() showFilter: boolean = false;
 
   private _searchService = inject(SearchService);
 
   constructor() {
-    this._searchService.searchTrigger$.subscribe(() => {
-      const state = this._searchService.getCurrentState();
+    this._searchService.keyword$.subscribe((keyword) => {
+      this.keywordChanged.emit(keyword); // <--- 新增 emit
+    });
+
+    this._searchService.searchTrigger$.subscribe((state) => {
       this.searchTriggered.emit(state);
     });
   }

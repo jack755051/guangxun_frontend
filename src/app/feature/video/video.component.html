@@ -1,2 +1,6 @@
-<p class="video-title">{{ video.title }}</p>
-<iframe width="100%" height="100%" [src]="sanitizedUrl" frameborder="0" allowfullscreen></iframe>
+<div class="video-title" [ngClass]="videoClassMap?.videoTitle">
+  <p>{{ video.title }}</p>
+</div>
+<div class="video-frame" [ngClass]="videoClassMap?.videoFrame">
+  <iframe width="100%" height="100%" [src]="sanitizedUrl" frameborder="0" allowfullscreen></iframe>
+</div>

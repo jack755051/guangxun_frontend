@@ -35,3 +35,7 @@ mat-tree {
     background-color: rgba($primary-500, 0.1);
   }
 }
+
+.node-label {
+  cursor: pointer;
+}

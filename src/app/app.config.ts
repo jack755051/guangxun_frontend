@@ -13,12 +13,19 @@ import { MockServiceAndProductsService as mockServiceAndProductsService } from '
 import { MockHomePageService } from './mocks/services/mock-home-page.service';
 import { HomePage } from './utils/factory/mock-or-real/abstract/home-page';
 import { GetProductCategory } from './utils/factory/mock-or-real/abstract/get-product-category';
+import { ServiceAndProductsFeatures } from './ngrx/service-and-products/reducer';
+import { provideState, provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { ServiceAndProductsEffects } from './ngrx/service-and-products/effect';
 /** about real or mock setting END **/
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
+    provideStore(),
+    provideState(ServiceAndProductsFeatures),
+    provideEffects(ServiceAndProductsEffects),
     provideHttpClient(withInterceptorsFromDi()),
     TranslateModule.forRoot({
       defaultLanguage: 'zh-Hant',

@@ -12,6 +12,10 @@ import { SharedStandaloneImports } from '../../shared/shared-imports';
 })
 export class VideoComponent {
   @Input() video!: IVideoViewModel;
+  @Input() videoClassMap: {
+    videoTitle?: string | string[] | Set<string> | { [klass: string]: any };
+    videoFrame?: string | string[] | Set<string> | { [klass: string]: any };
+  } = {};
   sanitizedUrl!: SafeResourceUrl;
 
   constructor(private sanitizer: DomSanitizer) {}

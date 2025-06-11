@@ -2,6 +2,15 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
 import { FilterButton } from '../models/filter.interface';
 
+export interface SearchState {
+  keyword: string;
+  filter?: {
+    label: string;
+    value: string;
+    icon: string;
+  };
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -47,7 +56,6 @@ export class SearchService {
 
   triggerSearch() {
     const state = this.getCurrentState();
-    console.log('[SearchService] triggerSearch送出:', state); // 👈✅ 新增
     this.searchTrigger$.next(state);
   }
 

@@ -1,7 +1,14 @@
-import { Component, CUSTOM_ELEMENTS_SCHEMA, inject, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  CUSTOM_ELEMENTS_SCHEMA,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { IProductCategoryTreeNodeViewModel } from '../../../models/interface/feature/product-category.interface';
-import { GetProductCategory } from '../../../utils/factory/mock-or-real/abstract/get-product-category';
 import { MatTreeModule, MatTreeNestedDataSource } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { NestedTreeControl } from '@angular/cdk/tree';
@@ -19,7 +26,13 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
   styleUrl: './side-bar.component.scss',
 })
 export class SideBarComponent implements OnInit {
-  private readonly _getProductCategory = inject(GetProductCategory);
+  @Input() set treeData(data: IProductCategoryTreeNodeViewModel[] | null) {
+    if (data?.length) {
+      this.assignNodeLevels(data);
+      this.dataSource.data = data;
+    }
+  }
+  @Output() nodeClick = new EventEmitter<IProductCategoryTreeNodeViewModel>();
   dataSource = new MatTreeNestedDataSource<IProductCategoryTreeNodeViewModel>();
   treeControl = new NestedTreeControl<IProductCategoryTreeNodeViewModel>((node) => node.children);
   expandedIcon: IconDefinition;
@@ -39,12 +52,7 @@ export class SideBarComponent implements OnInit {
     this.collapsedIcon = ServicesAndProductSidebarIcons.faAngleRight;
   }
 
-  ngOnInit(): void {
-    this._getProductCategory.getProductCategoryTree().subscribe((res) => {
-      this.assignNodeLevels(res);
-      this.dataSource.data = res;
-    });
-  }
+  ngOnInit(): void {}
 
   hasChild = (_: number, node: IProductCategoryTreeNodeViewModel) =>
     !!node.children && node.children.length > 0;
@@ -62,5 +70,6 @@ export class SideBarComponent implements OnInit {
 
   onClickNode(node: IProductCategoryTreeNodeViewModel) {
     console.log('Node clicked:', node);
+    this.nodeClick.emit(node);
   }
 }

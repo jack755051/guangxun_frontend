@@ -24,3 +24,13 @@
     }
   }
 }
+
+::ng-deep {
+  .videoTitle {
+    p {
+      font-size: 1.5rem !important;
+      font-weight: 600 !important;
+      color: $primary-900 !important;
+    }
+  }
+}

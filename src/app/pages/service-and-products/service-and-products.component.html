@@ -4,12 +4,19 @@
 <div class="content-container">
   <!-- side-bar -->
   <div class="side-bar">
-    <guangxun-side-bar></guangxun-side-bar>
+    <guangxun-side-bar
+      [treeData]="treeData$ | async"
+      (nodeClick)="onSidebarNodeClick($event)"
+    ></guangxun-side-bar>
   </div>
   <!-- content-container -->
   <div class="content-container inside">
     <div class="search-bar-container">
-      <guangxun-search-bar></guangxun-search-bar>
+      <guangxun-search-bar
+        [showFilter]="false"
+        (keywordChanged)="onKeywordChange($event)"
+        (searchTriggered)="onSearchTriggered($event)"
+      ></guangxun-search-bar>
     </div>
     @if (dataSource$ | async; as dataSource) {
       <div class="card-container">

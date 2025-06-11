@@ -4,6 +4,7 @@
 
 :host {
   @include default-flex($direction: column);
+  margin-top: 1rem;
 
   > .block {
     @include default-container($width: 100%, $height: auto);

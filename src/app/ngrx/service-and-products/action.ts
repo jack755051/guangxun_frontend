@@ -1,8 +1,12 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
 import { ITechnicalCategoryResponse } from '../../apis/technical-support/res.dto';
+import {
+  IQuery,
+  IQueryPayload,
+} from '../../models/interface/feature/service-and-products.ngrx.interface';
 
 export const ServiceAndProductsActions = createActionGroup({
-  source: 'Service And Products',
+  source: 'service-and-products',
   events: {
     'Load Service And Products': emptyProps(),
     'Load Service And Products Loading': emptyProps(),
@@ -10,7 +14,11 @@ export const ServiceAndProductsActions = createActionGroup({
       serviceAndProducts: ITechnicalCategoryResponse;
     }>(),
     'Load Service And Products Failure': props<{ error: any }>(),
-    'Update Query': props<{ query: any }>(),
+    'Update Query': props<{
+      query: Partial<IQuery>;
+      skip?: number;
+      limit?: number;
+    }>(),
 
     'Load Product Category Tree': emptyProps(),
     'Load Product Category Tree Loading': emptyProps(),
