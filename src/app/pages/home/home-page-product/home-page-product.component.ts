@@ -40,4 +40,5 @@ export class HomePageProductComponent implements OnInit {
 
   onTagClicked(event: { card: CardItem; tag: CardItemTag }) {}
   onButtonClicked(event: { card: CardItem; button: CardItemButton }) {}
+  onCardClicked(card: CardItem) {}
 }
