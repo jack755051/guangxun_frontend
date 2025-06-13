@@ -1,7 +1,8 @@
 import { ArrangeType } from '..';
+import { IconDefinition } from '@fortawesome/angular-fontawesome';
 
 export interface CardItemHeaderFaIcon {
-  icon: string;
+  icon: IconDefinition;
   color: string;
 }
 

@@ -51,7 +51,9 @@ export class CardItemComponent implements OnInit {
   }
 
   get shouldShowHeader(): boolean {
-    return this.arrangeType !== ArrangeType.LIST;
+    // TODO: 根據需求決定是否顯示 header
+    // return this.arrangeType !== ArrangeType.LIST;
+    return false;
   }
 
   // 判斷是否為 icon

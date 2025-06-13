@@ -3,6 +3,7 @@ import { SharedStandaloneImports } from '../../../../shared/shared-imports';
 import { IconDefinition } from '@fortawesome/angular-fontawesome';
 import { ArrangeType } from '../../models/card.enum';
 import { ARRANGE_TYPE_META_MAP } from '../../models/arrange-type-class.map';
+import { ToggleOption } from '../../models/toggle-option.interface';
 
 @Component({
   selector: 'guangxun-toggle',
@@ -12,7 +13,7 @@ import { ARRANGE_TYPE_META_MAP } from '../../models/arrange-type-class.map';
   styleUrl: './toggle.component.scss',
 })
 export class ToggleComponent {
-  @Input() options: ArrangeType[] = [];
+  @Input() options: ToggleOption[] = [];
   @Input() selected!: ArrangeType;
   @Output() change = new EventEmitter<ArrangeType>();
 
@@ -20,7 +21,8 @@ export class ToggleComponent {
     return ARRANGE_TYPE_META_MAP[type]?.icon;
   }
 
-  onSelect(type: ArrangeType) {
-    this.change.emit(type);
+  // ✅ 這裡傳進來的是 ToggleOption，而不是 ArrangeType
+  onSelect(option: ToggleOption) {
+    this.change.emit(option.value); // 只發出其中的 ArrangeType
   }
 }

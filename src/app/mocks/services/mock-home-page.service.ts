@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IVideoViewModel } from '../../models/interface/feature/video.interface';
-import { ArrangeType, Cards } from '../../components/card';
+import { ArrangeType, CardItem, Cards } from '../../components/card';
 import { TechnicalSupportFile } from '../../models/interface/feature/technical-support.interface';
 import {
   ExpansionContentType,
@@ -9,6 +9,7 @@ import {
   ExpansionPanelType,
 } from '../../feature/expansion-panel';
 import { HomePage } from '../../utils/factory/mock-or-real/abstract/home-page';
+import { HomePageNewsIcons } from '../../shared/fa-icon';
 
 @Injectable({
   providedIn: 'root',
@@ -99,13 +100,13 @@ export class MockHomePageService implements HomePage {
     ]);
   }
   /** 取得mock產品卡片**/
-  getProducts(): Observable<Cards> {
+  getProducts(): Observable<Cards<CardItem>> {
     return of({
       card: [
         {
           header: {
             avatar: {
-              icon: 'faFire',
+              icon: HomePageNewsIcons.faFire,
               color: 'red',
             },
             title: 'Product 1',
@@ -146,7 +147,7 @@ export class MockHomePageService implements HomePage {
         {
           header: {
             avatar: {
-              icon: 'faFire',
+              icon: HomePageNewsIcons.faFire,
               color: 'red',
             },
             title: 'Product 2',
@@ -174,7 +175,7 @@ export class MockHomePageService implements HomePage {
         {
           header: {
             avatar: {
-              icon: 'faFire',
+              icon: HomePageNewsIcons.faFire,
               color: 'red',
             },
             title: 'Product 3',
@@ -202,7 +203,7 @@ export class MockHomePageService implements HomePage {
         {
           header: {
             avatar: {
-              icon: 'faFire',
+              icon: HomePageNewsIcons.faFire,
               color: 'red',
             },
             title: 'Product 4',

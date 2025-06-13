@@ -56,4 +56,5 @@ export interface CardItemButton {
 export interface ArrangeTypeMeta {
   icon: IconDefinition;
   showInToggle: boolean;
+  label: string;
 }

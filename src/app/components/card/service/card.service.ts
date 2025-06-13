@@ -1,11 +1,21 @@
 import { Injectable } from '@angular/core';
 import { ArrangeType } from '..';
-import { IconDefinition } from '@fortawesome/angular-fontawesome';
-import { CardArrangeTypeIcons } from '../models/fa-icon';
+import { ToggleOption } from '../models/toggle-option.interface';
+import { ARRANGE_TYPE_META_MAP } from '../models/arrange-type-class.map';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class CardService {
-  constructor() {}
+  getToggleOptions(): ToggleOption[] {
+    return Object.entries(ARRANGE_TYPE_META_MAP)
+      .filter(([_, meta]) => meta.showInToggle)
+      .map(([key, meta]) => ({
+        value: key as ArrangeType,
+        icon: meta.icon,
+        label: meta.label,
+      }));
+  }
+
+  getMeta(type: ArrangeType) {
+    return ARRANGE_TYPE_META_MAP[type];
+  }
 }

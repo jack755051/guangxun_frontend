@@ -56,13 +56,16 @@ export const ARRANGE_TYPE_META_MAP: Record<ArrangeType, ArrangeTypeMeta> = {
   [ArrangeType.GRID]: {
     icon: CardArrangeTypeIcons.faBorderAll,
     showInToggle: true,
+    label: '網格',
   },
   [ArrangeType.LIST]: {
     icon: CardArrangeTypeIcons.faList,
     showInToggle: true,
+    label: '清單',
   },
   [ArrangeType.CENTER_STACK]: {
     icon: CardArrangeTypeIcons.faLayerGroup,
     showInToggle: false,
+    label: '堆疊',
   },
 };
