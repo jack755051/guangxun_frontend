@@ -1,4 +1,4 @@
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, TemplateRef } from '@angular/core';
 import { ArrangeType, BUTTON_CLASS_MAP, CardItemButton } from '../../..';
 import { SharedStandaloneImports } from '../../../../../shared/shared-imports';
 
@@ -10,12 +10,13 @@ import { SharedStandaloneImports } from '../../../../../shared/shared-imports';
   styleUrl: './button.component.scss',
 })
 export class ButtonComponent {
-  @Input() button: CardItemButton = { label: '', action: () => {} };
-  @Output() click = new EventEmitter<CardItemButton>();
+  @Input() button!: CardItemButton;
+  @Input() className = '';
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
-  get buttonClass(): string {
-    return BUTTON_CLASS_MAP[this.arrangeType] ?? '';
-  }
+  @Input() buttonTemplate?: TemplateRef<any>;
+  @Output() click = new EventEmitter<CardItemButton>();
+
+  protected readonly BUTTON_CLASS_MAP = BUTTON_CLASS_MAP;
 
   onClick() {
     if (!this.button.disabled) {

@@ -17,7 +17,7 @@ import { ARRANGE_TYPE_META_MAP, TOGGLABLE_ARRANGE_TYPES } from '.';
 })
 export class CardComponent<T extends CardItem = CardItem> implements OnInit {
   // 卡片
-  @Input() cards!: { card: T[]; arrangeType: ArrangeType };
+  @Input() cards!: Cards<T>;
   @Input() cardTemplate!: TemplateRef<any>;
   @Input() centerIndex: number = 0;
   // 操作功能

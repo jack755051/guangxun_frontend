@@ -1,5 +1,5 @@
 import { ArrangeType } from '../../../models/card.enum';
-import { Component, EventEmitter, HostBinding, Input, Output } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, Output, TemplateRef } from '@angular/core';
 import { SharedStandaloneImports } from '../../../../../shared/shared-imports';
 import { CONTENT_CLASS_MAP } from '../../../models/arrange-type-class.map';
 import { TagComponent } from '../tag/tag.component';
@@ -13,13 +13,17 @@ import { CardItemTag } from '../../..';
 })
 export class ContentComponent {
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
-  @Input() image?: string = '';
+  @Input() image?: string;
   @Input() title: string = '';
   @Input() subTitle: string = '';
   @Input() description: string = '';
-  @Input() tags?: CardItemTag[] = [];
+  @Input() tags: CardItemTag[] = [];
+  /** 額外 class，支援客製化 */
+  @Input() className = '';
+  @Input() tagTemplate?: TemplateRef<any>;
 
   @Output() tagClick = new EventEmitter<CardItemTag>();
+
   onTagClick(tag: CardItemTag) {
     this.tagClick.emit(tag);
   }

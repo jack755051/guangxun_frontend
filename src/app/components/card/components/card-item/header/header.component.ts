@@ -24,6 +24,10 @@ export class HeaderComponent {
     return HEADER_CLASS_MAP[this.arrangeType] ?? '';
   }
 
+  get avatarClass(): string | string[] {
+    return (this.avatar as any)?.class ?? '';
+  }
+
   isAvatarIcon(avatar: CardItemHeaderAvatar): avatar is CardItemHeaderFaIcon {
     return (avatar as CardItemHeaderFaIcon).icon !== undefined;
   }

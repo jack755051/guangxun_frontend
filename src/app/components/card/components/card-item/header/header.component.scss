@@ -3,4 +3,18 @@
 @use '../../../assets/color' as *;
 
 :host {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  font-size: 1.6rem;
+  font-weight: 600;
 }
