@@ -1,3 +1,6 @@
-<div *ngFor="let action of actions" class="action">
-  <guangxun-button [button]="action" [arrangeType]="arrangeType"></guangxun-button>
-</div>
+<guangxun-button
+  *ngFor="let action of actions"
+  [button]="action"
+  [arrangeType]="arrangeType"
+  (click)="onButtonClick(action)"
+></guangxun-button>

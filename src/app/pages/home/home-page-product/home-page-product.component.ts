@@ -1,7 +1,13 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { CardComponent } from '../../../components/card/card.component';
-import { ArrangeType, Cards } from '../../../components/card';
+import {
+  ArrangeType,
+  CardItem,
+  CardItemButton,
+  CardItemTag,
+  Cards,
+} from '../../../components/card';
 import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
 import { mockOrRealConfig } from '../../../config/mock-or-real.config';
 import { HomePage } from '../../../utils/factory/mock-or-real/abstract/home-page';
@@ -31,4 +37,7 @@ export class HomePageProductComponent implements OnInit {
       };
     });
   }
+
+  onTagClicked(event: { card: CardItem; tag: CardItemTag }) {}
+  onButtonClicked(event: { card: CardItem; button: CardItemButton }) {}
 }

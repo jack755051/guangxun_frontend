@@ -6,8 +6,11 @@
     <div class="description">{{ description }}</div>
   </div>
   <div class="tags">
-    <ng-container *ngFor="let tag of tags">
-      <guangxun-tag [tag]="tag" [arrangeType]="arrangeType"></guangxun-tag>
-    </ng-container>
+    <guangxun-tag
+      *ngFor="let tag of tags"
+      [tag]="tag"
+      [arrangeType]="arrangeType"
+      (click)="onTagClick(tag)"
+    ></guangxun-tag>
   </div>
 </div>

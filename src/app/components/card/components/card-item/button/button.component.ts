@@ -11,17 +11,15 @@ import { SharedStandaloneImports } from '../../../../../shared/shared-imports';
 })
 export class ButtonComponent {
   @Input() button: CardItemButton = { label: '', action: () => {} };
-  @Output() buttonClick = new EventEmitter<void>();
+  @Output() click = new EventEmitter<CardItemButton>();
   @Input() arrangeType: ArrangeType = ArrangeType.LIST;
   get buttonClass(): string {
     return BUTTON_CLASS_MAP[this.arrangeType] ?? '';
   }
 
-  onClick(): void {
-    if (this.button?.action) {
-      this.button.action(); // 呼叫傳入的 callback
+  onClick() {
+    if (!this.button.disabled) {
+      this.click.emit(this.button);
     }
-
-    this.buttonClick.emit(); // 向外部 emit 事件
   }
 }

@@ -3,8 +3,8 @@ import { ArrangeType } from './card.enum';
 import { CardItemHeaderAvatar } from './card.type';
 
 //卡片
-export interface Cards {
-  card: CardItem[];
+export interface Cards<T = any> {
+  card: T[];
   arrangeType: ArrangeType;
 }
 

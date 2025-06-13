@@ -1,49 +1,31 @@
-<div class="arrange-type">
+<div class="arrange-type" *ngIf="isShowArrangeType">
   <guangxun-toggle
-    *ngIf="isShowArrangeType"
     [selected]="cards.arrangeType"
     [options]="toggleOptions"
     (change)="onArrangeTypeToggle($event)"
   ></guangxun-toggle>
 </div>
 
-<ng-container *ngIf="cards">
-  <ng-container [ngSwitch]="cards.arrangeType">
-    <!-- CENTER_STACK 模式 -->
-    <ng-container *ngSwitchCase="ArrangeType.CENTER_STACK">
-      <div class="card-container card-center-stack">
-        <ng-container *ngFor="let card of cards.card; let i = index">
-          <guangxun-card-item
-            [cardItem]="card"
-            [arrangeType]="cards.arrangeType"
-            [class.center]="i === centerIndex"
-          ></guangxun-card-item>
-        </ng-container>
-      </div>
-    </ng-container>
+<!-- 卡片容器 -->
+<div class="card-container" [ngClass]="getContainerClass(cards.arrangeType)">
+  <ng-container *ngFor="let card of cards.card; let i = index">
+    <!-- 使用者傳入的卡片顯示模板 -->
+    <ng-container
+      *ngIf="cardTemplate; else defaultCardTemplate"
+      [ngTemplateOutlet]="cardTemplate"
+      [ngTemplateOutletContext]="{ $implicit: card, index: i }"
+    ></ng-container>
 
-    <!-- GRID 模式 -->
-    <ng-container *ngSwitchCase="ArrangeType.GRID">
-      <div class="card-container card-grid">
-        <ng-container *ngFor="let card of cards.card; let i = index">
-          <guangxun-card-item
-            [cardItem]="card"
-            [arrangeType]="cards.arrangeType"
-          ></guangxun-card-item>
-        </ng-container>
-      </div>
-    </ng-container>
-
-    <!-- LIST 模式 -->
-    <ng-container *ngSwitchCase="ArrangeType.LIST">
-      <div class="card-container card-list">
-        <ng-container *ngFor="let card of cards.card; let i = index">
-          <guangxun-card-item
-            [cardItem]="card"
-            [arrangeType]="cards.arrangeType"
-          ></guangxun-card-item>
-        </ng-container>
-      </div>
-    </ng-container>
+    <ng-template #defaultCardTemplate>
+      <ng-container *ngIf="isCardItemType(card)">
+        <guangxun-card-item
+          [cardItem]="card"
+          [arrangeType]="cards.arrangeType"
+          [class.center]="isCenterCard(i)"
+          (tagClick)="tagClick.emit($event)"
+          (buttonClick)="buttonClick.emit($event)"
+        ></guangxun-card-item>
+      </ng-container>
+    </ng-template>
   </ng-container>
-</ng-container>
+</div>

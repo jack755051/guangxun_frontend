@@ -1,7 +1,13 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { CardComponent } from '../../../components/card/card.component';
-import { ArrangeType, Cards } from '../../../components/card';
+import {
+  ArrangeType,
+  CardItem,
+  CardItemButton,
+  CardItemTag,
+  Cards,
+} from '../../../components/card';
 import { PaginationComponent } from '../../../components/pagination/pagination.component';
 import { GetProductCategory } from '../../../utils/factory/mock-or-real/abstract/get-product-category';
 
@@ -17,6 +23,9 @@ export class ProductsComponent implements OnInit {
   readonly ArrangeType = ArrangeType;
 
   constructor() {}
+
+  onTagClicked(event: { card: CardItem; tag: CardItemTag }) {}
+  onButtonClicked(event: { card: CardItem; button: CardItemButton }) {}
 
   ngOnInit(): void {}
 }

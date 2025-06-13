@@ -1,11 +1,11 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, HostBinding, Input, OnInit, Output } from '@angular/core';
 import { SharedStandaloneImports } from '../../../../shared/shared-imports';
 import {
   CardItemHeaderAvatar,
   CardItemHeaderFaIcon,
   CardItemHeaderImage,
 } from '../../models/card.type';
-import { ArrangeType, CARD_CLASS_MAP, CardItem } from '../..';
+import { ArrangeType, CARD_CLASS_MAP, CardItem, CardItemButton, CardItemTag } from '../..';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { ContentComponent } from './content/content.component';
@@ -28,6 +28,8 @@ export class CardItemComponent implements OnInit {
   get arrangeType(): ArrangeType {
     return this._arrangeType;
   }
+  @Output() tagClick = new EventEmitter<{ card: CardItem; tag: CardItemTag }>();
+  @Output() buttonClick = new EventEmitter<{ card: CardItem; button: CardItemButton }>();
   @HostBinding('class') hostClass = '';
 
   readonly ArrangeType = ArrangeType;
@@ -39,6 +41,14 @@ export class CardItemComponent implements OnInit {
   ngOnInit(): void {}
 
   // ---- 方法 start----
+
+  onTagClick(tag: CardItemTag) {
+    this.tagClick.emit({ card: this.cardItem, tag });
+  }
+
+  onButtonClick(button: CardItemButton) {
+    this.buttonClick.emit({ card: this.cardItem, button });
+  }
 
   get shouldShowHeader(): boolean {
     return this.arrangeType !== ArrangeType.LIST;

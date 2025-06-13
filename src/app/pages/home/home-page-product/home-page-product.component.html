@@ -1,4 +1,8 @@
 <div class="title-container">
   <span>熱銷產品</span>
 </div>
-<guangxun-card [cards]="cards"></guangxun-card>
+<guangxun-card
+  [cards]="cards"
+  (tagClick)="onTagClicked($event)"
+  (buttonClick)="onButtonClicked($event)"
+></guangxun-card>

@@ -1,5 +1,5 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import { Cards } from './models/card.interface';
+import { Component, EventEmitter, inject, Input, OnInit, Output, TemplateRef } from '@angular/core';
+import { CardItem, CardItemButton, CardItemTag, Cards } from './models/card.interface';
 import { SharedStandaloneImports } from '../../shared/shared-imports';
 import { CardItemComponent } from './components/card-item/card-item.component';
 import { ToggleComponent } from './components/toggle/toggle.component';
@@ -15,25 +15,28 @@ import { ARRANGE_TYPE_META_MAP, TOGGLABLE_ARRANGE_TYPES } from '.';
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss',
 })
-export class CardComponent implements OnInit {
+export class CardComponent<T extends CardItem = CardItem> implements OnInit {
   // 卡片
-  @Input() cards!: Cards;
-  // 中心卡片索引
-  centerIndex: number = 0;
+  @Input() cards!: { card: T[]; arrangeType: ArrangeType };
+  @Input() cardTemplate!: TemplateRef<any>;
+  @Input() centerIndex: number = 0;
+  // 操作功能
+  @Output() arrangeTypeChange = new EventEmitter<ArrangeType>();
+  @Output() tagClick = new EventEmitter<{ card: CardItem; tag: CardItemTag }>();
+  @Output() buttonClick = new EventEmitter<{ card: CardItem; button: CardItemButton }>();
   // 是否顯示排列方式
   isShowArrangeType: boolean = false;
   // 排列方式圖示
   arrangeTypeIcon: IconDefinition = CardArrangeTypeIcons.faList;
   // 排列方式
   ArrangeType = ArrangeType;
-  CardArrangeTypeIcons = CardArrangeTypeIcons;
 
   toggleOptions = TOGGLABLE_ARRANGE_TYPES;
 
   constructor() {}
 
   ngOnInit(): void {
-    if (!this.cards) return; // ⛔ 防呆
+    if (!this.cards) return;
     const currentType = this.cards.arrangeType;
     this.isShowArrangeType = ARRANGE_TYPE_META_MAP[currentType].showInToggle;
     this.arrangeTypeIcon = ARRANGE_TYPE_META_MAP[currentType].icon;
@@ -45,5 +48,20 @@ export class CardComponent implements OnInit {
 
   onArrangeTypeToggle(arrangeType: ArrangeType) {
     this.cards.arrangeType = arrangeType;
+    this.arrangeTypeChange.emit(arrangeType);
+  }
+
+  getContainerClass(type: ArrangeType): string {
+    return `card-${type}`;
+  }
+
+  isCenterCard(index: number): boolean {
+    return this.cards.arrangeType === ArrangeType.CENTER_STACK && index === this.centerIndex;
+  }
+
+  isCardItemType(card: unknown): card is CardItem {
+    return (
+      !!(card as CardItem)?.header && !!(card as CardItem)?.content && !!(card as CardItem)?.footer
+    );
   }
 }

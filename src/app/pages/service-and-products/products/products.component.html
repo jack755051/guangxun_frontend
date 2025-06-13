@@ -1,1 +1,5 @@
-<guangxun-card [cards]="dataSource"></guangxun-card>
+<guangxun-card
+  [cards]="dataSource"
+  (tagClick)="onTagClicked($event)"
+  (buttonClick)="onButtonClicked($event)"
+></guangxun-card>
