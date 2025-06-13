@@ -14,7 +14,7 @@
 
     &.card-grid {
       @include default-flex($direction: row, $justify: space-around, $gap: 5px);
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
     }
   }
 

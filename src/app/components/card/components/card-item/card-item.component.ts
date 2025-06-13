@@ -30,6 +30,7 @@ export class CardItemComponent implements OnInit {
   }
   @Output() tagClick = new EventEmitter<{ card: CardItem; tag: CardItemTag }>();
   @Output() buttonClick = new EventEmitter<{ card: CardItem; button: CardItemButton }>();
+  @Output() cardClick = new EventEmitter<CardItem>();
   @HostBinding('class') hostClass = '';
 
   readonly ArrangeType = ArrangeType;
@@ -69,5 +70,16 @@ export class CardItemComponent implements OnInit {
     return CARD_CLASS_MAP[this.arrangeType] ?? '';
   }
 
+  onCardClick(event: MouseEvent) {
+    const target = event.target as HTMLElement;
+    if (
+      target.closest('guangxun-button') ||
+      target.closest('guangxun-tag') ||
+      target.closest('.action')
+    ) {
+      return;
+    }
+    this.cardClick.emit(this.cardItem);
+  }
   // ---- 方法 end----
 }

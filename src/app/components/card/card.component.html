@@ -24,6 +24,7 @@
           [class.center]="isCenterCard(i)"
           (tagClick)="tagClick.emit($event)"
           (buttonClick)="buttonClick.emit($event)"
+          (click)="cardClick.emit(card)"
         ></guangxun-card-item>
       </ng-container>
     </ng-template>

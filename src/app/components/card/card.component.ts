@@ -26,6 +26,8 @@ export class CardComponent<T extends CardItem = CardItem> implements OnInit {
   @Output() arrangeTypeChange = new EventEmitter<ArrangeType>();
   @Output() tagClick = new EventEmitter<{ card: CardItem; tag: CardItemTag }>();
   @Output() buttonClick = new EventEmitter<{ card: CardItem; button: CardItemButton }>();
+  @Output() cardClick = new EventEmitter<CardItem>();
+
   _cardService = inject(CardService);
   // 是否顯示排列方式
   isShowArrangeType: boolean = false;
