@@ -4,8 +4,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { I18nService } from './core/services/i18n.service';
 import { AutoPaddingDirective } from './core/directives';
-import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
-import { Breadcrumb } from './models/types/breadcrumb.type';
+import { GuangxunBreadcrumbComponent } from 'guangxun-breadcrumb';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -13,8 +12,8 @@ import { Breadcrumb } from './models/types/breadcrumb.type';
     RouterOutlet,
     FooterComponent,
     HeaderComponent,
-    BreadcrumbComponent,
     AutoPaddingDirective,
+    GuangxunBreadcrumbComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
