@@ -1,7 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
-import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
-import { mockOrRealConfig } from '../../../config/mock-or-real.config';
 import { HomePage } from '../../../utils/factory/mock-or-real/abstract/home-page';
 import {
   Cards,

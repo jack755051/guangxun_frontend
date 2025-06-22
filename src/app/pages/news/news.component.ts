@@ -1,10 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MockHomePageService } from '../../mocks/services/mock-home-page.service';
 import { SharedStandaloneImports } from '../../shared/shared-imports';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { ExpansionPanelComponent } from '../../feature/expansion-panel/expansion-panel.component';
-import { ExpansionPanelItem, getExpansionIcon } from '../../feature/expansion-panel';
-import { mockOrRealConfig } from '../../config/mock-or-real.config';
+import { getExpansionIcon } from '../../feature/expansion-panel';
 import { INewsTypeContentViewModel } from '../../models/interface/feature/expansion-panel.interface';
 import { HomePage } from '../../utils/factory/mock-or-real/abstract/home-page';
 
