@@ -1,4 +1,4 @@
-import { Cards } from '../../../components/card';
+import { Cards } from '@sanring/guangxun-card';
 import { IProductCategoryTreeNodeViewModel } from './product-category.interface';
 
 export interface IQuery {

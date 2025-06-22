@@ -1,5 +1,5 @@
 import { IServiceAndProductsState } from '../../models/interface/feature/service-and-products.ngrx.interface';
-import { ArrangeType } from '../../components/card';
+import { ArrangeType } from '@sanring/guangxun-card';
 import { createFeature, createReducer, on } from '@ngrx/store';
 import { ServiceAndProductsActions } from './action';
 

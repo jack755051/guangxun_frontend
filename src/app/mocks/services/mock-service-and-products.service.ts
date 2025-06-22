@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IProductCategoryTreeNodeViewModel } from '../../models/interface/feature/product-category.interface';
 import { GetProductCategory } from '../../utils/factory/mock-or-real/abstract/get-product-category';
-import { ArrangeType, Cards } from '../../components/card';
+import { ArrangeType, Cards } from '@sanring/guangxun-card';
 
 @Injectable({
   providedIn: 'root',

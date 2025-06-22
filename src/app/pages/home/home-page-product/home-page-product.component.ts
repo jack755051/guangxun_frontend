@@ -1,20 +1,20 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
-import { CardComponent } from '../../../components/card/card.component';
-import {
-  ArrangeType,
-  CardItem,
-  CardItemButton,
-  CardItemTag,
-  Cards,
-} from '../../../components/card';
 import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
 import { mockOrRealConfig } from '../../../config/mock-or-real.config';
 import { HomePage } from '../../../utils/factory/mock-or-real/abstract/home-page';
+import {
+  Cards,
+  ArrangeType,
+  GuangxunCardComponent,
+  CardItem,
+  CardItemTag,
+  CardItemButton,
+} from '@sanring/guangxun-card';
 
 @Component({
   selector: 'guangxun-home-page-product',
-  imports: [SharedStandaloneImports, CardComponent],
+  imports: [SharedStandaloneImports, GuangxunCardComponent],
   standalone: true,
   templateUrl: './home-page-product.component.html',
   styleUrl: './home-page-product.component.scss',
@@ -31,7 +31,7 @@ export class HomePageProductComponent implements OnInit {
     this._homePage.getProducts().subscribe((cards) => {
       this.cards = {
         arrangeType: cards.arrangeType,
-        card: cards.card.map((item) => ({
+        card: cards.card.map((item: any) => ({
           ...item,
         })),
       };

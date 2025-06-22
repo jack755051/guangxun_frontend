@@ -1,19 +1,18 @@
 import { Component, inject, Input, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
-import { CardComponent } from '../../../components/card/card.component';
 import {
   ArrangeType,
   CardItem,
   CardItemButton,
   CardItemTag,
   Cards,
-} from '../../../components/card';
+  GuangxunCardComponent,
+} from '@sanring/guangxun-card';
 import { PaginationComponent } from '../../../components/pagination/pagination.component';
-import { GetProductCategory } from '../../../utils/factory/mock-or-real/abstract/get-product-category';
 
 @Component({
   selector: 'guangxun-products',
-  imports: [SharedStandaloneImports, CardComponent, PaginationComponent],
+  imports: [SharedStandaloneImports, GuangxunCardComponent, PaginationComponent],
   standalone: true,
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss',

@@ -1,6 +1,6 @@
 import { IProductCategoryTreeNodeViewModel } from '../../models/interface/feature/product-category.interface';
 import { IProductCardsViewModel } from '../../models/interface/feature/service-and-products.ngrx.interface';
-import { ArrangeType } from '../../components/card';
+import { ArrangeType } from '@sanring/guangxun-card';
 
 export class ProductsMapper {
   /**

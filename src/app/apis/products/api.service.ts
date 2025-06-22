@@ -1,13 +1,11 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { ITechnicalCategoryResponse } from '../technical-support/res.dto';
 import { GetProductCategory } from '../../utils/factory/mock-or-real/abstract/get-product-category';
 import { IProductCategoryTreeNodeViewModel } from '../../models/interface/feature/product-category.interface';
-import { ProductsMapper } from './mapper';
-import { Cards } from '../../components/card';
 import { IProductCategoryCardResDto, IProductCategoryTreeResDto } from './res.dto';
 import { IProductCardsViewModel } from '../../models/interface/feature/service-and-products.ngrx.interface';
+import { ProductsMapper } from './mapper';
 
 @Injectable({
   providedIn: 'root',

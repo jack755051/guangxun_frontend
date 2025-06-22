@@ -4,10 +4,9 @@ import { SearchBarComponent } from '../../feature/search-bar/search-bar.componen
 import { MatTreeModule } from '@angular/material/tree';
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { ProductsComponent } from './products/products.component';
-import { CardComponent } from '../../components/card/card.component';
 import { PaginationComponent } from '../../components/pagination/pagination.component';
 import { BehaviorSubject, map, Observable, take } from 'rxjs';
-import { ArrangeType, Cards } from '../../components/card';
+import { ArrangeType, Cards, GuangxunCardComponent } from '@sanring/guangxun-card';
 import { GetProductCategory } from '../../utils/factory/mock-or-real/abstract/get-product-category';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { UpdateQueryService } from '../../services/updateQuery.service';
@@ -30,7 +29,7 @@ import {
     MatTreeModule,
     SideBarComponent,
     ProductsComponent,
-    CardComponent,
+    GuangxunCardComponent,
     PaginationComponent,
     NgxPaginationModule,
   ],

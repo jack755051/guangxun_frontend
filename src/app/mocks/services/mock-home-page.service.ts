@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IVideoViewModel } from '../../models/interface/feature/video.interface';
-import { ArrangeType, CardItem, Cards } from '../../components/card';
+import { ArrangeType, CardItem, Cards } from '@sanring/guangxun-card';
 import { TechnicalSupportFile } from '../../models/interface/feature/technical-support.interface';
 import {
   ExpansionContentType,
