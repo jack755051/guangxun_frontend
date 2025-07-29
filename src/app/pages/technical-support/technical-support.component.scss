@@ -10,6 +10,29 @@
 .content-container {
   @include default-flex($direction: column, $justify: center, $align: normal, $gap: 2rem);
 
+  .loading-container {
+    @include default-flex($direction: column, $justify: center, $align: center);
+    padding: 2rem;
+
+    p {
+      @include default-text-style($font-size: 1.6rem, $font-weight: 500, $color: $primary-600);
+    }
+  }
+
+  .error-container {
+    @include container-padding($padding-x: 2rem, $padding-y: 1rem);
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 0.8rem;
+    margin-bottom: 1rem;
+
+    p {
+      margin: 0;
+      @include default-text-style($font-size: 1.4rem, $font-weight: 400);
+    }
+  }
+
   > mat-tab-group {
     @include container-padding($padding-x: 2rem, $padding-y: 1rem);
     background-color: $gray-50;

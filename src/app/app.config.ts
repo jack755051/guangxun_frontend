@@ -11,6 +11,8 @@ import { ServiceAndProductsFeatures } from './ngrx/service-and-products/reducer'
 import { provideState, provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { ServiceAndProductsEffects } from './ngrx/service-and-products/effect';
+import { technicalDocumentAndFileReducer } from './ngrx/technical-document-and-file/reducer';
+import { TechnicalDocumentAndFileEffects } from './ngrx/technical-document-and-file/effect';
 /** about real or mock setting END **/
 
 export const appConfig: ApplicationConfig = {
@@ -19,7 +21,8 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideStore(),
     provideState(ServiceAndProductsFeatures),
-    provideEffects(ServiceAndProductsEffects),
+    provideState({ name: 'technicalDocumentAndFile', reducer: technicalDocumentAndFileReducer }),
+    provideEffects(ServiceAndProductsEffects, TechnicalDocumentAndFileEffects),
     provideHttpClient(withInterceptorsFromDi()),
     TranslateModule.forRoot({
       defaultLanguage: 'zh-Hant',

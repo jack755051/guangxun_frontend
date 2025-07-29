@@ -7,7 +7,18 @@
     <guangxun-search-bar [showFilter]="false"></guangxun-search-bar>
   </div> -->
 
-  <mat-tab-group>
+  <!-- 載入狀態 -->
+  <div *ngIf="loading$ | async" class="loading-container">
+    <p>載入中...</p>
+  </div>
+
+  <!-- 錯誤訊息 -->
+  <div *ngIf="error$ | async as error" class="error-container">
+    <p>載入資料時發生錯誤: {{ error.message || error }}</p>
+  </div>
+
+  <!-- 分頁內容 -->
+  <mat-tab-group *ngIf="!(loading$ | async)">
     <mat-tab label="文件">
       <guangxun-technical-document [dataSource]="documentDataSource"></guangxun-technical-document>
     </mat-tab>

@@ -3,7 +3,6 @@
 :host {
   @include default-container($width: 100%, $height: auto);
   @include default-flex($direction: column, $justify: center, $align: normal, $gap: 2rem);
-  margin: 2rem 0;
 }
 
 .action-container {

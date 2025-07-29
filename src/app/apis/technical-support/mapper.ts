@@ -1,4 +1,6 @@
+import { TechnicalSupportFileType } from '../../models/enum/technical.enum';
 import { IProductCategoryTreeNodeViewModel } from '../../models/interface/feature/product-category.interface';
+import { ITechnicalSupportFileViewModel } from '../../models/interface/feature/technical-support.interface';
 
 export class TechnicalSupportMapper {
   /**
@@ -8,23 +10,31 @@ export class TechnicalSupportMapper {
    */
   public static toViewModel(
     data: any,
-  ): IProductCategoryTreeNodeViewModel | IProductCategoryTreeNodeViewModel[] {
+  ): ITechnicalSupportFileViewModel[] {
+    // 如果 data 是陣列，使用 map 處理每個元素
     if (Array.isArray(data)) {
-      return data.map((item) => this.mapTechnicalSupportToViewModel(item));
+      return data.map(item => this.mapTechnicalSupportToViewModel(item));
     }
-    return this.mapTechnicalSupportToViewModel(data);
+    // 如果 data 是單一物件，包裝成陣列
+    return [this.mapTechnicalSupportToViewModel(data)];
   }
 
+  /**
+   * 将技术支持数据转换为视图模型
+   * @param technicalSupport 技术支持数据
+   * @returns 转换后的视图模型
+   */
   private static mapTechnicalSupportToViewModel(
-    productCategory: any,
-  ): IProductCategoryTreeNodeViewModel {
+    technicalSupport: any,
+  ): ITechnicalSupportFileViewModel {
     return {
-      id: productCategory.id,
-      name: productCategory.name,
-      key: productCategory.key,
-      children: productCategory.children
-        ? productCategory.children.map((child: any) => this.mapTechnicalSupportToViewModel(child))
-        : [],
+      id: technicalSupport.id,
+      fileType: technicalSupport.fileType as TechnicalSupportFileType,
+      fileName: technicalSupport.fileName,
+      fileSize: technicalSupport.fileSize,
+      fileUrl: technicalSupport.fileUrl,
+      updatedAt: new Date(technicalSupport.updatedAt),
     };
   }
 }
+

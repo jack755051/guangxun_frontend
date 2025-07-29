@@ -2,19 +2,19 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { IVideoViewModel } from '../../models/interface/feature/video.interface';
 import { ArrangeType, CardItem, Cards } from '@sanring/guangxun-card';
-import { TechnicalSupportFile } from '../../models/interface/feature/technical-support.interface';
+import { ITechnicalSupportFileViewModel } from '../../models/interface/feature/technical-support.interface';
 import {
   ExpansionContentType,
   ExpansionPanelItem,
   ExpansionPanelType,
 } from '../../feature/expansion-panel';
-import { HomePage } from '../../utils/factory/mock-or-real/abstract/home-page';
 import { HomePageNewsIcons } from '../../shared/fa-icon';
+import { TechnicalSupportFileType } from '../../models/enum/technical.enum';
 
 @Injectable({
   providedIn: 'root',
 })
-export class MockHomePageService implements HomePage {
+export class MockHomePageService {
   constructor() {}
   /**
    * 取得 mock 影片
@@ -237,11 +237,11 @@ export class MockHomePageService implements HomePage {
     });
   }
   /**取得mock產品技術支援**/
-  getTechnicalSupports(): Observable<TechnicalSupportFile[]> {
+  getTechnicalSupports(): Observable<ITechnicalSupportFileViewModel[]> {
     return of([
       {
         id: 'file-1',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 1',
         fileSize: 101,
         updatedAt: new Date('2025-04-27T02:04:10.832Z'),
@@ -249,7 +249,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'file-2',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'File Download 2',
         fileSize: 102,
         updatedAt: new Date('2025-04-26T02:04:10.832Z'),
@@ -257,7 +257,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'file-3',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'File Download 3',
         fileSize: 103,
         updatedAt: new Date('2025-04-25T02:04:10.832Z'),
@@ -265,7 +265,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'file-4',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'File Download 4',
         fileSize: 104,
         updatedAt: new Date('2025-04-24T02:04:10.832Z'),
@@ -273,7 +273,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'file-5',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'File Download 5',
         fileSize: 105,
         updatedAt: new Date('2025-04-23T02:04:10.832Z'),
@@ -281,7 +281,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'file-6',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'File Download 6',
         fileSize: 106,
         updatedAt: new Date('2025-04-22T02:04:10.832Z'),
@@ -289,7 +289,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'file-7',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'File Download 7',
         fileSize: 107,
         updatedAt: new Date('2025-04-21T02:04:10.832Z'),
@@ -297,7 +297,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'file-8',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'File Download 8',
         fileSize: 108,
         updatedAt: new Date('2025-04-20T02:04:10.832Z'),
@@ -305,7 +305,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'file-9',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'File Download 9',
         fileSize: 109,
         updatedAt: new Date('2025-04-19T02:04:10.832Z'),
@@ -313,7 +313,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'file-10',
-        fileType: 'fileDownload',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'File Download 10',
         fileSize: 110,
         updatedAt: new Date('2025-04-18T02:04:10.832Z'),
@@ -322,7 +322,7 @@ export class MockHomePageService implements HomePage {
 
       {
         id: 'doc-1',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 1',
         fileSize: 201,
         updatedAt: new Date('2025-04-17T02:04:10.832Z'),
@@ -330,7 +330,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'doc-2',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 2',
         fileSize: 202,
         updatedAt: new Date('2025-04-16T02:04:10.832Z'),
@@ -338,7 +338,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'doc-3',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 3',
         fileSize: 203,
         updatedAt: new Date('2025-04-15T02:04:10.832Z'),
@@ -346,7 +346,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'doc-4',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 4',
         fileSize: 204,
         updatedAt: new Date('2025-04-14T02:04:10.832Z'),
@@ -354,7 +354,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'doc-5',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 5',
         fileSize: 205,
         updatedAt: new Date('2025-04-13T02:04:10.832Z'),
@@ -362,7 +362,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'doc-6',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 6',
         fileSize: 206,
         updatedAt: new Date('2025-04-12T02:04:10.832Z'),
@@ -370,7 +370,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'doc-7',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 7',
         fileSize: 207,
         updatedAt: new Date('2025-04-11T02:04:10.832Z'),
@@ -378,7 +378,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'doc-8',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 8',
         fileSize: 208,
         updatedAt: new Date('2025-04-10T02:04:10.832Z'),
@@ -386,7 +386,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'doc-9',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 9',
         fileSize: 209,
         updatedAt: new Date('2025-04-09T02:04:10.832Z'),
@@ -394,7 +394,7 @@ export class MockHomePageService implements HomePage {
       },
       {
         id: 'doc-10',
-        fileType: 'document',
+        fileType: TechnicalSupportFileType.DOCUMENT,
         fileName: 'Document 10',
         fileSize: 210,
         updatedAt: new Date('2025-04-08T02:04:10.832Z'),

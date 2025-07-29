@@ -58,7 +58,7 @@ export const ServiceAndProductsFeatures = createFeature({
         ...state,
         viewModel: {
           ...state.viewModel,
-          serviceAndProducts,
+          cardList: serviceAndProducts,
         },
         loading: false,
       }),
@@ -77,7 +77,9 @@ export const ServiceAndProductsFeatures = createFeature({
         ...state,
         viewModel: {
           ...state.viewModel,
-          tree: productCategoryTree,
+          productCategoryTree: {
+            tree: productCategoryTree,
+          },
         },
         loading: false,
       }),

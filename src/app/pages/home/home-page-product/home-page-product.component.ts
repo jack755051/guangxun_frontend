@@ -1,6 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { SharedStandaloneImports } from '../../../shared/shared-imports';
-import { HomePage } from '../../../utils/factory/mock-or-real/abstract/home-page';
 import {
   Cards,
   ArrangeType,
@@ -9,6 +8,7 @@ import {
   CardItemTag,
   CardItemButton,
 } from '@sanring/guangxun-card';
+import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
 
 @Component({
   selector: 'guangxun-home-page-product',
@@ -19,14 +19,12 @@ import {
 })
 export class HomePageProductComponent implements OnInit {
   cards!: Cards;
-  private readonly _homePage = inject(HomePage);
-  centerIndex: number = 0;
-
+  _mockCards = inject(MockHomePageService);
   readonly ArrangeType = ArrangeType;
   constructor() {}
 
   ngOnInit(): void {
-    this._homePage.getProducts().subscribe((cards) => {
+    this._mockCards.getProducts().subscribe((cards) => {
       this.cards = {
         arrangeType: cards.arrangeType,
         card: cards.card.map((item: any) => ({

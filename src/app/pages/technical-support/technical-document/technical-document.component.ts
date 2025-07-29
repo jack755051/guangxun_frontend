@@ -3,7 +3,7 @@ import { SharedStandaloneImports } from '../../../shared/shared-imports';
 import { MatTableModule } from '@angular/material/table';
 import {
   TechnicalSupportAction,
-  TechnicalSupportFile,
+  ITechnicalSupportFileViewModel,
 } from '../../../models/interface/feature/technical-support.interface';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { TechnicalSupportService } from '../services/technical-support.service';
@@ -15,7 +15,7 @@ import { TechnicalSupportService } from '../services/technical-support.service';
   styleUrl: './technical-document.component.scss',
 })
 export class TechnicalDocumentComponent {
-  @Input() dataSource: TechnicalSupportFile[] = [];
+  @Input() dataSource: ITechnicalSupportFileViewModel[] = [];
   displayedColumns: string[] = ['id', 'fileName', 'updatedAt', 'fileSize', 'action'];
 
   private _technicalSupportService = inject(TechnicalSupportService);

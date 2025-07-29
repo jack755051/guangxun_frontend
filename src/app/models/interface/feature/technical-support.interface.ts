@@ -1,6 +1,8 @@
-export interface TechnicalSupportFile {
+import { TechnicalSupportFileType } from "../../enum/technical.enum";
+
+export interface ITechnicalSupportFileViewModel {
   id: string;
-  fileType: 'fileDownload' | 'document';
+  fileType: TechnicalSupportFileType;
   fileName: string;
   fileSize: number;
   updatedAt: Date;

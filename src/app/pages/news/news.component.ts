@@ -4,7 +4,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { ExpansionPanelComponent } from '../../feature/expansion-panel/expansion-panel.component';
 import { getExpansionIcon } from '../../feature/expansion-panel';
 import { INewsTypeContentViewModel } from '../../models/interface/feature/expansion-panel.interface';
-import { HomePage } from '../../utils/factory/mock-or-real/abstract/home-page';
+import { MockHomePageService } from '../../mocks/services/mock-home-page.service';
 
 @Component({
   selector: 'guangxun-news',
@@ -15,12 +15,11 @@ import { HomePage } from '../../utils/factory/mock-or-real/abstract/home-page';
 })
 export class NewsComponent implements OnInit {
   news: INewsTypeContentViewModel[] = [];
-  private readonly _homePage = inject(HomePage);
-  hoverIndex: number | null = null;
+  _mockCards = inject(MockHomePageService);
 
   constructor() {}
   ngOnInit(): void {
-    this._homePage.getNews().subscribe((news) => {
+    this._mockCards.getNews().subscribe((news) => {
       this.news = news.map((item) => ({
         ...item,
         header: {

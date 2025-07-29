@@ -1,16 +1,17 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map, Observable } from 'rxjs';
-import { GetProductCategory } from '../../utils/factory/mock-or-real/abstract/get-product-category';
 import { IProductCategoryTreeNodeViewModel } from '../../models/interface/feature/product-category.interface';
 import { IProductCategoryCardResDto, IProductCategoryTreeResDto } from './res.dto';
 import { IProductCardsViewModel } from '../../models/interface/feature/service-and-products.ngrx.interface';
 import { ProductsMapper } from './mapper';
+import { ITechnicalSupportFileViewModel } from '../../models/interface/feature/technical-support.interface';
+import { TechnicalSupportFileType } from '../../models/enum/technical.enum';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ApiService implements GetProductCategory {
+export class ApiService {
   private readonly _httpClient = inject(HttpClient);
   private readonly _baseUrl: string;
 

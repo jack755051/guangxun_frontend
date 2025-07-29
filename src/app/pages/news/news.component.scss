@@ -4,40 +4,259 @@
 :host {
   @include default-flex($direction: column);
   @include default-container($width: 100%, $height: auto);
-  @include container-padding($padding-x: 0, $padding-y: 2rem);
+  @include container-padding($padding-x: 0, $padding-y: 3rem);
+  position: relative;
+
+  // 添加微妙的背景漸變
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -10%;
+    right: -10%;
+    height: 100%;
+    background: radial-gradient(ellipse at top, rgba($btn-blue-500, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
 }
 
 .news-container {
   @include default-container($width: 100%, $height: auto);
-  > .mat-accordion {
-    > .mat-expansion-panel.news-item {
-      background-color: $gray-800;
-      @include default-text-style($font-size: 1.2rem, $font-weight: 500, $color: $gray-50);
+  position: relative;
+  z-index: 1;
+
+  // Material Accordion 樣式覆寫
+  ::ng-deep {
+    .mat-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+
+      .mat-expansion-panel {
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px !important;
+        border: 1px solid rgba($gray-600, 0.3);
+        background: linear-gradient(135deg,
+          rgba($gray-800, 0.95) 0%,
+          rgba($gray-900, 0.98) 100%
+        );
+        backdrop-filter: blur(10px);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        // 懸停效果
+        &:hover {
+          transform: translateY(-2px);
+          border-color: rgba($btn-blue-500, 0.4);
+          box-shadow:
+            0 8px 32px rgba($btn-blue-500, 0.15),
+            0 0 0 1px rgba($btn-blue-500, 0.1) inset;
+
+          .hover-gradient {
+            opacity: 1;
+          }
+
+          .mat-expansion-panel-header-title {
+            .text-type-title {
+              color: $btn-blue-400;
+            }
+          }
+        }
+
+        // 展開狀態
+        &.mat-expanded {
+          border-color: rgba($btn-blue-500, 0.6);
+          background: linear-gradient(135deg,
+            rgba($gray-800, 0.98) 0%,
+            rgba($gray-900, 1) 100%
+          );
+          box-shadow:
+            0 12px 40px rgba($btn-blue-500, 0.2),
+            0 0 0 2px rgba($btn-blue-500, 0.2) inset;
+
+          .expansion-indicator {
+            &::before {
+              width: 100%;
+            }
+          }
+        }
+
+        // 內部漸變裝飾
+        .hover-gradient {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 100%;
+          background: radial-gradient(
+            600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+            rgba($btn-blue-500, 0.1),
+            transparent 40%
+          );
+          opacity: 0;
+          transition: opacity 0.3s ease;
+          pointer-events: none;
+        }
+
+        // 展開指示器
+        .expansion-indicator {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 2px;
+          overflow: hidden;
+
+          &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(90deg,
+              $btn-blue-500 0%,
+              $btn-blue-400 50%,
+              $btn-blue-500 100%
+            );
+            transition: width 0.3s ease;
+          }
+        }
+
+        // 頭部樣式
+        .mat-expansion-panel-header {
+          padding: 1.5rem 2rem;
+          background: transparent;
+
+          &:hover {
+            background: transparent !important;
+          }
+
+          .mat-content {
+            align-items: center;
+          }
+        }
+
+        // 內容區域
+        .mat-expansion-panel-content {
+          .mat-expansion-panel-body {
+            padding: 0 2rem 1.5rem;
+          }
+        }
+      }
+    }
+
+    // 內容文字樣式
+    .mat-content {
+      padding-right: 2rem !important;
     }
   }
 }
 
-::ng-deep .mat-content {
-  padding-right: 2rem !important;
-}
-
+// 文字樣式增強
 .text-type-title {
-  @include default-text-style($font-size: 1.6rem, $font-weight: 900, $color: $gray-50);
-  // &.icon{
-  //   color:$btn-blue-200
-  // }
+  @include default-text-style($font-size: 1.8rem, $font-weight: 700, $color: $gray-50);
+  letter-spacing: 0.02em;
+  transition: color 0.3s ease;
+
+  &.icon {
+    color: $btn-blue-400;
+    margin-right: 0.8rem;
+  }
 }
 
 .text-type-sub {
-  @include default-text-style($font-size: 1.2rem, $font-weight: 500, $color: $btn-blue-500);
+  @include default-text-style($font-size: 1.3rem, $font-weight: 500, $color: $btn-blue-500);
+  opacity: 0.9;
+  letter-spacing: 0.01em;
+
   &.date {
-    margin-right: 1rem;
+    margin-right: 1.5rem;
+    position: relative;
+
+    &::after {
+      content: '•';
+      position: absolute;
+      right: -0.8rem;
+      color: rgba($gray-400, 0.5);
+    }
   }
 }
 
 .text-type-text {
-  @include default-text-style($font-size: 1.2rem, $font-weight: 500, $color: $gray-50);
+  @include default-text-style($font-size: 1.3rem, $font-weight: 400, $color: rgba($gray-50, 0.85));
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+
   &.author {
     color: $liver-red-200;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+
+    &::before {
+      content: '✍';
+      margin-right: 0.5rem;
+      opacity: 0.7;
+    }
+  }
+}
+
+// 動畫定義
+@keyframes titleGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateX(-50%) scaleX(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translateX(-50%) scaleX(1.1);
+  }
+}
+
+// 響應式設計
+@media (max-width: 768px) {
+  .title-container {
+    margin-bottom: 2rem;
+
+    span {
+      @include default-text-style($font-size: 2.2rem, $font-weight: 800, $color: $gray-50);
+    }
+  }
+
+  .news-container ::ng-deep {
+    .mat-accordion {
+      gap: 0.8rem;
+
+      .mat-expansion-panel {
+        border-radius: 12px !important;
+
+        .mat-expansion-panel-header {
+          padding: 1.2rem 1.5rem;
+        }
+      }
+    }
+  }
+
+  .text-type-title {
+    @include default-text-style($font-size: 1.5rem, $font-weight: 700, $color: $gray-50);
+  }
+
+  .text-type-sub,
+  .text-type-text {
+    @include default-text-style($font-size: 1.1rem, $font-weight: 400, $color: inherit);
+  }
+}
+
+// 深色模式支援
+@media (prefers-color-scheme: dark) {
+  .news-container ::ng-deep {
+    .mat-expansion-panel {
+      background: linear-gradient(135deg,
+        rgba($gray-900, 0.95) 0%,
+        rgba(#000, 0.98) 100%
+      );
+    }
   }
 }

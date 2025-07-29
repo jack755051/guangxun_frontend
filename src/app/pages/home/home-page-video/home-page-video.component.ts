@@ -4,7 +4,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { IVideoViewModel } from '../../../models/interface/feature/video.interface';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { VideoComponent } from '../../../feature/video/video.component';
-import { HomePage } from '../../../utils/factory/mock-or-real/abstract/home-page';
+import { MockHomePageService } from '../../../mocks/services/mock-home-page.service';
 
 class SanitizedVideoViewModel {}
 
@@ -18,14 +18,12 @@ class SanitizedVideoViewModel {}
 export class HomePageVideoComponent implements OnInit {
   videos: IVideoViewModel[] = [];
   sanitizedUrls: SafeResourceUrl[] = [];
-  private readonly _homePage = inject(HomePage);
+  _mock = inject(MockHomePageService);
+
   constructor(private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
-    // this.sanitizedUrls = this.videos.map((v) =>
-    //   this.sanitizer.bypassSecurityTrustResourceUrl(v.streamUrl),
-    // );
-    this._homePage.getVideo().subscribe((viedos) => {
+    this._mock.getVideo().subscribe((viedos) => {
       this.videos = viedos.map((item) => ({
         ...item,
       }));

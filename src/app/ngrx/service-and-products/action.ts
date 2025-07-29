@@ -1,8 +1,9 @@
 import { createActionGroup, emptyProps, props } from '@ngrx/store';
-import { ITechnicalCategoryResponse } from '../../apis/technical-support/res.dto';
+import { IProductCategoryTreeNodeViewModel } from '../../models/interface/feature/product-category.interface';
 import {
   IQuery,
   IQueryPayload,
+  IProductCardsViewModel,
 } from '../../models/interface/feature/service-and-products.ngrx.interface';
 
 export const ServiceAndProductsActions = createActionGroup({
@@ -11,7 +12,7 @@ export const ServiceAndProductsActions = createActionGroup({
     'Load Service And Products': emptyProps(),
     'Load Service And Products Loading': emptyProps(),
     'Load Service And Products Success': props<{
-      serviceAndProducts: ITechnicalCategoryResponse;
+      serviceAndProducts: IProductCardsViewModel;
     }>(),
     'Load Service And Products Failure': props<{ error: any }>(),
     'Update Query': props<{
@@ -23,7 +24,7 @@ export const ServiceAndProductsActions = createActionGroup({
     'Load Product Category Tree': emptyProps(),
     'Load Product Category Tree Loading': emptyProps(),
     'Load Product Category Tree Success': props<{
-      productCategoryTree: ITechnicalCategoryResponse;
+      productCategoryTree: IProductCategoryTreeNodeViewModel[];
     }>(),
     'Load Product Category Tree Failure': props<{ error: any }>(),
   },
