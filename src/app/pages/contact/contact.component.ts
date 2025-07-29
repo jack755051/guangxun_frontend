@@ -9,6 +9,8 @@ import {
 } from '../../models/enum/product.enum';
 import { DialogService, DialogType } from '../../components/dialog';
 import { DialogButtonType } from '../../components/dialog/model/enum/dialog-button-dialog.enum';
+import { ApiService } from '../../apis/contact/api.service';
+import { IContactReqDto } from '../../apis/contact/req.dto';
 @Component({
   selector: 'guangxun-contact',
   imports: [ReactiveFormsModule, SharedStandaloneImports],
@@ -36,6 +38,7 @@ export class ContactComponent implements OnInit {
   }));
 
   dialog = inject(DialogService);
+  private readonly apiService = inject(ApiService);
 
   constructor() {}
 
@@ -67,28 +70,89 @@ export class ContactComponent implements OnInit {
       Validators.pattern(/^(?![\W_]+$).+$/),
     ]),
     email: new FormControl<string>('', [Validators.required, Validators.email]),
-    phone: new FormControl<string>('', [Validators.required]),
-    productCategory: new FormControl<ProductTypeEnum | null>(null, [
+    phone: new FormControl<string>('', [
       Validators.required,
       Validators.pattern(/^09\d{8}$/),
     ]),
+    productCategory: new FormControl<ProductTypeEnum | null>(null, [Validators.required]),
     product: new FormControl<string>('', [Validators.required]),
   });
 
   onSubmit() {
     this.contactForm.markAllAsTouched();
     if (this.contactForm.valid) {
-      console.log('submit');
+      const formData: IContactReqDto = {
+        name: this.contactForm.value.name!,
+        email: this.contactForm.value.email!,
+        phone: this.contactForm.value.phone!,
+        productCategory: this.contactForm.value.productCategory!,
+        product: this.contactForm.value.product!,
+      };
+
+      this.apiService.sendContactForm(formData).subscribe({
+        next: (response) => {
+          console.log('聯絡表單發送成功:', response);
+
+          this.dialog.openRemindDialog({
+            type: DialogType.ALERT,
+            header: {
+              title: '發送成功',
+            },
+            content: {
+              type: 'text',
+              text: response.message || '您的聯絡訊息已成功發送，我們會盡快與您聯繫。',
+            },
+            footer: {
+              buttons: [{ type: DialogButtonType.CANCEL, label: '關閉' }],
+            },
+            width: '500px',
+            height: 'auto',
+            panelClass: 'dialog-remind-style',
+          });
+
+          // 清空表單
+          this.onClear();
+        },
+        error: (error) => {
+          console.error('聯絡表單發送失敗:', error);
+
+          this.dialog.openRemindDialog({
+            type: DialogType.ALERT,
+            header: {
+              title: '發送失敗',
+            },
+            content: {
+              type: 'text',
+              text: '發送過程中發生錯誤，請稍後再試或直接聯繫我們。',
+            },
+            footer: {
+              buttons: [{ type: DialogButtonType.CANCEL, label: '關閉' }],
+            },
+            width: '500px',
+            height: 'auto',
+            panelClass: 'dialog-remind-style',
+          });
+        }
+      });
+
     } else {
-      console.log('error');
+      console.log('表單驗證失敗');
+      const errors = this.getFormErrors();
+      let errorMessage = '請檢查以下欄位：\n';
+
+      Object.keys(errors).forEach(key => {
+        const fieldName = this.getFieldDisplayName(key);
+        errorMessage += `• ${fieldName}\n`;
+      });
+
       this.dialog.openRemindDialog({
         type: DialogType.ALERT,
         header: {
-          title: '錯誤',
+          title: '表單驗證錯誤',
         },
         content: {
           type: 'text',
-          text: '請檢查表單是否填寫完整',
+          text: errorMessage,
         },
         footer: {
           buttons: [{ type: DialogButtonType.CANCEL, label: '關閉' }],
@@ -98,6 +162,30 @@ export class ContactComponent implements OnInit {
         panelClass: 'dialog-remind-style',
       });
     }
+  }
+
+  // 獲取表單錯誤的輔助方法
+  private getFormErrors(): any {
+    const errors: any = {};
+    Object.keys(this.contactForm.controls).forEach(key => {
+      const control = this.contactForm.get(key);
+      if (control && control.errors) {
+        errors[key] = control.errors;
+      }
+    });
+    return errors;
+  }
+
+  // 獲取欄位顯示名稱的輔助方法
+  private getFieldDisplayName(fieldName: string): string {
+    const fieldNames: { [key: string]: string } = {
+      'name': '稱呼',
+      'email': '電子郵件',
+      'phone': '電話',
+      'productCategory': '產品類別',
+      'product': '產品項目'
+    };
+    return fieldNames[fieldName] || fieldName;
   }
 
   onClear() {
