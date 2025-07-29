@@ -249,7 +249,7 @@ export class MockHomePageService {
       },
       {
         id: 'file-2',
-        fileType: TechnicalSupportFileType.DOCUMENT,
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 2',
         fileSize: 102,
         updatedAt: new Date('2025-04-26T02:04:10.832Z'),
@@ -257,7 +257,7 @@ export class MockHomePageService {
       },
       {
         id: 'file-3',
-        fileType: TechnicalSupportFileType.DOCUMENT,
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 3',
         fileSize: 103,
         updatedAt: new Date('2025-04-25T02:04:10.832Z'),
@@ -265,7 +265,7 @@ export class MockHomePageService {
       },
       {
         id: 'file-4',
-        fileType: TechnicalSupportFileType.DOCUMENT,
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 4',
         fileSize: 104,
         updatedAt: new Date('2025-04-24T02:04:10.832Z'),
@@ -273,7 +273,7 @@ export class MockHomePageService {
       },
       {
         id: 'file-5',
-        fileType: TechnicalSupportFileType.DOCUMENT,
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 5',
         fileSize: 105,
         updatedAt: new Date('2025-04-23T02:04:10.832Z'),
@@ -281,7 +281,7 @@ export class MockHomePageService {
       },
       {
         id: 'file-6',
-        fileType: TechnicalSupportFileType.DOCUMENT,
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 6',
         fileSize: 106,
         updatedAt: new Date('2025-04-22T02:04:10.832Z'),
@@ -289,7 +289,7 @@ export class MockHomePageService {
       },
       {
         id: 'file-7',
-        fileType: TechnicalSupportFileType.DOCUMENT,
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 7',
         fileSize: 107,
         updatedAt: new Date('2025-04-21T02:04:10.832Z'),
@@ -297,7 +297,7 @@ export class MockHomePageService {
       },
       {
         id: 'file-8',
-        fileType: TechnicalSupportFileType.DOCUMENT,
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 8',
         fileSize: 108,
         updatedAt: new Date('2025-04-20T02:04:10.832Z'),
@@ -305,7 +305,7 @@ export class MockHomePageService {
       },
       {
         id: 'file-9',
-        fileType: TechnicalSupportFileType.DOCUMENT,
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 9',
         fileSize: 109,
         updatedAt: new Date('2025-04-19T02:04:10.832Z'),
@@ -313,7 +313,7 @@ export class MockHomePageService {
       },
       {
         id: 'file-10',
-        fileType: TechnicalSupportFileType.DOCUMENT,
+        fileType: TechnicalSupportFileType.FILE_DOWNLOAD,
         fileName: 'File Download 10',
         fileSize: 110,
         updatedAt: new Date('2025-04-18T02:04:10.832Z'),
